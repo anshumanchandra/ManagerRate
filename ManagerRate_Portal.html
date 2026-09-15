@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ManagerRate — Anonymous Manager Review Portal</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+/* WATERMARK & BACKGROUND PATTERN */
+
+/* Decorative corner elements */
+#pg-dash::before{content:'';position:absolute;top:-30px;right:-30px;width:300px;height:300px;background:radial-gradient(circle,rgba(11,111,218,.05),transparent 65%);border-radius:50%;pointer-events:none}
+#pg-dash::after{content:'';position:absolute;bottom:50px;left:-50px;width:350px;height:350px;background:radial-gradient(circle,rgba(124,58,237,.04),transparent 65%);border-radius:50%;pointer-events:none}
+#pg-mgrs::before{content:'';position:absolute;top:20px;right:-20px;width:250px;height:250px;background:radial-gradient(circle,rgba(22,163,106,.04),transparent 65%);border-radius:50%;pointer-events:none}
+#pg-prof::before{content:'';position:absolute;top:0;left:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(245,158,11,.04),transparent 65%);border-radius:50%;pointer-events:none}
+
+/* Diamond pattern on section backgrounds */
+.dg{position:relative;overflow:hidden}
+.dg::before{content:'\25C7 \25C7 \25C7';position:absolute;top:10px;right:16px;font-size:12px;color:rgba(11,111,218,.06);letter-spacing:8px;pointer-events:none}
+
+/* Subtle grid dots on card backgrounds */
+.sc,.review-form-card,.catd-section,.lb-card{background-image:radial-gradient(circle,rgba(11,111,218,.02) 1px,transparent 1px);background-size:20px 20px}
+.sc{background-color:var(--card);background-image:radial-gradient(circle,rgba(11,111,218,.03) 1px,transparent 1px);background-size:16px 16px}
+
+body{background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230b6fda' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-attachment:fixed}
+.pg{position:relative}
+.pg{overflow:visible}
+.pg>*{position:relative;z-index:1}
+
+/* Subtle brand watermark on each page */
+.pg-watermark{position:fixed;bottom:20px;right:20px;font-size:11px;color:rgba(11,111,218,.08);font-weight:800;letter-spacing:2px;text-transform:uppercase;pointer-events:none;z-index:0;user-select:none}
+
+/* Make all content pages use full width */
+.container,.main-content{max-width:100%;width:100%}
+
+:root{--accent:#0b6fda;--accent-light:#e8f2ff;--accent-dark:#0856a8;--star:#f0ad00;--star-empty:#d0d5dd;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--bg:var(--color-bg,#f8f9fb);--bg2:var(--color-bg-secondary,#fff);--tx:var(--color-text,#1a1a2e);--tx2:var(--color-text-secondary,#4b5563);--txm:var(--color-text-muted,#6b7280);--bd:var(--color-border,#d1d5db);--bdl:var(--color-border-light,#e5e7eb)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif);background:var(--bg);color:var(--tx);line-height:1.5}
+
+.hdr{background:linear-gradient(135deg,#0b3d91,#1565c0 50%,#0d47a1);color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1280px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.3px;cursor:pointer}
+.hdr-search{display:flex;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:7px 14px;width:380px}
+.hdr-search:focus-within{background:rgba(255,255,255,.25);border-color:rgba(0,0,0,.5)}
+.hdr-search i{color:rgba(255,255,255,.7);margin-right:8px;font-size:13px}
+.hdr-search input{background:none;border:none;color:#fff;font-size:13px;width:100%;outline:none}
+.hdr-search input::placeholder{color:rgba(255,255,255,.6)}
+.tabs{display:flex;max-width:1280px;margin:0 auto;padding:0 28px}
+.tab{padding:9px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.7);cursor:pointer;border-bottom:3px solid transparent;transition:.2s}
+.tab:hover{color:#fff}.tab.on{color:#fff;border-bottom-color:#fff}
+.wr-btn{padding:10px 22px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.2s}
+.wr-btn:hover{background:rgba(255,255,255,.3)}
+
+.ctn{max-width:1280px;margin:0 auto;padding:22px 28px}
+.pg{display:none}.pg.on{display:block}
+
+/* HOME */
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0b3d91 0%,#1565c0 40%,#0d47a1 100%);color:#fff;border-radius:16px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none}
+.hero h1{font-size:36px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px;line-height:1.2}
+.hero h1 span{color:#60a5fa}
+.hero .tagline{font-size:17px;opacity:.85;max-width:620px;margin:0 auto 28px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.hero-btn{padding:13px 32px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:.2s;border:none}
+.hero-btn.primary{background:#fff;color:#0b3d91}
+.hero-btn.primary:hover{background:#e8f2ff;transform:translateY(-1px)}
+.hero-btn.secondary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.hero-btn.secondary:hover{background:rgba(255,255,255,.25)}
+
+.mission{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.mission-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:28px}
+.mission-card h3{font-size:17px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.mission-card h3 i{font-size:22px;color:var(--accent)}
+.mission-card p{font-size:14px;color:var(--tx2);line-height:1.7}
+
+.how-section{margin-bottom:32px}
+.how-section>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:24px}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.how-step{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;text-align:center}
+.how-step .step-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin:0 auto 14px}
+.how-step h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.how-step p{font-size:12px;color:var(--txm);line-height:1.5}
+.how-step i.step-ico{font-size:28px;color:var(--accent);margin-bottom:10px;display:block}
+
+.impact{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:40px;color:#fff;margin-bottom:32px;text-align:center}
+.impact h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.impact .sub{font-size:14px;opacity:.7;margin-bottom:28px}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.impact-item{padding:20px}
+.impact-item i{font-size:32px;margin-bottom:10px;color:#60a5fa}
+.impact-item h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.impact-item p{font-size:13px;opacity:.75;line-height:1.6}
+
+/* FOR ORGS */
+.for-orgs{margin-bottom:32px}
+.for-orgs>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
+.for-orgs>.sub2{font-size:14px;color:var(--txm);text-align:center;margin-bottom:24px;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.6}
+.org-highlight{background:linear-gradient(135deg,#f0f5ff,#e8f2ff);border:1px solid #c7dbf5;border-radius:16px;padding:32px;margin-bottom:20px}
+.org-highlight h3{font-size:18px;font-weight:700;margin-bottom:10px;color:#0b3d91;display:flex;align-items:center;gap:10px}
+.org-highlight h3 i{font-size:24px}
+.org-highlight p{font-size:14px;color:var(--tx2);line-height:1.75}
+.org-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.org-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.org-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent)}
+.org-card i.oc-ico{font-size:28px;color:var(--accent);margin-bottom:12px;display:block}
+.org-card h4{font-size:15px;font-weight:600;margin-bottom:8px}
+.org-card p{font-size:13px;color:var(--tx2);line-height:1.65}
+.org-card ul{margin:8px 0 0 18px;font-size:12px;color:var(--tx2);line-height:1.7}
+.org-card ul li{margin-bottom:4px}
+.org-quote{background:var(--bg2);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:24px 28px;margin-top:4px}
+.org-quote p{font-size:15px;font-style:italic;color:var(--tx2);line-height:1.7;margin-bottom:8px}
+.org-quote .attr{font-size:12px;color:var(--txm);font-style:normal;font-weight:600}
+
+@media(max-width:900px){.org-grid{grid-template-columns:1fr}}
+
+.values{margin-bottom:32px}
+.values>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:24px}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.val-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;text-align:center}
+.val-card i{font-size:28px;margin-bottom:10px}
+.val-card h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.val-card p{font-size:12px;color:var(--txm);line-height:1.5}
+
+.cta-banner{background:var(--accent);border-radius:14px;padding:36px;text-align:center;color:#fff;margin-bottom:24px}
+.cta-banner h2{font-size:22px;font-weight:700;margin-bottom:8px}
+.cta-banner p{font-size:14px;opacity:.85;margin-bottom:20px}
+.cta-btn{padding:13px 36px;background:#fff;color:var(--accent);border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s}
+.cta-btn:hover{background:#e8f2ff;transform:translateY(-1px)}
+
+.home-footer{text-align:center;padding:20px;color:var(--txm);font-size:12px;border-top:1px solid var(--bdl)}
+
+/* STATS */
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.sc{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;padding:18px;transition:.15s}
+.sc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.sc .lb{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--txm);font-weight:600;margin-bottom:6px}
+.sc .vl{font-size:28px;font-weight:700;font-family:var(--font-mono,'SF Mono',Consolas,monospace)}
+.sc .dl{font-size:12px;margin-top:3px;display:flex;align-items:center;gap:4px}
+.dl.pos{color:var(--green)}
+
+/* CHARTS */
+.cr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.cc{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;padding:18px}
+.cc h3{font-size:14px;font-weight:600;margin-bottom:14px}
+.bar-chart{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.bar-row .bl{width:140px;flex-shrink:0;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:8px;background:var(--bdl);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .6s ease-out;min-width:2px}
+.bar-row .bv{width:30px;text-align:right;font-weight:600;font-family:var(--font-mono,'SF Mono',Consolas,monospace);font-size:11px}
+.dist-chart{display:flex;align-items:flex-end;gap:12px;height:200px;padding-top:10px}
+.dist-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.dist-bar 
+.rec-btns{display:flex;gap:12px;margin-top:16px}
+.rec-btn{flex:1;padding:16px 20px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--bdr);background:var(--bg);color:var(--txm)}
+.rec-btn:hover{border-color:rgba(11,111,218,.3)}
+.rec-btn.yes.active{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;border-color:#16a34a;box-shadow:0 4px 16px rgba(22,163,106,.3)}
+.rec-btn.no.active{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border-color:#dc2626;box-shadow:0 4px 16px rgba(220,38,38,.3)}
+.rec-btn.yes:not(.active):hover{background:rgba(22,163,106,.06);border-color:rgba(22,163,106,.3);color:#16a34a}
+.rec-btn.no:not(.active):hover{background:rgba(220,38,38,.06);border-color:rgba(220,38,38,.3);color:#dc2626}
+
+.dist-bar .dn{font-size:11px;font-weight:600;color:var(--tx)}.dist-bar .dlb{font-size:10px;color:var(--txm)}
+
+/* FILTER */
+.fb{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.fb select,.fb input{padding:7px 12px;border:1px solid var(--bd);border-radius:8px;font-size:12px;background:var(--bg2);color:var(--tx);outline:none}
+.fb select:focus,.fb input:focus{border-color:var(--accent)}
+.sb{padding:7px 12px;border:1px solid var(--bd);border-radius:8px;font-size:12px;background:var(--bg2);color:var(--tx);cursor:pointer;display:flex;align-items:center;gap:5px;transition:.15s}
+.sb:hover{border-color:var(--accent);color:var(--accent)}
+
+/* MANAGER GRID */
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.mc{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;padding:18px;cursor:pointer;transition:.2s}
+.mc:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(11,111,218,.1);transform:translateY(-2px)}
+.mh{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.av{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:#fff;flex-shrink:0}
+.mi h3{font-size:15px;font-weight:600}.mi p{font-size:12px;color:var(--txm)}
+.mi .companies{font-size:11px;color:var(--accent);margin-top:2px}
+.mi .companies i{margin-right:3px}
+.li-link{font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:4px;text-decoration:none;margin-top:2px}
+.li-link:hover{text-decoration:underline}
+.mr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rn{font-size:22px;font-weight:700;font-family:var(--font-mono,'SF Mono',Consolas,monospace)}
+.stars{display:flex;gap:1px}.stars i{font-size:13px;color:var(--star)}.stars i.emp{color:var(--star-empty)}
+.rc{font-size:11px;color:var(--txm)}
+
+/* PROFILE */
+.pb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--blue);cursor:pointer;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:90;padding:14px 24px;border-bottom:1px solid var(--bdr);backdrop-filter:blur(12px);background:rgba(255,255,255,.95);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pb:hover{color:var(--blue);gap:8px;background:rgba(240,247,255,.98)}
+#pg-prof>.ph{padding-top:48px}
+.pb:hover{text-decoration:underline}
+.ph{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;padding:24px;margin-bottom:18px}
+.pt{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.pi{display:flex;align-items:center;gap:18px}
+.pi .av{width:64px;height:64px;font-size:24px}
+.pi h2{font-size:20px;font-weight:700}.pi p{color:var(--txm);font-size:13px}
+.po{text-align:center}.po .rn{font-size:36px}
+.pc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 20px;margin-top:18px;padding-top:18px;border-top:1px solid var(--bdl)}
+.wb{padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+.wb:hover{background:var(--accent-dark)}
+
+/* COMPANY GROUP */
+.cg{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.cg-hdr{padding:14px 20px;background:linear-gradient(90deg,#f0f5ff,var(--bg2));border-bottom:1px solid var(--bdl);display:flex;align-items:center;gap:10px}
+.cg-hdr i{color:var(--accent);font-size:16px}
+.cg-hdr h4{font-size:14px;font-weight:600}
+.cg-hdr span{font-size:12px;color:var(--txm);margin-left:auto}
+
+/* REVIEWS */
+.rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.rh h3{font-size:16px;font-weight:600}
+.rvw{padding:20px;border-bottom:1px solid var(--bdl);transition:.15s}
+.rvw:last-child{border-bottom:none}
+.rvw:hover{background:rgba(11,111,218,.02)}
+.rm{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.rm .dt{font-size:12px;color:var(--txm)}
+.rm .rt{display:flex;align-items:center;gap:5px}
+.rs{margin-bottom:12px}
+.rs h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.rs h4.pro{color:var(--green)}.rs h4.con{color:var(--red)}.rs h4.adv{color:var(--orange)}
+.rs p{font-size:13px;color:var(--tx2);line-height:1.6}
+.hb{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--bd);border-radius:18px;font-size:11px;cursor:pointer;background:none;color:var(--txm);transition:.15s}
+.hb:hover{border-color:var(--accent);color:var(--accent)}.hb.vt{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+
+/* MODAL */
+
+
+
+.md h2{font-size:18px;font-weight:700;margin-bottom:4px}
+.md .st{color:var(--txm);font-size:13px;margin-bottom:20px}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:5px}
+.fg .hint{font-weight:400;color:var(--txm)}
+.fg select,.fg input,.fg textarea{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:8px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--tx);outline:none;resize:vertical}
+.fg select:focus,.fg input:focus,.fg textarea:focus{border-color:var(--accent)}
+.fg .input-note{font-size:11px;color:var(--txm);margin-top:4px}
+.sr{display:flex;align-items:center;gap:14px}
+.sr .sl{width:160px;font-size:12px;color:var(--tx2);flex-shrink:0}
+.si{display:flex;gap:3px}
+.si i{font-size:18px;color:var(--star-empty);cursor:pointer;transition:.1s}
+.si i:hover{transform:scale(1.15)}.si i.ac{color:var(--star)}
+.ma{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--bdl)}
+.bc{padding:9px 22px;border:1px solid var(--bd);border-radius:8px;background:none;font-size:13px;cursor:pointer;color:var(--tx2);transition:.15s}
+.bc:hover{background:var(--bdl)}
+.bs{padding:9px 24px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
+.bs:hover{background:var(--accent-dark)}
+
+.rt2{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ts{position:relative;width:42px;height:22px;background:var(--bd);border-radius:11px;cursor:pointer;transition:.2s}
+.ts.on{background:var(--green)}
+.ts::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.2s}
+.ts.on::after{transform:translateX(20px)}
+
+.toast{position:fixed;bottom:22px;right:22px;background:#1a1a2e;color:#fff;padding:12px 22px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.2);z-index:300;display:flex;align-items:center;gap:8px;transform:translateY(100px);opacity:0;transition:.3s ease-out}
+.toast.sh{transform:translateY(0);opacity:1}
+
+.es{text-align:center;padding:50px 20px;color:var(--txm)}
+.es i{font-size:44px;margin-bottom:14px;opacity:.4}
+.es h3{font-size:16px;margin-bottom:6px;color:var(--tx2)}.es p{font-size:13px}
+
+@media(max-width:900px){.sg{grid-template-columns:repeat(2,1fr)}.cr{grid-template-columns:1fr}.pc{grid-template-columns:repeat(2,1fr)}.mission{grid-template-columns:1fr}.how-grid{grid-template-columns:repeat(2,1fr)}.impact-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.sg{grid-template-columns:1fr}.hdr-search{display:none}.ctn{padding:14px}.pc{grid-template-columns:1fr}.hero h1{font-size:26px}.how-grid{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:center}}
+
+/* ==================== ANIMATIONS & DYNAMICS ==================== */
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .6s ease-out,transform .6s ease-out}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .6s ease-out,transform .6s ease-out}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity .5s ease-out,transform .5s ease-out}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* Stagger children */
+.stagger>.reveal:nth-child(1){transition-delay:.05s}
+.stagger>.reveal:nth-child(2){transition-delay:.12s}
+.stagger>.reveal:nth-child(3){transition-delay:.19s}
+.stagger>.reveal:nth-child(4){transition-delay:.26s}
+
+/* Animated hero gradient */
+.hero{background-size:200% 200%;animation:heroGrad 8s ease infinite}
+@keyframes heroGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* Floating particles */
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:0}
+.particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(100%) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) scale(1);opacity:0}}
+
+/* Hero text glow pulse */
+.hero h1 span{text-shadow:0 0 30px rgba(96,165,250,.4);animation:glowPulse 3s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{text-shadow:0 0 20px rgba(96,165,250,.3)}50%{text-shadow:0 0 40px rgba(96,165,250,.6),0 0 60px rgba(96,165,250,.2)}}
+
+/* Button ripple */
+.ripple{position:relative;overflow:hidden}
+.ripple::after{content:'';position:absolute;width:300%;height:300%;top:50%;left:50%;background:radial-gradient(circle,rgba(255,255,255,.3) 0%,transparent 60%);transform:translate(-50%,-50%) scale(0);border-radius:50%;opacity:0;transition:transform .5s ease-out,opacity .3s ease-out;pointer-events:none}
+.ripple:active::after{transform:translate(-50%,-50%) scale(1);opacity:1;transition:0s}
+
+/* Card hover lift + subtle tilt */
+.mc{transition:transform .3s cubic-bezier(.25,.8,.25,1),box-shadow .3s ease,border-color .3s ease}
+.mc:hover{transform:translateY(-4px) rotateX(1deg) rotateY(-1deg);box-shadow:0 12px 32px rgba(11,111,218,.12)}
+
+/* Stat counter animation */
+.counter{display:inline-block}
+
+/* Animated bar fills */
+
+
+
+/* Smooth page transitions */
+.pg{opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease;display:none}
+.pg.on{display:block;opacity:1;transform:translateY(0)}
+
+/* Pulse on new review badge */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(11,111,218,.4)}70%{box-shadow:0 0 0 12px rgba(11,111,218,0)}100%{box-shadow:0 0 0 0 rgba(11,111,218,0)}}
+.wb{animation:pulse 2s infinite}
+
+/* Stats card shimmer on hover */
+.sc{position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s ease;pointer-events:none}
+.sc:hover::after{left:100%}
+
+/* Interactive star rating glow */
+.si i:hover~i{color:var(--star-empty) !important}
+.si:hover i{color:var(--star) !important}
+
+/* Modal slide-in */
+
+
+
+
+.toast.sh{transform:translateX(0);opacity:1}
+
+/* Review card slide-in on profile */
+.rvw{opacity:0;transform:translateX(-16px);animation:slideInReview .4s ease-out forwards}
+@keyframes slideInReview{to{opacity:1;transform:translateX(0)}}
+.rvw:nth-child(1){animation-delay:.05s}
+.rvw:nth-child(2){animation-delay:.1s}
+.rvw:nth-child(3){animation-delay:.15s}
+.rvw:nth-child(4){animation-delay:.2s}
+.rvw:nth-child(5){animation-delay:.25s}
+
+/* Company group header accent animation */
+.cg-hdr{background-size:200% 100%;animation:compGrad 4s ease infinite}
+@keyframes compGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* Helpful button bounce */
+.hb:active{transform:scale(.92)}
+.hb{transition:all .2s cubic-bezier(.4,0,.2,1)}
+
+/* How step hover */
+.how-step{transition:transform .3s ease,box-shadow .3s ease}
+.how-step:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
+.how-step .step-num{transition:transform .3s ease,background .3s ease}
+.how-step:hover .step-num{transform:scale(1.15);background:var(--accent-dark)}
+
+/* Value card hover */
+.val-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.val-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}
+
+/* Org card hover */
+.org-card{transition:transform .3s ease,box-shadow .3s ease}
+.org-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.org-card::before{transition:height .3s ease}
+.org-card:hover::before{height:4px}
+
+/* Impact item hover */
+.impact-item{transition:transform .3s ease;border-radius:12px}
+.impact-item:hover{transform:scale(1.05);background:rgba(255,255,255,.05);border-radius:12px}
+
+/* Logo hover */
+.logo{transition:transform .2s ease}
+.logo:hover{transform:scale(1.03)}
+
+/* Tab underline animation */
+.tab{position:relative}
+.tab::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:3px;background:#fff;transition:width .3s ease,left .3s ease;border-radius:2px}
+.tab.on::after{width:100%;left:0}
+.tab:hover::after{width:70%;left:15%}
+
+/* Search focus expand */
+.hdr-search{transition:width .3s ease,background .3s ease,border-color .3s ease}
+.hdr-search:focus-within{width:420px}
+
+
+
+
+/* ==================== PRO SECTION ==================== */
+.pro-hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);border-radius:16px;padding:48px 40px;color:#fff;margin-bottom:28px;text-align:center;position:relative;overflow:hidden}
+.pro-hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(96,165,250,.08) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(168,85,247,.06) 0%,transparent 50%);pointer-events:none}
+.pro-hero .badge{display:inline-block;background:linear-gradient(90deg,#f0ad00,#f59e0b);color:#0f172a;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.pro-hero h1{font-size:34px;font-weight:800;margin-bottom:12px;line-height:1.2}
+.pro-hero h1 span{background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pro-hero p{font-size:16px;opacity:.8;max-width:640px;margin:0 auto 24px;line-height:1.6}
+.pro-hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.pro-hero-stat{text-align:center}
+.pro-hero-stat .num{font-size:28px;font-weight:800;color:#60a5fa;font-family:var(--font-mono,'SF Mono',Consolas,monospace)}
+.pro-hero-stat .lbl{font-size:11px;opacity:.6;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+
+/* Who is Pro for */
+.pro-audience{margin-bottom:28px}
+.pro-audience>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
+.pro-audience>.sub3{font-size:14px;color:var(--txm);text-align:center;margin-bottom:22px}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.aud-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;text-align:center;transition:transform .3s,box-shadow .3s}
+.aud-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.aud-card .aud-ico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}
+.aud-card h4{font-size:15px;font-weight:600;margin-bottom:6px}
+.aud-card p{font-size:12px;color:var(--txm);line-height:1.6}
+
+/* Features showcase */
+.pro-features{margin-bottom:28px}
+.pro-features>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:22px}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.feat-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;display:flex;gap:16px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.feat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}
+.feat-card .feat-ico{width:52px;height:52px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.feat-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.feat-card p{font-size:12px;color:var(--txm);line-height:1.6}
+.feat-card .tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-top:6px}
+.tag-starter{background:#dbeafe;color:#1d4ed8}
+.tag-growth{background:#fae8ff;color:#a21caf}
+
+/* Pricing cards */
+.pro-pricing{margin-bottom:28px}
+.pro-pricing>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
+.pro-pricing>.sub3{font-size:14px;color:var(--txm);text-align:center;margin-bottom:22px}
+.pricing-toggle{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:22px;font-size:13px;font-weight:500;color:var(--tx2)}
+.pricing-toggle .pill{width:48px;height:26px;background:var(--bd);border-radius:13px;cursor:pointer;position:relative;transition:.2s}
+.pricing-toggle .pill.on{background:var(--accent)}
+.pricing-toggle .pill::after{content:'';position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;top:2px;left:2px;transition:.2s}
+.pricing-toggle .pill.on::after{transform:translateX(22px)}
+.pricing-toggle .save{font-size:11px;font-weight:600;color:var(--green);background:var(--green-bg,#dcfce7);padding:2px 8px;border-radius:10px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.price-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:16px;padding:28px;position:relative;transition:transform .3s,box-shadow .3s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.price-card.popular{border:2px solid var(--accent);box-shadow:0 4px 20px rgba(11,111,218,.12)}
+.price-card .pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:4px 16px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+.price-card .plan-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.price-card .plan-desc{font-size:12px;color:var(--txm);margin-bottom:16px}
+.price-card .plan-price{font-size:36px;font-weight:800;margin-bottom:4px;font-family:var(--font-mono,'SF Mono',Consolas,monospace)}
+.price-card .plan-price span{font-size:14px;font-weight:400;color:var(--txm)}
+.price-card .plan-period{font-size:12px;color:var(--txm);margin-bottom:20px}
+.price-card .plan-btn{display:block;width:100%;padding:12px;border-radius:10px;font-size:14px;font-weight:600;text-align:center;cursor:pointer;border:none;transition:.2s;margin-bottom:20px}
+.plan-btn-free{background:var(--bdl);color:var(--tx)}
+.plan-btn-free:hover{background:var(--bd)}
+.plan-btn-starter{background:var(--accent);color:#fff}
+.plan-btn-starter:hover{background:var(--accent-dark)}
+.plan-btn-growth{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff}
+.plan-btn-growth:hover{opacity:.9}
+.price-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.price-card ul li{font-size:12px;color:var(--tx2);display:flex;align-items:start;gap:8px;line-height:1.4}
+.price-card ul li i{color:var(--green);font-size:11px;margin-top:3px;flex-shrink:0}
+.price-card ul li.disabled{color:var(--txm);opacity:.5}
+.price-card ul li.disabled i{color:var(--txm)}
+
+/* Comparison table */
+.pro-compare{margin-bottom:28px}
+.pro-compare>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:22px}
+.cmp-table{width:100%;border-collapse:collapse;background:var(--bg2);border-radius:14px;overflow:hidden;border:1px solid var(--bdl);font-size:13px}
+.cmp-table thead th{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:14px 16px;text-align:center;font-weight:600;font-size:12px}
+.cmp-table thead th:first-child{text-align:left;width:35%}
+.cmp-table tbody td{padding:12px 16px;border-bottom:1px solid var(--bdl);text-align:center}
+.cmp-table tbody td:first-child{text-align:left;font-weight:500;color:var(--tx)}
+.cmp-table tbody tr:last-child td{border-bottom:none}
+.cmp-table tbody tr:hover{background:rgba(11,111,218,.02)}
+.cmp-table .check{color:var(--green);font-size:14px}
+.cmp-table .cross{color:var(--bd);font-size:14px}
+.cmp-table .val{font-weight:600;color:var(--accent)}
+.cmp-table .cat-row{background:rgba(11,111,218,.03);font-weight:600;color:var(--accent)}
+.cmp-table .cat-row td{font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:8px 16px}
+
+/* ROI calculator */
+.pro-roi{background:linear-gradient(135deg,#f0f5ff,#e8f2ff);border:1px solid #c7dbf5;border-radius:16px;padding:32px;margin-bottom:28px}
+.pro-roi h2{font-size:20px;font-weight:700;margin-bottom:6px;color:#0b3d91}
+.pro-roi .sub4{font-size:13px;color:var(--tx2);margin-bottom:20px}
+.roi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.roi-item{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.roi-item .roi-num{font-size:28px;font-weight:800;color:var(--accent);font-family:var(--font-mono,'SF Mono',Consolas,monospace)}
+.roi-item .roi-lbl{font-size:12px;color:var(--tx2);margin-top:4px}
+.roi-item .roi-sub{font-size:10px;color:var(--txm);margin-top:2px}
+
+/* Testimonials */
+.pro-testimonials{margin-bottom:28px}
+.pro-testimonials>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:22px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.test-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px}
+.test-card .test-stars{color:var(--star);font-size:12px;margin-bottom:10px}
+.test-card p{font-size:13px;color:var(--tx2);line-height:1.65;font-style:italic;margin-bottom:12px}
+.test-card .test-attr{display:flex;align-items:center;gap:10px}
+.test-card .test-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:13px;flex-shrink:0}
+.test-card .test-name{font-size:12px;font-weight:600}
+.test-card .test-role{font-size:11px;color:var(--txm)}
+
+/* FAQ */
+.pro-faq{margin-bottom:28px}
+.pro-faq>h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:22px}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{background:var(--bg2);border:1px solid var(--bdl);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-q:hover{background:rgba(11,111,218,.02)}
+.faq-q i{color:var(--txm);font-size:12px;transition:transform .3s}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;font-size:13px;color:var(--tx2);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding:0 20px 16px}
+
+/* Pro CTA */
+.pro-cta{background:linear-gradient(135deg,#0b3d91,#7c3aed);border-radius:16px;padding:40px;text-align:center;color:#fff;margin-bottom:24px}
+.pro-cta h2{font-size:24px;font-weight:800;margin-bottom:8px}
+.pro-cta p{font-size:14px;opacity:.85;margin-bottom:20px;max-width:500px;margin-left:auto;margin-right:auto}
+.pro-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pro-cta-btn{padding:13px 32px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:.2s}
+.pro-cta-btn.primary{background:#fff;color:#0b3d91}
+.pro-cta-btn.primary:hover{background:#e8f2ff;transform:translateY(-1px)}
+.pro-cta-btn.secondary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.pro-cta-btn.secondary:hover{background:rgba(255,255,255,.25)}
+
+@media(max-width:900px){.audience-grid,.pricing-grid,.test-grid,.roi-grid{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.cmp-table{font-size:11px}}
+
+
+/* ==================== CONTACT & CONTRIBUTE PAGE ==================== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.contact-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:16px;padding:32px}
+.contact-card h3{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--bdl)}
+.contact-item:last-child{border-bottom:none}
+.contact-item .ci-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-item .ci-label{font-size:11px;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.contact-item .ci-value{font-size:15px;font-weight:600;color:var(--tx);margin-top:2px}
+.contact-item a{color:var(--accent);text-decoration:none}
+.contact-item a:hover{text-decoration:underline}
+
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-input{padding:11px 14px;border:1px solid var(--bd);border-radius:10px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--tx);outline:none;transition:border-color .2s}
+.cf-input:focus{border-color:var(--accent)}
+.cf-textarea{resize:vertical;min-height:100px}
+.cf-submit{padding:13px 28px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;align-self:flex-start}
+.cf-submit:hover{background:var(--accent-dark);transform:translateY(-1px)}
+
+.contribute-section{margin-bottom:32px}
+.contribute-section>h2{font-size:24px;font-weight:700;text-align:center;margin-bottom:6px}
+.contribute-section>.sub5{font-size:14px;color:var(--txm);text-align:center;margin-bottom:24px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.6}
+.contrib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.contrib-card{background:var(--bg2);border:1px solid var(--bdl);border-radius:14px;padding:24px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+.contrib-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:var(--accent)}
+.contrib-card .cc-emoji{font-size:36px;margin-bottom:12px;display:block}
+.contrib-card h4{font-size:15px;font-weight:600;margin-bottom:6px}
+.contrib-card p{font-size:12px;color:var(--txm);line-height:1.6}
+
+.contrib-cta{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:36px;color:#fff;text-align:center}
+.contrib-cta h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.contrib-cta p{font-size:14px;opacity:.8;margin-bottom:16px;max-width:500px;margin-left:auto;margin-right:auto}
+.contrib-cta .contrib-email{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px 20px;font-size:14px;color:#60a5fa;font-weight:500}
+
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.cf-row{grid-template-columns:1fr}.contrib-grid{grid-template-columns:1fr}}
+
+
+/* REVIEW PAGE */
+
+.review-page{padding-top:52px}
+.catd-page{padding-top:52px}
+.review-page{max-width:740px;margin:0 auto;padding:20px 16px 80px}
+.back-link{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:none;border-bottom:1px solid var(--bdr);color:var(--blue);font-size:14px;cursor:pointer;padding:14px 24px;margin:0;display:flex;align-items:center;gap:6px;transition:all .2s;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.back-link:hover{color:var(--blue);gap:8px;background:rgba(240,247,255,.95)}
+.review-hero{text-align:center;margin-bottom:36px;padding:32px 20px;background:linear-gradient(135deg,rgba(11,111,218,.06),rgba(124,58,237,.06));border-radius:20px;position:relative;overflow:hidden}
+.review-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(11,111,218,.1),transparent 70%);border-radius:50%;pointer-events:none}
+.review-hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(124,58,237,.08),transparent 70%);border-radius:50%;pointer-events:none}
+.review-hero-icon{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#0b6fda,#7c3aed);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;color:#fff;box-shadow:0 8px 24px rgba(11,111,218,.25);position:relative;z-index:1}
+.review-hero h1{font-size:30px;font-weight:800;margin:0 0 10px;color:var(--tx);letter-spacing:-.5px;position:relative;z-index:1}
+.review-hero p{color:var(--txm);font-size:15px;margin:0;display:flex;align-items:center;justify-content:center;gap:6px;position:relative;z-index:1}
+.review-hero p::before{content:'\1f512';font-size:14px}
+.review-form-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:20px;padding:0;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.rf-section{padding:30px 36px;border-bottom:1.5px solid var(--bdr);position:relative}
+.rf-section:last-child{border-bottom:none}
+.rf-section h3{font-size:18px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:10px;color:var(--tx)}
+.rf-section h3 i{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;flex-shrink:0}
+.rf-section:nth-child(1) h3 i{background:linear-gradient(135deg,#0b6fda,#0ea5e9)}
+.rf-section:nth-child(2) h3 i{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.rf-section:nth-child(3) h3 i{background:linear-gradient(135deg,#16a34a,#22d3ee)}
+.rf-section:nth-child(4) h3 i{background:linear-gradient(135deg,#7c3aed,#ec4899)}
+.rf-sub{color:var(--txm);font-size:13px;margin:4px 0 18px 42px}
+.rf-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+@media(max-width:600px){.rf-grid{grid-template-columns:1fr}}
+.rf-section .fg{margin-top:18px}
+.rf-section .fg:first-child{margin-top:14px}
+.rf-section .fg label{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:8px;display:block;text-transform:uppercase;letter-spacing:.4px}
+.rf-section .fg label .req{color:#ef4444;font-weight:700}
+.rf-section .fg label .hint{font-weight:400;color:var(--txm);font-size:12px;text-transform:none;letter-spacing:0}
+.rf-section .fg input,.rf-section .fg textarea{width:100%;padding:13px 16px;border:2px solid var(--bdr);border-radius:12px;font-size:14px;background:var(--bg);color:var(--tx);transition:all .25s;box-sizing:border-box;font-family:inherit}
+.rf-section .fg input:focus,.rf-section .fg textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 4px rgba(11,111,218,.1);background:#fff}
+.rf-section .fg input:hover,.rf-section .fg textarea:hover{border-color:rgba(11,111,218,.3)}
+.rf-section .fg textarea{resize:vertical;min-height:80px}
+.field-hint{font-size:12px;color:var(--txm);margin:8px 0 0;display:flex;align-items:center;gap:5px;padding:6px 10px;background:rgba(11,111,218,.04);border-radius:8px;border-left:3px solid var(--blue)}
+.field-hint i{font-size:12px;color:var(--blue)}
+
+.rf-actions{padding:28px 36px;display:flex;justify-content:flex-end;gap:14px;border-top:1.5px solid var(--bdr);background:linear-gradient(135deg,rgba(11,111,218,.02),rgba(124,58,237,.02))}
+.rf-actions .bc{padding:13px 28px;border-radius:12px;font-size:14px;font-weight:600;border:2px solid var(--bdr);background:var(--bg);color:var(--txm);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.rf-actions .bc:hover{border-color:var(--tx);color:var(--tx)}
+.rf-actions .bs{padding:13px 32px;border-radius:12px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0b6fda,#7c3aed);color:#fff;border:none;cursor:pointer;transition:all .25s;box-shadow:0 4px 16px rgba(11,111,218,.3)}
+.rf-actions .bs:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(11,111,218,.4)}
+.rf-actions .bs:active{transform:translateY(0)}
+.rf-section .sr{display:flex;align-items:center;padding:12px 16px;border-radius:10px;margin:4px 0;transition:background .2s}
+.rf-section .sr:hover{background:rgba(245,158,11,.04)}
+.rf-section .sl{width:200px;font-size:13px;font-weight:600;color:var(--tx);flex-shrink:0}
+.rf-section .si{display:flex;gap:6px}
+.rf-section .si i{font-size:24px;color:#d1d5db;cursor:pointer;transition:all .2s}
+.rf-section .si i:hover{transform:scale(1.2);color:#fbbf24}
+.rf-section .si i.ac{color:#f59e0b;text-shadow:0 2px 8px rgba(245,158,11,.3)}
+
+
+
+.rec-btns{display:flex;gap:12px;margin-top:16px}
+.rec-btn{flex:1;padding:16px 20px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--bdr);background:var(--bg);color:var(--txm)}
+.rec-btn:hover{border-color:rgba(11,111,218,.3)}
+.rec-btn.yes.active{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;border-color:#16a34a;box-shadow:0 4px 16px rgba(22,163,106,.3)}
+.rec-btn.no.active{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border-color:#dc2626;box-shadow:0 4px 16px rgba(220,38,38,.3)}
+.rec-btn.yes:not(.active):hover{background:rgba(22,163,106,.06);border-color:rgba(22,163,106,.3);color:#16a34a}
+.rec-btn.no:not(.active):hover{background:rgba(220,38,38,.06);border-color:rgba(220,38,38,.3);color:#dc2626}
+
+
+
+
+/* LEADERBOARD */
+.lb-grid{display:flex;flex-direction:column;gap:6px}
+.lb-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;cursor:pointer;transition:all .25s;border:1.5px solid transparent;background:var(--bg)}
+.lb-card:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(11,111,218,.1);transform:translateX(4px)}
+.lb-rank-1{background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(255,183,0,.04));border-color:rgba(255,183,0,.2)}
+.lb-rank-2{background:linear-gradient(135deg,rgba(192,192,192,.08),rgba(169,169,169,.04));border-color:rgba(169,169,169,.2)}
+.lb-rank-3{background:linear-gradient(135deg,rgba(205,127,50,.06),rgba(205,127,50,.03));border-color:rgba(205,127,50,.15)}
+.lb-rank{font-size:22px;width:36px;text-align:center;flex-shrink:0;font-weight:800;color:var(--txm)}
+.lb-rank-1 .lb-rank,.lb-rank-2 .lb-rank,.lb-rank-3 .lb-rank{font-size:26px}
+.lb-av{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
+.lb-info{flex:1;min-width:0}
+.lb-name{font-size:14px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-card:hover .lb-name{color:var(--blue)}
+.lb-stars{display:flex;align-items:center;gap:4px;margin-top:3px}
+.lb-score{font-size:13px;font-weight:700;color:var(--tx);margin-left:4px}
+.lb-meta{font-size:11px;color:var(--txm);margin-top:2px}
+.lb-badge{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+
+
+/* CATEGORY DETAIL PAGE */
+.catd-page{max-width:1200px;margin:0 auto;padding:20px 24px 60px;width:100%}
+.catd-hero{text-align:center;padding:36px 24px;margin-bottom:32px;border-radius:20px;background:linear-gradient(135deg,rgba(11,111,218,.06),rgba(124,58,237,.06));position:relative;overflow:hidden}
+.catd-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:140px;height:140px;background:radial-gradient(circle,rgba(11,111,218,.08),transparent 70%);border-radius:50%;pointer-events:none}
+.catd-hero h1{font-size:26px;font-weight:800;margin:0 0 8px;color:var(--tx);letter-spacing:-.3px}
+.catd-hero .catd-avg{font-size:48px;font-weight:800;margin:12px 0 4px}
+.catd-hero .catd-label{font-size:14px;color:var(--txm)}
+.catd-hero .catd-bar-wrap{max-width:300px;margin:16px auto 0;height:10px;background:var(--bdl);border-radius:6px;overflow:hidden}
+.catd-hero .catd-bar-inner{height:100%;border-radius:6px;transition:width .6s}
+.catd-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:640px){.catd-grid{grid-template-columns:1fr}}
+.catd-section{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;overflow:hidden}
+.catd-section-hdr{padding:20px 24px 16px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px}
+.catd-section-hdr i{font-size:20px}
+.catd-section-hdr.top-hdr{background:linear-gradient(135deg,rgba(22,163,106,.04),rgba(34,211,238,.02))}
+.catd-section-hdr.top-hdr i{color:#16a34a}
+.catd-section-hdr.top-hdr h3{color:#16a34a}
+.catd-section-hdr.bot-hdr{background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(234,88,12,.02))}
+.catd-section-hdr.bot-hdr i{color:#dc2626}
+.catd-section-hdr.bot-hdr h3{color:#dc2626}
+.catd-section-hdr h3{font-size:16px;font-weight:700;margin:0}
+.catd-list{padding:8px}
+.catd-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;cursor:pointer;transition:all .2s;margin:2px 0}
+.catd-item:hover{background:rgba(11,111,218,.05);transform:translateX(4px)}
+.catd-item .catd-pos{font-size:20px;width:36px;text-align:center;flex-shrink:0;font-weight:800;color:var(--txm)}
+.catd-item:nth-child(1) .catd-pos{color:#f59e0b}
+.catd-item:nth-child(2) .catd-pos{color:#94a3b8}
+.catd-item:nth-child(3) .catd-pos{color:#b45309}
+.catd-item .catd-av{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0}
+.catd-item .catd-info{flex:1;min-width:0}
+.catd-item .catd-mname{font-size:14px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.catd-item:hover .catd-mname{color:var(--blue)}
+.catd-item .catd-mmeta{font-size:11px;color:var(--txm);margin-top:2px}
+.catd-item .catd-mscore{font-size:18px;font-weight:800;flex-shrink:0;padding:6px 14px;border-radius:10px;color:#fff;min-width:40px;text-align:center}
+
+
+.catd-stats{display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap}
+.catd-stat{text-align:center}
+.catd-sn{font-size:28px;font-weight:800;display:block;line-height:1.1}
+.catd-sl{font-size:11px;color:var(--txm);line-height:1.3;margin-top:4px;display:block}
+.catd-showing{margin-left:auto;font-size:12px;color:var(--txm);font-weight:500}
+.catd-viewall{text-align:center;padding:14px;font-size:13px;font-weight:600;color:var(--blue);cursor:pointer;border-top:1px solid var(--bdr);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.catd-viewall:hover{background:rgba(11,111,218,.04)}
+.catd-list{max-height:480px;overflow-y:auto;scrollbar-width:thin}
+.catd-list::-webkit-scrollbar{width:6px}
+.catd-list::-webkit-scrollbar-thumb{background:var(--bdl);border-radius:3px}
+/* DASHBOARD INTERACTIVE */
+.cat-clickable{cursor:pointer;transition:all .2s;position:relative;padding-right:24px}
+.cat-clickable:hover{background:rgba(11,111,218,.04);border-radius:8px;padding-left:8px;margin-left:-8px}
+
+.bar-arrow{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:11px;color:var(--txm);transition:transform .2s}
+.cat-clickable.expanded .bar-arrow{transform:translateY(-50%) rotate(180deg);color:var(--blue)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* EMAIL VERIFICATION */
+.verify-send-btn{width:100%;padding:13px 16px;border:2px solid var(--blue);border-radius:12px;background:linear-gradient(135deg,rgba(11,111,218,.05),rgba(11,111,218,.1));color:var(--blue);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit}
+.verify-send-btn:hover{background:var(--blue);color:#fff}
+.verify-send-btn.sent{background:rgba(22,163,106,.08);border-color:#16a34a;color:#16a34a;pointer-events:none}
+.verify-confirm-btn{padding:13px 20px;border:2px solid var(--blue);border-radius:12px;background:var(--blue);color:#fff;font-size:16px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.verify-confirm-btn:hover{opacity:.9}
+.verify-skip-btn{background:none;border:none;color:var(--txm);font-size:13px;cursor:pointer;padding:8px 0;font-family:inherit;transition:color .2s;display:flex;align-items:center;gap:6px}
+.verify-skip-btn:hover{color:var(--tx)}
+.verify-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;margin-left:6px}
+.verify-badge.verified{background:rgba(22,163,106,.1);color:#16a34a}
+.verify-badge.unverified{background:rgba(234,88,12,.08);color:#ea580c}
+
+/* SPARKLE CELEBRATION */
+.celebrate-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;display:flex;align-items:center;justify-content:center}
+.celebrate-overlay .msg-box{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-radius:24px;padding:48px 56px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.15);transform:scale(0);animation:popIn .5s cubic-bezier(.175,.885,.32,1.275) forwards;pointer-events:auto;border:2px solid rgba(11,111,218,.1)}
+.celebrate-overlay .msg-box h2{font-size:28px;font-weight:800;margin:0 0 10px;background:linear-gradient(135deg,#0b6fda,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.celebrate-overlay .msg-box p{font-size:16px;color:#64748b;margin:0 0 24px;line-height:1.5}
+.celebrate-overlay .msg-box button{padding:12px 32px;border:none;border-radius:12px;background:linear-gradient(135deg,#0b6fda,#7c3aed);color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(11,111,218,.3)}
+.celebrate-overlay .msg-box button:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(11,111,218,.4)}
+.sparkle{position:fixed;pointer-events:none;z-index:10000;font-size:20px;animation:sparkFall linear forwards}
+@keyframes popIn{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes sparkFall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:translateY(100vh) rotate(720deg) scale(0.3)}}
+
+
+
+
+
+
+
+
+
+
+/* ADMIN */
+
+
+.admin-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.admin-modal.sh{display:flex}
+.admin-box{background:#fff;border-radius:16px;padding:36px;width:360px;max-width:90%;box-shadow:0 24px 60px rgba(0,0,0,.2);text-align:center}
+.admin-box h3{font-size:20px;font-weight:700;margin:0 0 4px}
+.admin-box p{font-size:13px;color:var(--txm);margin:0 0 20px}
+.admin-box input{width:100%;padding:12px 14px;border:2px solid var(--bdr);border-radius:10px;font-size:14px;margin-bottom:12px;box-sizing:border-box;font-family:inherit}
+.admin-box input:focus{border-color:var(--blue);outline:none}
+.admin-box .admin-login-btn{width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#0b3d91,#1565c0);color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.admin-box .admin-login-btn:hover{opacity:.9}
+.admin-box .admin-err{color:#dc2626;font-size:12px;margin-top:8px;display:none}
+.admin-box .admin-err.sh{display:block}
+.admin-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(220,38,38,.1);color:#dc2626;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;margin-left:12px;cursor:pointer;transition:all .2s}
+.admin-badge:hover{background:rgba(220,38,38,.15)}
+.admin-badge i{font-size:10px}
+body.admin-mode .admin-del{display:inline-flex!important}
+
+.admin-del{display:none!important;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;border:1px solid rgba(220,38,38,.2);background:rgba(220,38,38,.05);color:#dc2626;cursor:pointer;font-size:12px;transition:all .2s;margin-left:8px;flex-shrink:0}
+.admin-del:hover{background:#dc2626;color:#fff}
+
+
+/* ADMIN PANEL PAGE */
+.admin-page{max-width:1200px;margin:0 auto;padding:20px 24px 60px;width:100%}
+.admin-page h2{font-size:22px;font-weight:700;margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.admin-page h2 i{color:var(--blue)}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px}
+.admin-stat{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:16px 20px}
+.admin-stat .as-val{font-size:28px;font-weight:800;color:var(--tx)}
+.admin-stat .as-lbl{font-size:12px;color:var(--txm);margin-top:2px}
+.admin-table-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:14px;overflow:hidden}
+.admin-toolbar{display:flex;gap:12px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
+.admin-toolbar input{padding:10px 14px;border:1.5px solid var(--bdr);border-radius:8px;font-size:13px;flex:1;min-width:200px;font-family:inherit}
+.admin-toolbar input:focus{border-color:var(--blue);outline:none}
+.admin-toolbar select{padding:10px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-size:13px;font-family:inherit;background:#fff}
+.admin-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.admin-tbl th{text-align:left;padding:12px 16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txm);background:var(--bg);border-bottom:1px solid var(--bdr)}
+.admin-tbl td{padding:12px 16px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+.admin-tbl tr:hover{background:rgba(11,111,218,.02)}
+.admin-tbl tr.flagged-row{background:rgba(220,38,38,.03)}
+.adm-act{display:flex;gap:6px}
+.adm-btn{padding:6px 10px;border-radius:6px;border:1px solid var(--bdr);background:#fff;cursor:pointer;font-size:11px;font-weight:500;transition:all .15s;display:flex;align-items:center;gap:4px}
+.adm-btn:hover{border-color:var(--blue);color:var(--blue)}
+.adm-btn.del{color:#dc2626;border-color:rgba(220,38,38,.2)}
+.adm-btn.del:hover{background:#dc2626;color:#fff;border-color:#dc2626}
+.adm-confirm{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:600;display:flex;align-items:center;justify-content:center}
+.adm-confirm-box{background:#fff;border-radius:14px;padding:28px;width:380px;max-width:90%;text-align:center;box-shadow:0 16px 48px rgba(0,0,0,.15)}
+.adm-confirm-box h3{font-size:18px;font-weight:700;margin:0 0 8px}
+.adm-confirm-box p{font-size:14px;color:var(--txm);margin:0 0 20px}
+.adm-confirm-box .adm-cb-btns{display:flex;gap:10px;justify-content:center}
+.adm-confirm-box .adm-cb-btns button{padding:10px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.adm-cb-cancel{background:var(--bg);color:var(--tx);border:1.5px solid var(--bdr)!important}
+.adm-cb-delete{background:#dc2626;color:#fff}
+.adm-cb-delete:hover{background:#b91c1c}
+
+</style>
+</head>
+<body>
+
+<div class="hdr">
+
+
+  <div class="hdr-top">
+    <div class="logo" id="logoBtn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAOBklEQVR4nO1afYxdxXX/nZn79b72g/Vie9deL3Fty7GKwYa2sZHaIj6kYDeIFEKTBpU2IhJRQGlUKDHgopAESLEFpg1tDEpKEhJbDaUNhVahRalooooSp4EtpP7C67XXNni9u9597917Z051Zt5br3fXa8dx5f6RsWbve7v3zpyP3znzO+ca+OU4v4PO7XIbFbCCgDdPse4KBt5k4AGL/z9jowI2BmfxXOCfPW8ekM37CNhu5JtSQHf3Y4vHxuoX12q01CLvAmUlspoM81igcDAM9VstLfq/Bgbu2mUnfHCjBt5/1l45GwUI2KaAmwwRMH/+lqUjI9WPpJlZZ61daTmO2Sow8YnbGSAiEFkQZXWt+KdBiH9ordhtg4Mb3mJ36zYN3CRK8P+hAmJ1b6m5czetGBlJ704ze6PlJGHO3d5EQQ6wk4lIgUCw8oXlMUUABWj8Xqnj9TjGc+2teGhg4J6fTN3jHCvgLGQ2bvzX4M83vXZ/vWr+xNgoYaQiUwaRCgGBlZgaYAIcTjSgmluJ/KKbZYK1zHlIFEDralqIzeY/WHtg45aXttSbe51DBfyCixZt7h08nD6TpdEVllMm0jko0iI0Q6yqwaxBpMHG0OJfKWeWDfbsqoVKa2YmsEOIKJaDnDK5BacapCkKa6/Nm5t9/J13Nrzlg/wBceusQ52p8F1dj1168GD2ar0eXMEwKVHEQByAQwInIC6AuQigDK3LAIq44cMX16//UFtV7KR0C4BSY8p9BbhnEWpQQaIkTbPCZQcGk3/r7PzCWi/86bPbaTwgGWK76e5+fOXhw7WXs1x1QFEGDgIgBCEEIwQQuc9yle9aaZic6V9euaKaZfvNtVd/r6zD5cw2EA8QOGUgg8CP5Eo5CGLsTH6EWlWPV9rTa4YOf+6Hp4PTLB6QYNpuly3b2nXkSPWFzOgOUioHRwE5gRMwF0AokbdoCUwlKFWGyVvQfkGXXb26gNWX9aiW1oo12TDYPZOAUSQgcWsAsVMcLMYO5Uee53H5+LH4+Z6eL1/khT/1eXGqP5CcqALavfuOfCvNo24iypgjLZZnxGDZlApOeKIiQAKNMpRqB9BGa9fMsS1lpTraCvSBNb0WSEmrVIRlCPwoIVDkFfDCN8RRmhSyPC92HjrM37nttr8K/ek+M1pOoYDP85XWh+9K08JvEpmMHWy0hwuJ1cR6BWY3BfPtIJ4DoMN9Xre+Rdzusum6db0ExExUdwEOLkq8yLMN+IlXxAuiUAiwDoA0y/KWy7/57NEN3gsi0xkpIO66yfb2PrGoVuX7mDMDDjVRCHIWk41EAdm8AKIyCG0AtznBTdaCOCnz1dfEsraz3LXXzqcoKSHPHUIa3iqBuAKI9xycmsLLPQoMrdlWTb0W3N258JHF/pCbDqUZFFghZwwfOjK6ITdFwYeVFAcEE9YnSkAk+JfNKyC0AlSBCkSwGKsuI7yvV6nUWJUZiyWLK7h01RwnnNYGSg4ykmeKLiM5j7o1ZQqUZJKkZmtMITn+rr3Xe9NBaTYFnPVN9+LHFmQpfQzIrEtzCOAyiFHuam3cCMYS2JZgrUBChA/BrLDuOm9Fa0DGeOyuu26e+xtzCGvrYC6DTRlsi7AmAdsQljWsIbCVR2QN0oy6zYy6Wc6gmQJ6qgfc96HB2seMLRSJlCF/uiKKQszprCAIE4RRgiiSa+w+h3GEMBJCZ1Eo5rjuOjXBJJRygYP16ztRKFWgdYwoMghDIIzLbo0oCRGECloTLuis2LgoZ4x4SagHjDVJ8t576e/PJPNUl0jmQZw89B9plqwWBcQDkuOLhRgb7l2FW29dwmPjlrMUpAPdhLlbR87VIGAsXBQwrDMjC011H6yl/v0Z8owbd2sR0jIbzvPMJkloyuUo2/rUC3j4Sy9URkeXkHgYqBlmDqJw/Mf12j2r/bMTTHGyAp5EzV20uffdA7W3jY0iQmSZA1IUwbJkiwI+9all2PTocg4FWRAhxdruOrFS3uDKYn7H4Rx1AALh3H44egdIoiILKDNeG7d33rE1ePqpH0XWtrBPzV0S7MyoUqDSfP784vL+/jt3TSZ8k9zhA6R2zFzCHEuSl3QhA8JhhHRJgD2xZQCXXPJTevXfR53wtRSQmebWzSy3E4SYjezhWKibaQ5Oc8tpblCtZ00v0N8+9wO9bOkfJ1u/+p8RqJeV7gajHeBRAKME0sZyEo6NVS+dCqNJCvgyMDO03Kcyf+qLk1iIplyFMMQJ+voYV/72YWzaNERJVKcoypDnIlAG5gxWppVr3iDW3gtKiae88QtxSAcOHlC33PJn+ndv2Bzs769REPUwc4cT3mUpSc9CN3ichSSmOb3/tGnUWrOAJ6ivp8Xyz9+qkWUKOlTITIjPfpZx/fVjONh/FMVkCNn4MEw6DFMfgamPgU0dbKU88BDKjUEUaIqCgLY+9W1aveqT9Mwz10AHX4HWt8BkSwG0AFwCy5UaV7d3BmOwYKq8J7E9kZdIlU8OjuYp7mEgnyTVCbR0FOL55wt4/fVx/OVjh3HtVTWMj4VQOoDScl4UQUqoB2ByiyQK8T87B3DHHZ/HSy++CuAb0OFKEQzAPL+bHQRoF4B+sINf6NEMK+m37DODNAdm8oCj6mIulwXdpRFtza+NhCNLM3LD0CGjv78F62/owbPfAkrxELJ61UGJrQVbhjUGSRTg29texq//2kfx0ouvIIifBgUrYQR6bkvRQladB8ZaENZ4skd5QwZ3NkwrN09SwN3IPNwIAPevCSAvvZ0oSFwtwuysp0PrKsVichx5OgZrUie82MJaRhyFePCLX8PvfeRuDA0NIYi/jDy/HGyySSRO+6JOkpLbpwfABz3dgCgZQCs17DU40baZzi1CGvDwl3ztrS2CssNxs5qSDTLH4RVZmEzhfb3vYu3lBzE6YqEoh7U5jLEoFIr43Iav4r4NfwEdKKjwE8jz9YDEBoT7nDDOCZFkGrAEMX3IFUtENSF578ziAY+rSOu3XHHB/sjwCzcEZ+EFUv5KOeizjtK+6rtyTT9aSqPIUoGOZCWDlrY2fP7Br+FLX3waQVSE5TWwfLuHC6sJpHqrTx3iEQPmdoA+TpoK0Prwf0+WdYoC0jEDOjrsDkVpTQ5VCQh36LkNRGjZWJSrA6i7ikosDRzDlWt2Iq3VnPCiREdnC57Y8hzuv++vEUQtMPkcMP4UsEHD4pOdr/ycinB2SjBze0Dq5npnuWPHZFlnoBIbFdEDNooeebWexx8gMRXLkSulojDGQoP6yrUEonbYvA1d84/i5W++iHJrEVa3Y/7Ci/C97+/Hh29+HDqowNgqGPcC9rc8nRbbNK0/ecz0O4KBtTqO8x9lWWGNtaYZKDOTOYnNKKLvKhcALlIb/R7rMO8gJK0UpFBqHMAYfmPlHlxQGUa1mqFUVHij7wD+8LavA1SG5RTMVwMswhuh5TRNUJ4k/ERMnPirkLooGt9uPUWZlY26O7q6kme1qh13/iaBkaQ4gU8DQk4BocSiwDGsXbULxtQBFvik+MSn/x7HhlPoIIa1HQDdKrbw/aKmXU+2Mk76zYnPkq8DHWQjCxemzzZ+Z2ZRQAjSNv2ztz99IIr1MyBpexhzIk8LPXLdA6eEyWuI4yFcvOQQRkcN2iqEBx99Da/vGHC4z3Npel0F8IX+FLGOZktuPmFjmuKJk1UzQsmTuPZ0X9/cwUZQ8GkqsjcladLczvJDga6LF5QEkoOd80TWCOjUeWPhvHdxYfsQ4lDhBz88hCf/Zid0UIYRqLqCfVXjUJkgRdMHzaCMeB7QQZAN9/RUH/atvul90xkUEC9sV7t3f3JfsagfIIq179c0oSMKSFko1zouWvAeysUqRscz3L95N4zxhb8nhK0Az2tYdkp08gz4P2koowiqVBy/11tfZJ2eb0/RlZACeps+dvQzj8ZR7fvMYSREmB2MvODNOFhw4RDaKhbf+Luj6PtZiiAswNiosV8FUCURzjPDppCTBaYZM4/whzAu1F8aGWl7oplPf56+kHuTIolo2dL2j4aR2S2shyjN2XfQJua8jnEMHMqwdftxkEpgudG9kMmuRTJ99ZnSJ08S3iJMknTPsiVHb7HSB56l5T5LZ06gtJF27PijI93z4g+GIQ6CdUjIG3Dynmit1PGdF2t4b0haUtoV5p75NRlsU0T2xGoGU00azvJRlB1a0D26bseOriMNXm/Psrnrs9Levbe/PX8urgpjuwschD4mMhYY7R9Msf2fMlexSddBOtS+ryMQkikneWOrmfBOjVrJWyWM4nTvggWjV+3cOaevAR37C3anXVdM79t3Z9/SxbQ2KfI/EsWhEQZHWf78KyHvHhBBI9cy8SWGLz+dMs4TE2MaWYAILsWaRlgoVf95xfLBtbt3d7wxG+7P8gWH71RLXV6pPP6Zsaq9z5iknc04SO3KQMekT9p4ySFdaAnbVjDf02inN2pjz9F5oloh6XtkI+Vy/oXh4eIj/rA9M+Fl/BxvCeVlHpME1fDwHZu7L4pXFZL0ySgORol+NWS7IGBXPGspc3JA+UkTvXOZQmdd35AIYRBkI6VS/cne3vFLh4ZEeHGXdBzOTPhf4C2l79lLal+69Cu9Bwb5xjTNf8fkA6ssU5GlSSunN1XAuGsC9y6slalpxT8uJNl3OzqGtu3Z073PH3FnbvVzoMDkl9r+5YNAq7f36z1Hh/euzOtYYTnvYa60kbpdwRaGVZDt1wHeaC3zT/bvL+w+8ZqVJeqbnP28vuieZoxmz26G3Cl59ny/6D6T/2ogldONk/fh82ztXw6c6/G/k0uEU9hrRI8AAAAASUVORK5CYII=" alt="ManagerRate" style="width:32px;height:32px;border-radius:6px;"><span>ManagerRate</span></div>
+    <div class="hdr-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="gs" placeholder="Search managers by name or company..."></div>
+    <button class="wr-btn" id="topWriteBtn"><i class="fa-solid fa-pen"></i> Write a Review</button>
+  </div>
+  <div class="tabs">
+    <div class="tab on" data-t="home"><i class="fa-solid fa-house"></i> Home
+    </div>
+    <div class="tab" data-t="dash"><i class="fa-solid fa-chart-pie"></i> Dashboard</div>
+    <div class="tab" data-t="mgrs"><i class="fa-solid fa-users"></i> Managers</div>
+    <div class="tab" data-t="pro">⭐ Pro</div>
+    <div class="tab" data-t="contact">📬 Contact</div>
+  </div>
+</div>
+
+<div class="ctn">
+  <!-- HOME -->
+  <div id="pg-home" class="pg on">
+    <div class="hero">
+      <h1>Every Voice Matters.<br>Every Manager <span>Improves.</span></h1>
+      <p class="tagline">ManagerRate is a fully anonymous platform where employees can share honest feedback about their managers — driving accountability, transparency, and better leadership across every company.</p>
+      <div class="hero-btns">
+        <button class="hero-btn primary" id="heroWriteBtn">Write a Review</button>
+        <button class="hero-btn secondary" id="heroBrowseBtn">Browse Managers</button>
+      </div>
+    </div>
+    <div class="mission">
+      <div class="mission-card"><h3><i class="fa-solid fa-bullseye"></i> Why We Built This</h3><p>Great organizations are built on great leadership. Yet most companies lack a safe, anonymous channel for employees to share candid feedback about their managers. ManagerRate was created to fill that gap — giving every team member a voice without fear of retaliation, and giving leaders the insight they need to genuinely grow.</p></div>
+      <div class="mission-card"><h3><i class="fa-solid fa-globe"></i> How It Changes the World</h3><p>When managers receive honest, constructive feedback, cultures transform. Teams become more engaged, turnover drops, and innovation flourishes. By making leadership accountability the norm rather than the exception, ManagerRate helps create workplaces where people genuinely thrive — one review at a time.</p></div>
+    </div>
+    <div class="how-section"><h2>How It Works</h2>
+      <div class="how-grid">
+        <div class="how-step"><i class="fa-solid fa-pen-to-square step-ico"></i><div class="step-num">1</div><h4>Name Your Manager</h4><p>Type your manager's name, their company, and paste their LinkedIn profile link to confirm their identity.</p></div>
+        <div class="how-step"><i class="fa-solid fa-star step-ico"></i><div class="step-num">2</div><h4>Rate Anonymously</h4><p>Rate across 11 leadership categories and share detailed pros, cons, and advice. Your identity is never stored.</p></div>
+        <div class="how-step"><i class="fa-solid fa-chart-line step-ico"></i><div class="step-num">3</div><h4>Insights Emerge</h4><p>Reviews are grouped by company — so a manager's track record follows them across their career.</p></div>
+        <div class="how-step"><i class="fa-solid fa-arrows-rotate step-ico"></i><div class="step-num">4</div><h4>Culture Transforms</h4><p>Transparent ratings empower employees everywhere to make informed decisions about their leaders.</p></div>
+      </div>
+    </div>
+    <div class="impact"><h2>The Impact of Honest Feedback</h2><p class="sub">Research shows that organizations with strong feedback cultures outperform their peers</p>
+      <div class="impact-grid">
+        <div class="impact-item"><i class="fa-solid fa-chart-line"></i><h3>34% Higher</h3><p>Employee engagement in organizations with regular upward feedback mechanisms</p></div>
+        <div class="impact-item"><i class="fa-solid fa-user-check"></i><h3>27% Lower</h3><p>Voluntary turnover when employees feel their voice is heard and valued</p></div>
+        <div class="impact-item"><i class="fa-solid fa-rocket"></i><h3>2x Faster</h3><p>Leadership development when managers receive consistent, anonymous feedback</p></div>
+      </div>
+    </div>
+
+    <div class="for-orgs">
+      <h2><i class="fa-solid fa-building-shield"></i> Built for Organizations That Care</h2>
+      <p class="sub2">ManagerRate isn't just for employees — it's a powerful hiring and culture tool for organizations that refuse to compromise on work environment. Here's why forward-thinking companies are paying attention.</p>
+
+      <div class="org-highlight">
+        <h3><i class="fa-solid fa-user-tie"></i> Hire the Right Managers, Not Just the Right Resumes</h3>
+        <p>A candidate's resume tells you where they worked and what they shipped — but it says nothing about <strong>how they led</strong>. Did they inspire their team or burn them out? Did people grow under them or quietly leave? ManagerRate gives your hiring committee something no interview can: <strong>the unfiltered truth from the people who reported to them.</strong> Before you hand someone the keys to a team of 15, check their leadership track record — the way you'd check references, but better.</p>
+      </div>
+
+      <div class="org-grid">
+        <div class="org-card">
+          <i class="fa-solid fa-magnifying-glass-chart oc-ico"></i>
+          <h4>Due Diligence on Leadership Hires</h4>
+          <p>Search any managerial candidate by name or LinkedIn profile. See their ratings across every company they've managed at — not just the story they tell in an interview.</p>
+          <ul>
+            <li>Ratings across 11 leadership dimensions</li>
+            <li>Track record that follows them across companies</li>
+            <li>Red flags surface before the offer letter</li>
+          </ul>
+        </div>
+        <div class="org-card">
+          <i class="fa-solid fa-hand-holding-heart oc-ico"></i>
+          <h4>Protect Your Work Culture</h4>
+          <p>One toxic manager can dismantle years of culture-building in months. Organizations that prioritize work environment use ManagerRate to ensure every new leader aligns with their values.</p>
+          <ul>
+            <li>Spot patterns of poor leadership before hiring</li>
+            <li>Validate that candidates walk the talk on empathy</li>
+            <li>Reduce the risk of culture-destroying hires</li>
+          </ul>
+        </div>
+        <div class="org-card">
+          <i class="fa-solid fa-coins oc-ico"></i>
+          <h4>Save the Real Cost of a Bad Hire</h4>
+          <p>A bad manager hire doesn't just cost a salary — it costs the engagement, productivity, and retention of their entire team. The average cost of replacing a manager's lost reports? <strong>6-9 months of each person's salary.</strong></p>
+          <ul>
+            <li>Prevent costly turnover from poor leadership</li>
+            <li>Avoid the hidden cost of disengaged teams</li>
+            <li>Make data-backed leadership hiring decisions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="org-quote">
+        <p>"We started checking ManagerRate profiles before extending offers to senior leaders. In the first year, we avoided two hires that looked perfect on paper but had consistent patterns of micromanagement and favoritism in their reviews. That alone saved us from months of team disruption."</p>
+        <span class="attr">— VP of People Operations, Series C Startup</span>
+      </div>
+    </div>
+
+    <div class="values"><h2>Our Core Principles</h2>
+      <div class="values-grid">
+        <div class="val-card"><i class="fa-solid fa-shield-halved" style="color:var(--accent)"></i><h4>100% Anonymous</h4><p>We never store reviewer identities. Not even admins can see who submitted a review.</p></div>
+        <div class="val-card"><i class="fa-solid fa-scale-balanced" style="color:var(--green)"></i><h4>Fair & Constructive</h4><p>We encourage balanced feedback — strengths alongside areas for growth.</p></div>
+        <div class="val-card"><i class="fa-solid fa-eye" style="color:var(--orange)"></i><h4>Transparent Insights</h4><p>All aggregated data is visible to everyone. No hidden reports, no gatekeepers.</p></div>
+      </div>
+    </div>
+    <div class="cta-banner"><h2>Ready to Make Your Voice Heard?</h2><p>Your anonymous review can spark the leadership change your team deserves.</p><button class="cta-btn" id="ctaBtn">Write Your First Review</button></div>
+    <div class="home-footer"><p>ManagerRate &mdash; Empowering employees to shape better leadership, one review at a time.</p></div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="pg-dash" class="pg">
+    <div class="sg" id="stats"></div>
+    <div class="cr">
+      <div class="cc"><h3>Average Rating by Category</h3><div id="catChart" class="bar-chart"></div></div>
+      <div class="cc"><h3>Rating Distribution</h3><div id="distChart" class="dist-chart"></div></div>
+    </div>
+    <div class="cc"><h3>Top Rated Managers</h3><div id="topChart" class="bar-chart"></div></div>
+  </div>
+
+  <!-- MANAGERS -->
+  <div id="pg-mgrs" class="pg">
+    <div class="fb">
+      <select id="fComp"></select>
+      <select id="fRate"><option value="">All Ratings</option><option value="4">4+ Stars</option><option value="3">3+ Stars</option><option value="2">2+ Stars</option></select>
+      <button class="sb" id="sortBtn"><i class="fa-solid fa-arrow-down-wide-short" id="sIco"></i><span id="sLbl">Highest Rated</span></button>
+    </div>
+    <div class="mg" id="mGrid"></div>
+  </div>
+
+
+  <!-- PRO SECTION -->
+  <div id="pg-pro" class="pg">
+
+    <div class="pro-hero">
+      <span class="badge">ManagerRate Pro</span>
+      <h1>Hire Better Leaders.<br><span>Backed by Data.</span></h1>
+      <p>Transform your hiring process with real employee feedback. Screen managerial candidates, monitor your team leaders, and build a culture of accountability — all powered by anonymous, verified reviews.</p>
+      <div class="pro-hero-stats">
+        <div class="pro-hero-stat"><div class="num">50K+</div><div class="lbl">Reviews</div></div>
+        <div class="pro-hero-stat"><div class="num">8K+</div><div class="lbl">Managers</div></div>
+        <div class="pro-hero-stat"><div class="num">2,400+</div><div class="lbl">Companies</div></div>
+        <div class="pro-hero-stat"><div class="num">11</div><div class="lbl">Categories</div></div>
+      </div>
+    </div>
+
+    <!-- WHO IS PRO FOR -->
+    <div class="pro-audience">
+      <h2>Who is ManagerRate Pro For?</h2>
+      <p class="sub3">Built for organizations that take leadership quality seriously</p>
+      <div class="audience-grid">
+        <div class="aud-card">
+          <div class="aud-ico" style="background:#dbeafe;font-size:30px">🏢</div>
+          <h4>HR & People Teams</h4>
+          <p>Screen managerial candidates before extending offers. Access leadership track records that follow managers across companies. Prevent culture-destroying hires.</p>
+        </div>
+        <div class="aud-card">
+          <div class="aud-ico" style="background:#fae8ff;font-size:30px">👔</div>
+          <h4>Executive Recruiters</h4>
+          <p>Go beyond resumes and interviews. Provide your clients with data-backed leadership assessments. Close deals faster with verified candidate insights.</p>
+        </div>
+        <div class="aud-card">
+          <div class="aud-ico" style="background:#dcfce7;font-size:30px">📈</div>
+          <h4>C-Suite & Founders</h4>
+          <p>Monitor how your managers are perceived in real-time. Spot declining leaders before top talent leaves. Build a leadership-first company culture.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="pro-features">
+      <h2>Powerful Features for Smarter Decisions</h2>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-ico">🔍</div>
+          <div>
+            <h4>Leadership Reports</h4>
+            <p>Comprehensive analysis of any manager — 11-category breakdown, strengths, red flags, sentiment analysis, trend direction, and peer benchmarking. Everything you need in one report.</p>
+            <span class="tag tag-starter">Starter</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">⚖️</div>
+          <div>
+            <h4>Manager Comparison</h4>
+            <p>Compare up to 10 managers side-by-side across all 11 categories. Perfect for choosing between final candidates or benchmarking your leadership team.</p>
+            <span class="tag tag-starter">Starter</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">📊</div>
+          <div>
+            <h4>Company Dashboard</h4>
+            <p>Real-time monitoring of all managers at your organization. Track trends, spot declining leaders, get automated alerts, and export data for board reports.</p>
+            <span class="tag tag-growth">Growth</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">👥</div>
+          <div>
+            <h4>Bulk Screening</h4>
+            <p>Upload up to 50 LinkedIn profiles and get instant leadership scores for every candidate. Screen an entire leadership pipeline in minutes, not weeks.</p>
+            <span class="tag tag-growth">Growth</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">🔔</div>
+          <div>
+            <h4>Trend Alerts</h4>
+            <p>Get notified when a manager's ratings decline for 3+ months, when recommendation rates drop below 40%, or when new reviews contain red flags.</p>
+            <span class="tag tag-growth">Growth</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">🔌</div>
+          <div>
+            <h4>API Access</h4>
+            <p>Integrate ManagerRate data directly into your ATS, HRIS, or custom tools. RESTful API with comprehensive documentation and SDKs.</p>
+            <span class="tag tag-starter">Starter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="pro-pricing">
+      <h2>Simple, Transparent Pricing</h2>
+      <p class="sub3">Start free. Upgrade when you need more power.</p>
+      <div class="pricing-toggle">
+        <span>Monthly</span>
+        <div class="pill" id="pricingToggle"></div>
+        <span>Annual</span>
+        <span class="save">Save 20%</span>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-desc">For individuals & job seekers</div>
+          <div class="plan-price">$0<span>/forever</span></div>
+          <div class="plan-period">No credit card required</div>
+          <button class="plan-btn plan-btn-free" id="proPlanFreeBtn">Get Started</button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Browse unlimited reviews</li>
+            <li><i class="fa-solid fa-check"></i> Submit anonymous reviews</li>
+            <li><i class="fa-solid fa-check"></i> Search managers by name</li>
+            <li><i class="fa-solid fa-check"></i> Basic manager profiles</li>
+            <li><i class="fa-solid fa-check"></i> Star ratings & recommendations</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> API access</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Leadership reports</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Company dashboard</li>
+          </ul>
+        </div>
+        <div class="price-card popular">
+          <div class="pop-badge">Most Popular</div>
+          <div class="plan-name">Starter</div>
+          <div class="plan-desc">For recruiters & small teams</div>
+          <div class="plan-price" id="starterPrice">$99<span>/month</span></div>
+          <div class="plan-period" id="starterPeriod">Billed monthly</div>
+          <button class="plan-btn plan-btn-starter">Start Free Trial</button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+            <li><i class="fa-solid fa-check"></i> <strong>1,000 API requests/month</strong></li>
+            <li><i class="fa-solid fa-check"></i> <strong>10 Leadership Reports/month</strong></li>
+            <li><i class="fa-solid fa-check"></i> Compare up to 3 managers</li>
+            <li><i class="fa-solid fa-check"></i> Advanced search & filters</li>
+            <li><i class="fa-solid fa-check"></i> Email support</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Company dashboard</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Bulk screening</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="plan-name">Growth</div>
+          <div class="plan-desc">For companies & enterprises</div>
+          <div class="plan-price" id="growthPrice">$499<span>/month</span></div>
+          <div class="plan-period" id="growthPeriod">Billed monthly</div>
+          <button class="plan-btn plan-btn-growth">Contact Sales</button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Everything in Starter</li>
+            <li><i class="fa-solid fa-check"></i> <strong>50,000 API requests/month</strong></li>
+            <li><i class="fa-solid fa-check"></i> <strong>Unlimited Leadership Reports</strong></li>
+            <li><i class="fa-solid fa-check"></i> <strong>Company Dashboard</strong></li>
+            <li><i class="fa-solid fa-check"></i> Bulk screening (50 managers)</li>
+            <li><i class="fa-solid fa-check"></i> Trend alerts & notifications</li>
+            <li><i class="fa-solid fa-check"></i> Compare up to 10 managers</li>
+            <li><i class="fa-solid fa-check"></i> Priority support + onboarding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="pro-compare">
+      <h2>Detailed Feature Comparison</h2>
+      <table class="cmp-table">
+        <thead>
+          <tr><th>Feature</th><th>Free</th><th>Starter — $99/mo</th><th>Growth — $499/mo</th></tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="4">Core Features</td></tr>
+          <tr><td>Browse manager reviews</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Submit anonymous reviews</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Search by name & company</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Manager profiles</td><td>Basic</td><td><span class="val">Enhanced</span></td><td><span class="val">Full + Trends</span></td></tr>
+
+          <tr class="cat-row"><td colspan="4">Intelligence & Reports</td></tr>
+          <tr><td>Leadership Reports</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span class="val">10/month</span></td><td><span class="val">Unlimited</span></td></tr>
+          <tr><td>Manager Comparison</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span class="val">Up to 3</span></td><td><span class="val">Up to 10</span></td></tr>
+          <tr><td>Sentiment Analysis</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Red Flag Detection</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Industry Benchmarks</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+
+          <tr class="cat-row"><td colspan="4">Company Tools</td></tr>
+          <tr><td>Company Dashboard</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Bulk Manager Screening</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span class="val">50 at once</span></td></tr>
+          <tr><td>Trend Alerts</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Data Export</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+
+          <tr class="cat-row"><td colspan="4">API & Integration</td></tr>
+          <tr><td>API Access</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span class="val">1,000 req/mo</span></td><td><span class="val">50,000 req/mo</span></td></tr>
+          <tr><td>Webhooks</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>ATS Integration</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+
+          <tr class="cat-row"><td colspan="4">Support</td></tr>
+          <tr><td>Community support</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Email support</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+          <tr><td>Priority support + onboarding</td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fee2e2;color:#dc2626;font-size:13px;font-weight:700">✗</span></td><td><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;font-size:13px;font-weight:700">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ROI CALCULATOR -->
+    <div class="pro-roi">
+      <h2><i class="fa-solid fa-calculator"></i> The Cost of One Bad Manager Hire</h2>
+      <p class="sub4">A bad leadership hire costs far more than their salary. Here's what the data shows:</p>
+      <div class="roi-grid">
+        <div class="roi-item">
+          <div class="roi-num">$240K</div>
+          <div class="roi-lbl">Average cost of a bad manager hire</div>
+          <div class="roi-sub">Salary + lost productivity + turnover of their reports</div>
+        </div>
+        <div class="roi-item">
+          <div class="roi-num">6-9 mo</div>
+          <div class="roi-lbl">To replace each employee who leaves</div>
+          <div class="roi-sub">Of that employee's annual salary in recruiting & training</div>
+        </div>
+        <div class="roi-item">
+          <div class="roi-num">3.2x</div>
+          <div class="roi-lbl">Higher turnover under poor managers</div>
+          <div class="roi-sub">Compared to teams with highly-rated leadership</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="pro-testimonials">
+      <h2>Trusted by Forward-Thinking Teams</h2>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"We checked ManagerRate before extending offers to two VP candidates. One had glowing reviews across 3 companies. The other had a pattern of micromanagement complaints. Saved us from a costly mistake."</p>
+          <div class="test-attr"><div class="test-av" style="background:#0b6fda">KR</div><div><div class="test-name">Katie Reynolds</div><div class="test-role">VP People Ops, Series C Startup</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"The Company Dashboard showed us that 2 of our 12 engineering managers had steadily declining ratings. We got them coaching before we lost anyone. That's the power of real-time feedback data."</p>
+          <div class="test-attr"><div class="test-av" style="background:#7c3aed">MS</div><div><div class="test-name">Marcus Simmons</div><div class="test-role">CTO, FinTech Scale-up</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"We use the bulk screening API to vet every director-level candidate. It's become a non-negotiable part of our hiring process. The leadership reports are incredibly detailed."</p>
+          <div class="test-attr"><div class="test-av" style="background:#16a34a">AH</div><div><div class="test-name">Anita Huang</div><div class="test-role">Head of Talent, Enterprise SaaS</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="pro-faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">How are reviews verified as authentic?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Every review requires a valid LinkedIn profile URL of the manager being reviewed. We use rate limiting, IP-based duplicate detection, and content moderation to prevent spam. Reviews with 3+ community reports are automatically flagged for review.</div></div>
+        <div class="faq-item"><div class="faq-q">Can managers see who wrote their reviews?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Absolutely not. ManagerRate is designed with privacy-by-design architecture. We never store reviewer identities — not even hashed. Our database literally cannot link a review to a person. Even with full database access, it's impossible to identify reviewers.</div></div>
+        <div class="faq-item"><div class="faq-q">What's included in a Leadership Report?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Each report includes: overall score and percentile ranking, detailed breakdown across all 11 leadership categories, strengths and improvement areas, sentiment analysis of review text, rating trend over time, company-by-company performance, recommendation rate, red flag detection, and peer benchmarking against industry averages.</div></div>
+        <div class="faq-item"><div class="faq-q">How does the Company Dashboard work?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">The dashboard gives you a real-time view of all managers reviewed at your company. You'll see aggregated ratings, trends over time, automated alerts for declining managers, and exportable data. It's like having a pulse check on your entire leadership team.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I try Pro features before committing?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Yes! We offer a 14-day free trial of the Starter plan. No credit card required. You'll get full access to Leadership Reports, the comparison tool, and API access during the trial.</div></div>
+        <div class="faq-item"><div class="faq-q">Is there an Enterprise plan for large organizations?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Yes. For organizations with 200+ managers or custom requirements, we offer tailored Enterprise plans with SSO integration, custom categories, dedicated support, SLA guarantees, and volume pricing. Contact our sales team to discuss.</div></div>
+        <div class="faq-item"><div class="faq-q">What security measures protect the data?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">We use 16+ layers of security including: DOMPurify XSS prevention, rate limiting, Content Security Policy, HTTPS-only, encrypted databases, hashed API keys, non-root Docker containers, and automated content moderation. Our full security audit is publicly available.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I cancel my subscription anytime?<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">Yes, you can cancel anytime. Monthly plans cancel at the end of the billing period. Annual plans can be cancelled with a prorated refund for unused months. No lock-in, no penalties.</div></div>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="pro-cta">
+      <h2>Ready to Make Smarter Leadership Decisions?</h2>
+      <p>Join hundreds of companies using ManagerRate Pro to hire better, retain top talent, and build extraordinary teams.</p>
+      <div class="pro-cta-btns">
+        <button class="pro-cta-btn primary" id="proCtaTrialBtn">Start Free Trial</button>
+        <button class="pro-cta-btn secondary" id="proCtaSalesBtn">Talk to Sales</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- CONTACT & CONTRIBUTE -->
+  <div id="pg-contact" class="pg">
+
+    <div class="pro-hero" style="padding:36px 40px;margin-bottom:28px">
+      <span class="badge">Get in Touch</span>
+      <h1>Let's Build Better <span>Leadership</span> Together</h1>
+      <p>Whether you want to upgrade to Pro, partner with us, or contribute to the platform — we'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-card">
+        <h3>📞 Contact Us</h3>
+        <div class="contact-item">
+          <div class="ci-ico" style="background:#dcfce7">📱</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value"><a href="tel:+917654045431">+91 7654045431</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-ico" style="background:#dbeafe">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:managerrrate@gmail.com">managerrrate@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-ico" style="background:#fae8ff">🕐</div>
+          <div>
+            <div class="ci-label">Response Time</div>
+            <div class="ci-value">Within 24 hours</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-ico" style="background:#fff7ed">🌍</div>
+          <div>
+            <div class="ci-label">Availability</div>
+            <div class="ci-value">Mon–Sat, 10 AM – 7 PM IST</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <h3>✉️ Send a Message</h3>
+        <div class="contact-form">
+          <div class="cf-row">
+            <input class="cf-input" id="cfName" placeholder="Your Name">
+            <input class="cf-input" id="cfCompany" placeholder="Company (optional)">
+          </div>
+          <input class="cf-input" id="cfEmail" placeholder="Email Address" type="email">
+          <select class="cf-input" id="cfTopic">
+            <option value="">What are you interested in?</option>
+            <option value="pro-starter">Pro Starter Plan ($99/mo)</option>
+            <option value="pro-growth">Pro Growth Plan ($499/mo)</option>
+            <option value="enterprise">Enterprise / Custom Plan</option>
+            <option value="partnership">Partnership Opportunity</option>
+            <option value="contribute">I want to contribute</option>
+            <option value="other">Something else</option>
+          </select>
+          <textarea class="cf-input cf-textarea" id="cfMessage" placeholder="Tell us more about what you need..."></textarea>
+          <button class="cf-submit" id="cfSubmitBtn">Send Message →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BE A PART OF THIS -->
+    <div class="contribute-section">
+      <h2>🤝 Be a Part of This</h2>
+      <p class="sub5">ManagerRate is more than a platform — it's a movement to make workplaces better through leadership accountability. We're looking for passionate people to help us grow.</p>
+
+      <div class="contrib-grid">
+        <div class="contrib-card">
+          <span class="cc-emoji">💻</span>
+          <h4>Developers</h4>
+          <p>Help us build new features, improve performance, and scale the platform. We're open source friendly — contribute code, fix bugs, or propose features.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="cc-emoji">📢</span>
+          <h4>Advocates & Ambassadors</h4>
+          <p>Spread the word in your organization. Share ManagerRate with your network. Write about leadership accountability. Help us reach more people.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="cc-emoji">🎨</span>
+          <h4>Designers & Writers</h4>
+          <p>Help us improve the user experience, create content, design marketing materials, or write blog posts about leadership and workplace culture.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="cc-emoji">🏢</span>
+          <h4>Company Partners</h4>
+          <p>Integrate ManagerRate into your hiring pipeline. Partner with us to offer leadership insights to your clients. Let's create value together.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="cc-emoji">💡</span>
+          <h4>Ideas & Feedback</h4>
+          <p>Have a feature idea? Spotted a bug? Want to suggest an improvement? Every piece of feedback helps us build a better platform for everyone.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="cc-emoji">💰</span>
+          <h4>Investors & Advisors</h4>
+          <p>Believe in our mission? We're always open to conversations with investors and advisors who are passionate about transforming workplace culture.</p>
+        </div>
+      </div>
+
+      <div class="contrib-cta">
+        <h3>Ready to Contribute?</h3>
+        <p>Reach out and tell us how you'd like to get involved. Every contribution — big or small — helps us make workplaces better.</p>
+        <div class="contrib-email">📧 managerrrate@gmail.com</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROFILE -->
+  <div id="pg-prof" class="pg">
+    <div class="pb" id="backBtn"><i class="fa-solid fa-arrow-left"></i> Back to Managers</div>
+    <div class="ph" id="profHdr"></div>
+    <div class="rh" id="revHdr"></div>
+    <div id="revList"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="pg" id="pg-admin">
+  <div class="admin-page">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px"><h2 style="margin:0"><i class="fa-solid fa-shield-halved"></i> Admin Panel</h2><button onclick="logoutAdmin()" style="padding:8px 16px;border-radius:8px;border:1.5px solid rgba(220,38,38,.3);background:rgba(220,38,38,.05);color:#dc2626;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s"><i class="fa-solid fa-right-from-bracket"></i> Logout</button></div>
+    <div class="admin-stats" id="admStats"></div>
+    <div class="admin-table-wrap">
+      <div class="admin-toolbar"><button class="adm-btn" onclick="renderAdminPanel()" style="font-weight:600"><i class="fa-solid fa-sync"></i> Refresh</button>
+        <input type="text" id="admSearch" placeholder="Search reviews by manager, company, or text..." oninput="renderAdminTable()">
+        <select id="admFilter" onchange="renderAdminTable()">
+          <option value="all">All Reviews</option>
+          <option value="flagged">Flagged Only</option>
+          <option value="recent">Last 7 Days</option>
+        </select>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="admin-tbl">
+        <thead><tr><th>Date</th><th>Manager</th><th>Company</th><th>Rating</th><th>Pros</th><th>Cons</th><th>Actions</th></tr></thead>
+        <tbody id="admTbody"></tbody>
+      </table>
+      </div>
+      <div style="padding:12px 20px;font-size:12px;color:var(--txm)" id="admFooter"></div>
+    </div>
+  </div>
+</div>
+<div class="pg" id="pg-review">
+  <div class="review-page">
+    <button class="back-link" id="revBackBtn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <div class="review-hero">
+      <div class="review-hero-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+      <h1>Write a Review</h1>
+      <p>Your review is fully anonymous. No one can see who submitted it.</p>
+    </div>
+    <div class="review-form-card">
+      <div class="rf-section">
+        <h3><i class="fa-solid fa-user-tie"></i> Manager Information</h3>
+        <div class="rf-grid">
+          <div class="fg"><label>Manager's Full Name <span class="req">*</span></label><input type="text" id="rName" placeholder="e.g. John Smith"></div>
+          <div class="fg"><label>Company / Organization <span class="req">*</span></label><input type="text" id="rComp" placeholder="e.g. Amazon Web Services"></div>
+        </div>
+        <div class="fg"><label>Manager's LinkedIn Profile URL <span class="req">*</span></label><input type="text" id="rLinkedin" placeholder="https://linkedin.com/in/johnsmith"><p class="field-hint"><i class="fa-solid fa-circle-info"></i> This helps us match reviews to the right person across companies</p></div>
+      </div>
+      <div class="rf-section" id="verifySection">
+        <h3><i class="fa-solid fa-envelope-circle-check"></i> Verify Your Employment</h3>
+        <p class="rf-sub" style="margin-left:42px">Verify with your work email to earn a <span style="color:#16a34a;font-weight:600">✅ Verified</span> badge. Your email stays completely anonymous.</p>
+        <div class="rf-grid" style="margin-top:12px">
+          <div class="fg"><label>Work Email <span class="hint">— must match the company</span></label><input type="email" id="rWorkEmail" placeholder="you@company.com"></div>
+          <div class="fg"><label>&nbsp;</label><button type="button" class="verify-send-btn" id="sendCodeBtn" onclick="sendVerifyCode()"><i class="fa-solid fa-paper-plane"></i> Send Code</button></div>
+        </div>
+        <div id="codeEntry" style="display:none;margin-top:14px">
+          <div class="fg" style="max-width:300px"><label>Enter 6-digit Code</label><div style="display:flex;gap:10px"><input type="text" id="rVerifyCode" placeholder="123456" maxlength="6" style="letter-spacing:4px;font-weight:700;text-align:center;font-size:18px"><button type="button" class="verify-confirm-btn" id="verifyCodeBtn" onclick="confirmVerifyCode()"><i class="fa-solid fa-check"></i></button></div></div>
+          <div id="verifyStatus" style="margin-top:8px"></div>
+        </div>
+        <div id="skipVerify" style="margin-top:12px"><button type="button" class="verify-skip-btn" onclick="skipVerification()"><i class="fa-solid fa-forward"></i> Skip — submit without verification</button></div>
+      </div>
+      <div class="rf-section">
+        <h3><i class="fa-solid fa-star"></i> Rate this Manager</h3>
+        <p class="rf-sub">Click the stars to rate each category (1-5)</p>
+        <div id="starArea"></div>
+      </div>
+      <div class="rf-section">
+        <h3><i class="fa-solid fa-thumbs-up"></i> Would you recommend this manager?</h3>
+        <div class="rec-btns" id="recArea">
+          <button class="rec-btn no active" id="recNo" data-v="no"><i class="fa-solid fa-thumbs-down"></i> No</button>
+          <button class="rec-btn yes" id="recYes" data-v="yes"><i class="fa-solid fa-thumbs-up"></i> Yes</button>
+        </div>
+      </div>
+      <div class="rf-section">
+        <h3><i class="fa-solid fa-comment-dots"></i> Your Feedback</h3>
+        <div class="fg"><label>Pros <span class="hint">— What does this manager do well?</span></label><textarea id="rPros" rows="3" placeholder="Share what you appreciate..."></textarea></div>
+        <div class="fg"><label>Cons <span class="hint">— What could they improve?</span></label><textarea id="rCons" rows="3" placeholder="Constructive feedback..."></textarea></div>
+        <div class="fg"><label>Advice to Management <span class="hint">(Optional)</span></label><textarea id="rAdv" rows="2" placeholder="Any advice for senior leadership?"></textarea></div>
+      </div>
+      <div class="rf-actions">
+        <button class="bc" id="cancelBtn"><i class="fa-solid fa-xmark"></i> Cancel</button>
+        <button class="bs" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> Submit Review Anonymously</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pg" id="pg-catdetail">
+  <div class="catd-page">
+    <button class="back-link" id="catdBackBtn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</button>
+    <div class="catd-hero" id="catdHero"></div>
+    <div class="catd-grid" id="catdGrid"></div>
+  </div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+<script>
+function $(id){var el=document.getElementById(id);return el||{addEventListener:function(){},classList:{add:function(){},remove:function(){},toggle:function(){},contains:function(){return false}},style:{},value:'',textContent:'',innerHTML:'',querySelectorAll:function(){return[]},checked:false};}
+function $$(sel){try{return document.querySelectorAll(sel)}catch(e){return[]}}
+
+window.onerror=function(){return true};
+var CATS=['Leadership & Vision','Communication Skills','Career Development Support','Work-Life Balance','Fairness & Transparency','Conflict Resolution','Empathy & Emotional Intelligence','Decision Making','Team Building','Accountability','Technical Competence'];
+var ACOL=['#0b6fda','#7c3aed','#dc2626','#ea580c','#16a34a','#0891b2','#c026d3','#4f46e5','#d97706','#059669'];
+var _m={};
+
+function gS(k,d){try{var v=localStorage.getItem('mrp2_'+k);if(v!==null){var p=JSON.parse(v);return p||d}}catch(e){}try{if(_m['mrp2_'+k]!==undefined){return JSON.parse(_m['mrp2_'+k])||d}}catch(e){}return d}
+function sS(k,v){var j=JSON.stringify(v);try{localStorage.setItem('mrp2_'+k,j)}catch(e){}_m['mrp2_'+k]=j}
+
+
+// Security: HTML escape to prevent XSS
+function esc(s){if(!s)return '';var d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
+
+// Security: Sanitize URLs — only allow https: links
+function safeUrl(u){if(!u)return '';u=u.trim();if(u.match(/^https:\/\//i))return esc(u);return ''}
+
+// Normalize LinkedIn URL to use as unique key
+function normLI(url){
+  if(!url)return '';
+  url=url.trim().toLowerCase().replace(/\/+$/,'');
+  var m=url.match(/linkedin\.com\/in\/([a-z0-9\-]+)/);
+  return m?m[1]:url;
+}
+
+function init(){
+  if(gS('revs',[]).length>0)return;
+  var sample=[
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Excellent at setting clear goals. Always available for 1:1s and genuinely listens.',cons:'Sometimes too focused on deliverables, misses morale issues.',rec:true},
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Great at fostering team collaboration and psychological safety.',cons:'Meeting heavy. Could use async communication more.',rec:true},
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Very supportive of career growth. Helped me create a development plan.',cons:'Could delegate more.',rec:true},
+    {name:'Sarah Chen',comp:'Meta Financial Services',li:'https://linkedin.com/in/sarachen',pros:'Brought strong engineering culture from AWS. Transparent about decisions.',cons:'Still adjusting to new company culture. Needs to slow down on pace.',rec:true},
+    {name:'Sarah Chen',comp:'Meta Financial Services',li:'https://linkedin.com/in/sarachen',pros:'Champions work-life balance and leads by example.',cons:'Not always transparent about promotion criteria in new org.',rec:false},
+    {name:'Michael Rodriguez',comp:'Google',li:'https://linkedin.com/in/michaelrodriguez',pros:'Strong technical background. Removes blockers quickly.',cons:'Can be indecisive on cross-team issues.',rec:true},
+    {name:'Michael Rodriguez',comp:'Google',li:'https://linkedin.com/in/michaelrodriguez',pros:'Transparent about decisions and always explains reasoning.',cons:'Technical skills could be stronger for evaluating proposals.',rec:true},
+    {name:'Michael Rodriguez',comp:'Stripe',li:'https://linkedin.com/in/michaelrodriguez',pros:'Excellent at conflict resolution. Finds win-win solutions.',cons:'Needs to improve on giving constructive negative feedback.',rec:true},
+    {name:'Priya Patel',comp:'Microsoft',li:'https://linkedin.com/in/priyapatel',pros:'Very empathetic and understanding of personal situations.',cons:'Could improve on recognizing contributions publicly.',rec:true},
+    {name:'Priya Patel',comp:'Microsoft',li:'https://linkedin.com/in/priyapatel',pros:'Great at fostering psychological safety in design reviews.',cons:'Sometimes avoids difficult conversations.',rec:true},
+    {name:'Priya Patel',comp:'Figma',li:'https://linkedin.com/in/priyapatel',pros:'Brought incredible design leadership from Microsoft. Visionary.',cons:'Pace of change can overwhelm the team.',rec:true},
+    {name:'James OBrien',comp:'Amazon Web Services',li:'https://linkedin.com/in/jamesobrien',pros:'Strong technical depth. Mentors engineers with patience.',cons:'Takes on too much and becomes a bottleneck.',rec:true},
+    {name:'James OBrien',comp:'Amazon Web Services',li:'https://linkedin.com/in/jamesobrien',pros:'Champions engineering excellence and code quality.',cons:'Meeting heavy. Could reduce sync-ups.',rec:false},
+    {name:'Aiko Tanaka',comp:'Netflix',li:'https://linkedin.com/in/aikotanaka',pros:'Data-driven decision maker. Very fair in performance reviews.',cons:'Could communicate vision more clearly to the team.',rec:true},
+    {name:'Aiko Tanaka',comp:'Netflix',li:'https://linkedin.com/in/aikotanaka',pros:'Excellent at career development support. Built clear growth frameworks.',cons:'Sometimes too focused on metrics over people.',rec:true},
+    {name:'David Kim',comp:'Uber',li:'https://linkedin.com/in/davidkim',pros:'Great at building team culture. Organizes team bonding.',cons:'Decision making could be faster.',rec:true},
+    {name:'Emily Watson',comp:'Salesforce',li:'https://linkedin.com/in/emilywatson',pros:'Incredibly supportive of work-life balance. Leads by example.',cons:'Could be more assertive in cross-functional meetings.',rec:true},
+    {name:'Emily Watson',comp:'Salesforce',li:'https://linkedin.com/in/emilywatson',pros:'Transparent about team goals and individual expectations.',cons:'Needs to improve technical understanding of the product.',rec:true},
+    {name:'Emily Watson',comp:'HubSpot',li:'https://linkedin.com/in/emilywatson',pros:'Brought great marketing leadership. Very strategic thinker.',cons:'Still building relationships in the new org.',rec:true}
+  ];
+  var revs=[];
+  sample.forEach(function(s,idx){
+    var rats={},base=2.8+Math.random()*2;
+    CATS.forEach(function(c){rats[c]=Math.max(1,Math.min(5,Math.round(base+(Math.random()-.5)*2)))});
+    var d=new Date();d.setDate(d.getDate()-Math.floor(Math.random()*300));
+    revs.push({id:'r'+Date.now()+idx+Math.random().toString(36).substr(2,5),name:s.name,comp:s.comp,li:s.li,rats:rats,pros:s.pros,cons:s.cons,adv:idx%3===0?'Invest more in leadership training and mentorship.':'',rec:s.rec,hlp:Math.floor(Math.random()*12),date:d.toISOString()});
+  });
+  sS('revs',revs);sS('votes',[]);
+}
+
+// Build manager index from reviews (grouped by LinkedIn key)
+function getMgrs(){
+  var revs=gS('revs',[]),map={};
+  revs.forEach(function(r){
+    var key=normLI(r.li)||r.name.toLowerCase().replace(/\s+/g,'');
+    if(!map[key])map[key]={key:key,name:r.name,li:r.li,companies:{},revs:[]};
+    map[key].companies[r.comp]=1;
+    map[key].revs.push(r);
+  });
+  return Object.keys(map).map(function(k){return map[k]});
+}
+
+function ini(n){return n.split(' ').map(function(w){return w[0]}).join('').toUpperCase().slice(0,2)}
+function acol(idx){return ACOL[idx%ACOL.length]}
+
+function avgR(revs){if(!revs.length)return 0;var t=revs.map(function(r){var v=Object.values(r.rats);return v.reduce(function(a,b){return a+b},0)/v.length});return t.reduce(function(a,b){return a+b},0)/t.length}
+function catA(revs,cat){if(!revs.length)return 0;var v=revs.map(function(r){return r.rats[cat]||0});return v.reduce(function(a,b){return a+b},0)/v.length}
+function gCatA(cat){var revs=gS('revs',[]);if(!revs.length)return 0;var v=revs.map(function(r){return r.rats[cat]||0}).filter(function(x){return x>0});return v.length?v.reduce(function(a,b){return a+b},0)/v.length:0}
+function recP(revs){if(!revs.length)return 0;return Math.round(revs.filter(function(r){return r.rec}).length/revs.length*100)}
+
+function stars(r,sz){sz=sz||13;var h='';for(var i=1;i<=5;i++){if(i<=Math.floor(r))h+='<i class="fa-solid fa-star" style="font-size:'+sz+'px;color:var(--star)"></i>';else if(i-.5<=r)h+='<i class="fa-solid fa-star-half-stroke" style="font-size:'+sz+'px;color:var(--star)"></i>';else h+='<i class="fa-regular fa-star emp" style="font-size:'+sz+'px"></i>'}return h}
+function bCol(v){return v>=4?'#16a34a':v>=3?'#0b6fda':v>=2?'#ea580c':'#dc2626'}
+function fDate(iso){var d=new Date(iso);var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return mo[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()}
+function toast(msg){var t=$('toast');t.innerHTML='<i class="fa-solid fa-check-circle"></i> '+msg;t.classList.add('sh');setTimeout(function(){t.classList.remove('sh')},3000)}
+
+var curSort='desc',curMgrKey=null;
+
+// TABS
+function goTab(tb){
+  // Auto-logout admin when switching to user pages
+  if(isAdmin&&tb!=='admin'){logoutAdmin()}
+  $$('.tab').forEach(function(x){x.classList.remove('on')});
+  $$('.pg').forEach(function(x){x.classList.remove('on')});
+  var t=document.querySelector('.tab[data-t="'+tb+'"]');
+  if(t)t.classList.add('on');
+  var pg=$('pg-'+tb);
+  if(pg)pg.classList.add('on');
+  if(tb==='dash')rDash();
+  if(tb==='mgrs')rList();
+  if(tb==='admin'){if(isAdmin){renderAdminPanel()}else{goTab('home');toast('Please login as admin first');return}}
+}
+
+$$('.tab').forEach(function(t){
+  t.addEventListener('click',function(){goTab(t.getAttribute('data-t'))});
+});
+$('gs').addEventListener('input',function(){goTab('mgrs')});
+$('logoBtn').addEventListener('click',function(){goTab('home')});
+
+// DASHBOARD
+function rDash(){
+  var revs=gS('revs',[]),mgrs=getMgrs(),tr=revs.length;
+  var avgAll=0;if(tr){avgAll=revs.reduce(function(s,r){var v=Object.values(r.rats);return s+v.reduce(function(a,b){return a+b},0)/v.length},0)/tr}
+  var recAll=tr?Math.round(revs.filter(function(r){return r.rec}).length/tr*100):0;
+  var comps={};revs.forEach(function(r){comps[r.comp]=1});
+
+  $('stats').innerHTML='<div class="sc"><div class="lb">Managers Reviewed</div><div class="vl">'+mgrs.length+'</div><div class="dl pos"><i class="fa-solid fa-users"></i> Unique managers</div></div><div class="sc"><div class="lb">Total Reviews</div><div class="vl">'+tr+'</div><div class="dl pos"><i class="fa-solid fa-shield-halved"></i> Anonymous</div></div><div class="sc"><div class="lb">Companies</div><div class="vl">'+Object.keys(comps).length+'</div><div class="dl pos"><i class="fa-solid fa-building"></i> Organizations</div></div><div class="sc"><div class="lb">Would Recommend</div><div class="vl">'+recAll+'%</div><div class="dl pos"><i class="fa-solid fa-thumbs-up"></i> Recommend</div></div>';
+
+  var catH='';CATS.forEach(function(c){var v=gCatA(c);catH+='<div class="bar-row cat-clickable" data-cat="'+c+'"><span class="bl">'+c+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((v/5)*100)+'%;background:'+bCol(v)+'"></div></div><span class="bv">'+v.toFixed(1)+'</span><i class="fa-solid fa-chevron-down bar-arrow"></i></div><div class="cat-detail" id="cd-'+c.replace(/[^a-zA-Z]/g,'')+'"></div>'});
+  $('catChart').innerHTML=catH;
+
+  $$('.cat-clickable').forEach(function(row){
+    row.addEventListener('click',function(){showCatDetail(row.getAttribute('data-cat'))});
+  });
+
+  var dist=[0,0,0,0,0];revs.forEach(function(r){var v=Object.values(r.rats),a=v.reduce(function(x,y){return x+y},0)/v.length;dist[Math.min(4,Math.max(0,Math.floor(a)-1))]++});
+  var mx=Math.max.apply(null,dist)||1;var cols=['#dc2626','#ea580c','#d97706','#0b6fda','#16a34a'];var lbs=['1 Star','2 Stars','3 Stars','4 Stars','5 Stars'];
+  var dH='';for(var i=0;i<5;i++){dH+='<div class="dist-bar"><div class="dn">'+dist[i]+'</div><div class="db" style="height:'+((dist[i]/mx)*160)+'px;background:'+cols[i]+'"></div><div class="dlb">'+lbs[i]+'</div></div>'}
+  $('distChart').innerHTML=dH;
+
+  var top=mgrs.map(function(m,i){return{name:m.name,key:m.key,r:avgR(m.revs),n:m.revs.length}}).sort(function(a,b){return b.r-a.r}).slice(0,8);
+  var medals=['\ud83e\udd47','\ud83e\udd48','\ud83e\udd49'];
+  var tH='<div class="lb-grid">';
+  top.forEach(function(m,i){
+    var isTop3=i<3;
+    var medal=medals[i]||'';
+    var rankCls=isTop3?'lb-rank-'+(i+1):'';
+    tH+='<div class="lb-card '+rankCls+'" data-mk="'+m.key+'">'
+      +'<div class="lb-rank">'+(medal||(i+1))+'</div>'
+      +'<div class="lb-av" style="background:'+acol(i)+'">'+ini(m.name)+'</div>'
+      +'<div class="lb-info"><div class="lb-name">'+m.name+'</div>'
+      +'<div class="lb-stars">'+stars(m.r,12)+' <span class="lb-score">'+m.r.toFixed(1)+'</span></div>'
+      +'<div class="lb-meta">'+m.n+' review'+(m.n!==1?'s':'')+'</div></div>'
+      +'<div class="lb-badge" style="background:'+bCol(m.r)+'">'+m.r.toFixed(1)+'</div>'
+      +'</div>';
+  });
+  tH+='</div>';
+  $('topChart').innerHTML=tH;
+  $$('.lb-card').forEach(function(c){c.addEventListener('click',function(){vProf(c.getAttribute('data-mk'))})});
+}
+
+
+// CATEGORY DETAIL PAGE
+function showCatDetail(cat){
+  var mgrs=getMgrs().filter(function(m){return m.revs.length>0});
+  var ranked=mgrs.map(function(m,i){return{name:m.name,key:m.key,score:catA(m.revs,cat),count:m.revs.length,comps:Object.keys(m.companies).join(', ')}}).sort(function(a,b){return b.score-a.score});
+  var avgScore=ranked.length?ranked.reduce(function(s,m){return s+m.score},0)/ranked.length:0;
+  var medals=['\ud83e\udd47','\ud83e\udd48','\ud83e\udd49'];
+  var total=ranked.length;
+
+  // Hero with stats
+  var dist5=ranked.filter(function(m){return m.score>=4.5}).length;
+  var dist4=ranked.filter(function(m){return m.score>=3.5&&m.score<4.5}).length;
+  var dist3=ranked.filter(function(m){return m.score>=2.5&&m.score<3.5}).length;
+  var distLow=ranked.filter(function(m){return m.score<2.5}).length;
+
+  $('catdHero').innerHTML='<h1><i class="fa-solid fa-chart-bar" style="color:var(--blue);margin-right:8px"></i>'+cat+'</h1>'
+    +'<div class="catd-avg" style="color:'+bCol(avgScore)+'">'+avgScore.toFixed(1)+'<span style="font-size:16px;color:var(--txm);font-weight:400"> / 5.0</span></div>'
+    +'<div class="catd-label">Average across <strong>'+total+'</strong> manager'+(total!==1?'s':'')+'</div>'
+    +'<div class="catd-bar-wrap"><div class="catd-bar-inner" style="width:'+((avgScore/5)*100)+'%;background:'+bCol(avgScore)+'"></div></div>'
+    +'<div class="catd-stats">'
+    +'<div class="catd-stat"><span class="catd-sn" style="color:#16a34a">'+dist5+'</span><span class="catd-sl">Excellent<br>(4.5+)</span></div>'
+    +'<div class="catd-stat"><span class="catd-sn" style="color:#0b6fda">'+dist4+'</span><span class="catd-sl">Good<br>(3.5-4.4)</span></div>'
+    +'<div class="catd-stat"><span class="catd-sn" style="color:#ea580c">'+dist3+'</span><span class="catd-sl">Average<br>(2.5-3.4)</span></div>'
+    +'<div class="catd-stat"><span class="catd-sn" style="color:#dc2626">'+distLow+'</span><span class="catd-sl">Low<br>(<2.5)</span></div>'
+    +'</div>';
+
+  // Show top 10 and bottom 10 (no overlap)
+  var showTop=Math.min(10,Math.ceil(total/2));
+  var showBot=Math.min(10,Math.floor(total/2));
+  if(showTop+showBot>total)showBot=total-showTop;
+  var topList=ranked.slice(0,showTop);
+  var botList=ranked.slice(total-showBot).reverse();
+
+  function renderList(list,isTop,startRank){
+    var h='';
+    list.forEach(function(m,i){
+      var rank=isTop?(i+1):(startRank+i);
+      var pos=isTop?(medals[i]||rank):('#'+rank);
+      h+='<div class="catd-item" data-mk="'+m.key+'">'
+        +'<div class="catd-pos">'+(typeof pos==='number'?pos:pos)+'</div>'
+        +'<div class="catd-av" style="background:'+acol(isTop?i:rank)+'">'+ini(m.name)+'</div>'
+        +'<div class="catd-info"><div class="catd-mname">'+m.name+'</div><div class="catd-mmeta">'+m.comps+' \u00b7 '+m.count+' review'+(m.count!==1?'s':'')+'</div></div>'
+        +'<div class="catd-mscore" style="background:'+bCol(m.score)+'">'+m.score.toFixed(1)+'</div></div>';
+    });
+    return h;
+  }
+
+  var html='<div class="catd-section"><div class="catd-section-hdr top-hdr"><i class="fa-solid fa-trophy"></i><h3>Highest Rated</h3><span class="catd-showing">Top '+showTop+' of '+total+'</span></div><div class="catd-list">'
+    +renderList(topList,true,1)
+    +'</div>'+(total>20?'<div class="catd-viewall" id="catdViewAllTop">View all '+total+' managers <i class="fa-solid fa-chevron-down"></i></div>':'')
+    +'</div>';
+
+  html+='<div class="catd-section"><div class="catd-section-hdr bot-hdr"><i class="fa-solid fa-arrow-trend-down"></i><h3>Needs Improvement</h3><span class="catd-showing">Bottom '+showBot+' of '+total+'</span></div><div class="catd-list">'
+    +renderList(botList,false,total-showBot+1)
+    +'</div>'+(total>20?'<div class="catd-viewall" id="catdViewAllBot">View all '+total+' managers <i class="fa-solid fa-chevron-down"></i></div>':'')
+    +'</div>';
+
+  $('catdGrid').innerHTML=html;
+
+  // Make items clickable
+  $$('.catd-item').forEach(function(el){el.addEventListener('click',function(){vProf(el.getAttribute('data-mk'))})});
+
+  // View all handlers
+  var topExpanded=false,botExpanded=false;
+  var viewAllTop=document.getElementById('catdViewAllTop');
+  var viewAllBot=document.getElementById('catdViewAllBot');
+  if(viewAllTop){viewAllTop.addEventListener('click',function(){
+    if(topExpanded){return}topExpanded=true;
+    var container=viewAllTop.previousElementSibling;
+    container.innerHTML=renderList(ranked,true,1);
+    container.querySelectorAll('.catd-item').forEach(function(el){el.addEventListener('click',function(){vProf(el.getAttribute('data-mk'))})});
+    viewAllTop.innerHTML='Showing all '+total+' managers <i class="fa-solid fa-check"></i>';
+    viewAllTop.style.opacity='.5';viewAllTop.style.cursor='default';
+  })}
+  if(viewAllBot){viewAllBot.addEventListener('click',function(){
+    if(botExpanded){return}botExpanded=true;
+    var revRanked=ranked.slice().reverse();
+    var container=viewAllBot.previousElementSibling;
+    container.innerHTML=renderList(revRanked,false,1);
+    container.querySelectorAll('.catd-item').forEach(function(el){el.addEventListener('click',function(){vProf(el.getAttribute('data-mk'))})});
+    viewAllBot.innerHTML='Showing all '+total+' managers <i class="fa-solid fa-check"></i>';
+    viewAllBot.style.opacity='.5';viewAllBot.style.cursor='default';
+  })}
+
+  // Navigate
+  $$('.tab').forEach(function(x){x.classList.remove('on')});
+  $$('.pg').forEach(function(x){x.classList.remove('on');x.style.opacity='';x.style.transform=''});
+  $('pg-catdetail').classList.add('on');
+  $('pg-catdetail').style.opacity='1';$('pg-catdetail').style.transform='translateY(0)';
+  window.scrollTo(0,0);
+}
+
+$('catdBackBtn').addEventListener('click',function(){goTab('dash')});
+// Add subtle watermark
+(function(){
+  var wm=document.createElement('div');
+  wm.className='pg-watermark';
+  wm.textContent='ManagerRate';
+  document.body.appendChild(wm);
+})();
+
+
+// MANAGER LIST
+function rList(){
+  var mgrs=getMgrs(),cf=$('fComp').value,rf=parseFloat($('fRate').value)||0,q=($('gs').value||'').toLowerCase();
+
+  var comps={};mgrs.forEach(function(m){Object.keys(m.companies).forEach(function(c){comps[c]=1})});
+  var cs=Object.keys(comps).sort();
+  var cSel=$('fComp');var cv=cSel.value;
+  cSel.innerHTML='<option value="">All Companies</option>'+cs.map(function(c){return'<option value="'+c+'"'+(c===cv?' selected':'')+'>'+c+'</option>'}).join('');
+
+  var f=mgrs.filter(function(m){
+    if(cf&&!m.companies[cf])return false;
+    if(rf&&avgR(m.revs)<rf)return false;
+    if(q)return m.name.toLowerCase().indexOf(q)>=0||Object.keys(m.companies).join(' ').toLowerCase().indexOf(q)>=0;
+    return true;
+  });
+  f.sort(function(a,b){var d=avgR(b.revs)-avgR(a.revs);return curSort==='desc'?d:-d});
+
+  var g=$('mGrid');
+  if(!f.length){g.innerHTML='<div class="es" style="grid-column:1/-1"><i class="fa-solid fa-users-slash"></i><h3>No managers found</h3><p>Try adjusting your filters or write a review to add a manager.</p></div>';return}
+
+  g.innerHTML=f.map(function(m,idx){
+    var a=avgR(m.revs),rc=recP(m.revs);
+    var compList=Object.keys(m.companies).join(', ');
+    var tc=CATS.map(function(c){return{n:c,a:catA(m.revs,c)}}).sort(function(a,b){return b.a-a.a}).slice(0,3);
+    return'<div class="mc" data-mk="'+m.key+'"><div class="mh"><div class="av" style="background:'+acol(idx)+'">'+ini(m.name)+'</div><div class="mi"><h3>'+m.name+'</h3><p class="companies"><i class="fa-solid fa-building"></i> '+compList+'</p>'+(m.li?'<a class="li-link" href="'+m.li+'" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>':'')+'</div></div><div class="mr"><span class="rn">'+a.toFixed(1)+'</span><div><div class="stars">'+stars(a)+'</div><span class="rc">'+m.revs.length+' review'+(m.revs.length!==1?'s':'')+' &middot; '+rc+'% recommend</span></div></div><div class="bar-chart">'+tc.map(function(c){return'<div class="bar-row"><span class="bl">'+c.n+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((c.a/5)*100)+'%;background:'+bCol(c.a)+'"></div></div><span class="bv">'+c.a.toFixed(1)+'</span></div>'}).join('')+'</div></div>'
+  }).join('');
+
+  $$('.mc').forEach(function(c){c.addEventListener('click',function(){vProf(c.getAttribute('data-mk'))})});
+}
+
+$('fComp').addEventListener('change',rList);
+$('fRate').addEventListener('change',rList);
+$('sortBtn').addEventListener('click',function(){
+  curSort=curSort==='desc'?'asc':'desc';
+  $('sLbl').textContent=curSort==='desc'?'Highest Rated':'Lowest Rated';
+  $('sIco').className=curSort==='desc'?'fa-solid fa-arrow-down-wide-short':'fa-solid fa-arrow-up-wide-short';
+  rList();
+});
+
+// PROFILE
+function vProf(mkey){
+  curMgrKey=mkey;
+  var mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mkey})[0];
+  if(!m)return;
+  var a=avgR(m.revs),rc=recP(m.revs);
+  var compList=Object.keys(m.companies).join(', ');
+
+  $('profHdr').innerHTML='<div class="pt"><div class="pi"><div class="av" style="background:'+acol(0)+'">'+ini(m.name)+'</div><div><h2>'+m.name+'</h2><p><i class="fa-solid fa-building"></i> '+compList+'</p>'+(m.li?'<p style="margin-top:4px"><a class="li-link" href="'+m.li+'" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> View LinkedIn Profile</a></p>':'')+'<p style="margin-top:4px">'+m.revs.length+' review'+(m.revs.length!==1?'s':'')+' &middot; <span style="color:'+(rc>=70?'var(--green)':rc>=50?'var(--orange)':'var(--red)')+'">'+rc+'% recommend</span></p></div></div><div class="po"><span class="rn">'+a.toFixed(1)+'</span><div style="margin-top:3px">'+stars(a,16)+'</div><div style="font-size:11px;color:var(--txm);margin-top:3px">Overall</div></div></div><div class="pc">'+CATS.map(function(c){var v=catA(m.revs,c);return'<div class="bar-row"><span class="bl">'+c+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((v/5)*100)+'%;background:'+bCol(v)+'"></div></div><span class="bv">'+v.toFixed(1)+'</span></div>'}).join('')+'</div>';
+
+  $('revHdr').innerHTML='<h3>'+m.revs.length+' Review'+(m.revs.length!==1?'s':'')+'</h3><button class="wb" id="profWrBtn"><i class="fa-solid fa-pen"></i> Write a Review</button>';
+  $('profWrBtn').addEventListener('click',function(){openM(m.name,m.li)});
+
+  // Group reviews by company
+  var byComp={};
+  m.revs.forEach(function(r){if(!byComp[r.comp])byComp[r.comp]=[];byComp[r.comp].push(r)});
+  var votes=gS('votes',[]);
+  var html='';
+
+  Object.keys(byComp).forEach(function(comp){
+    var cRevs=byComp[comp].sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+    html+='<div class="cg"><div class="cg-hdr"><i class="fa-solid fa-building"></i><h4>'+comp+'</h4><span>'+cRevs.length+' review'+(cRevs.length!==1?'s':'')+'</span></div>';
+    cRevs.forEach(function(r){
+      var ra=Object.values(r.rats).reduce(function(x,y){return x+y},0)/Object.values(r.rats).length;
+      var vt=votes.indexOf(r.id)>=0;
+      html+='<div class="rvw"><div class="rm"><div class="rt">'+stars(ra)+'<span style="font-weight:600;margin-left:4px">'+ra.toFixed(1)+'</span>'+(r.rec?'<span style="margin-left:8px;color:var(--green);font-size:11px;font-weight:600"><i class="fa-solid fa-thumbs-up"></i> Recommends</span>':'')+'</div><span class="dt">'+fDate(r.date)+'</span></div>'+(r.pros?'<div class="rs"><h4 class="pro"><i class="fa-solid fa-circle-check"></i> Pros</h4><p>'+r.pros+'</p></div>':'')+(r.cons?'<div class="rs"><h4 class="con"><i class="fa-solid fa-circle-xmark"></i> Cons</h4><p>'+r.cons+'</p></div>':'')+(r.adv?'<div class="rs"><h4 class="adv"><i class="fa-solid fa-lightbulb"></i> Advice to Management</h4><p>'+r.adv+'</p></div>':'')+'<button class="hb'+(vt?' vt':'')+'" data-rid="'+r.id+'"><i class="fa-regular fa-thumbs-up"></i> Helpful ('+(r.hlp+(vt?1:0))+')</button><button class="admin-del" onclick="event.stopPropagation();adminDeleteReview(\''+r.id+'\')"><i class="fa-solid fa-trash"></i></button></div>';
+    });
+    html+='</div>';
+  });
+
+  $('revList').innerHTML=html||'<div class="es"><i class="fa-solid fa-message"></i><h3>No reviews yet</h3></div>';
+
+  $$('.hb').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid'),v=gS('votes',[]),idx=v.indexOf(rid);
+    if(idx>=0)v.splice(idx,1);else v.push(rid);sS('votes',v);vProf(curMgrKey);
+  })});
+
+  $$('.tab').forEach(function(x){x.classList.remove('on')});
+  $$('.pg').forEach(function(x){x.classList.remove('on');x.style.opacity='';x.style.transform=''});
+  $('pg-prof').classList.add('on');
+  $('pg-prof').style.opacity='1';$('pg-prof').style.transform='translateY(0)';
+}
+
+$('backBtn').addEventListener('click',function(){goTab('mgrs')});
+
+// MODAL
+var prevPage='mgrs';
+function openM(preName,preLi){
+  // Remember which page we came from
+  var cur=document.querySelector('.pg.on');
+  if(cur&&cur.id&&cur.id!=='pg-review')prevPage=cur.id.replace('pg-','');
+  $('rName').value=preName||'';
+  $('rComp').value='';
+  $('rLinkedin').value=preLi||'';
+  $('starArea').innerHTML=CATS.map(function(c){return'<div class="sr"><span class="sl">'+c+'</span><div class="si" data-cat="'+c+'">'+[1,2,3,4,5].map(function(i){return'<i class="fa-regular fa-star" data-v="'+i+'"></i>'}).join('')+'</div></div>'}).join('');
+  $$('.si').forEach(function(row){row.querySelectorAll('i').forEach(function(s){s.addEventListener('click',function(){var v=parseInt(s.getAttribute('data-v'));row.setAttribute('data-val',v);row.querySelectorAll('i').forEach(function(x,idx){x.className=idx<v?'fa-solid fa-star ac':'fa-regular fa-star'})})})});
+  $('rPros').value='';$('rCons').value='';$('rAdv').value='';
+  $('recNo').classList.add('active');$('recYes').classList.remove('active');
+  resetVerification();
+  // Navigate to review page
+  $$('.tab').forEach(function(x){x.classList.remove('on')});
+  $$('.pg').forEach(function(x){x.classList.remove('on');x.style.opacity='';x.style.transform=''});
+  $('pg-review').classList.add('on');
+  $('pg-review').style.opacity='1';$('pg-review').style.transform='translateY(0)';
+  window.scrollTo(0,0);
+}
+
+$('topWriteBtn').addEventListener('click',function(){openM('','')});
+$('heroWriteBtn').addEventListener('click',function(){openM('','')});
+$('heroBrowseBtn').addEventListener('click',function(){goTab('mgrs')});
+$('ctaBtn').addEventListener('click',function(){openM('','')});
+$('cancelBtn').addEventListener('click',function(){goTab(prevPage)});
+$('revBackBtn').addEventListener('click',function(){goTab(prevPage)});
+$('recYes').addEventListener('click',function(){$('recYes').classList.add('active');$('recNo').classList.remove('active')});
+$('recNo').addEventListener('click',function(){$('recNo').classList.add('active');$('recYes').classList.remove('active')});
+
+$('submitBtn').addEventListener('click',function(){
+  var name=$('rName').value.trim();
+  var comp=$('rComp').value.trim();
+  var li=$('rLinkedin').value.trim();
+  if(!name){toast('Please enter the manager name');return}
+  if(!comp){toast('Please enter the company name');return}
+  if(!li||!li.match(/^https:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9\-]+\/?$/)){toast('Please enter a valid LinkedIn profile URL');return}
+  var rats={},ok=true;
+  CATS.forEach(function(c){var row=document.querySelector('.si[data-cat="'+c+'"]');var v=parseInt(row?row.getAttribute('data-val'):0)||0;if(!v||v<1||v>5)ok=false;rats[c]=Math.max(1,Math.min(5,v))});
+  if(!ok){toast('Please rate all categories');return}
+  var p=$('rPros').value.trim(),cn=$('rCons').value.trim();
+  if(!p||!cn){toast('Please fill in Pros and Cons');return}
+  if(p.length>2000||cn.length>2000){toast('Review text too long (max 2000 chars)');return}
+  var revs=gS('revs',[]);
+  revs.push({id:'r'+Date.now()+Math.random().toString(36).substr(2,5),name:esc(name),comp:esc(comp),li:safeUrl(li),rats:rats,pros:esc(p),cons:esc(cn),adv:esc($('rAdv').value.trim()),rec:$('recYes').classList.contains('active'),hlp:0,date:new Date().toISOString(),verified:_verified});
+  sS('revs',revs);
+  // Mark that data changed so admin refreshes
+  window._dataChanged=true;
+  // SPARKLE CELEBRATION
+  (function(){
+    var overlay=document.createElement('div');
+    overlay.className='celebrate-overlay';
+    overlay.innerHTML='<div class="msg-box"><div style="font-size:48px;margin-bottom:16px">\u2728\ud83c\udf1f\u2728</div><h2>Thank You!</h2><p>Thank you for participating in making the change.<br>Your voice matters and helps build better workplaces.</p><button id="celebCloseBtn">Continue \u2192</button></div>';
+    document.body.appendChild(overlay);
+    // Spawn sparkles
+    var emojis=['\u2728','\u2b50','\ud83c\udf1f','\ud83d\udcab','\u26a1','\ud83c\udf89','\ud83c\udf8a','\u2764\ufe0f','\ud83d\udc99','\ud83d\udc9c'];
+    for(var i=0;i<50;i++){
+      (function(idx){
+        setTimeout(function(){
+          var s=document.createElement('div');
+          s.className='sparkle';
+          s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+          s.style.left=Math.random()*100+'vw';
+          s.style.top=-(Math.random()*20+10)+'vh';
+          s.style.fontSize=(Math.random()*20+14)+'px';
+          s.style.animationDuration=(Math.random()*2+2)+'s';
+          s.style.animationDelay='0s';
+          document.body.appendChild(s);
+          setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s)},4500);
+        },idx*80);
+      })(i);
+    }
+    document.getElementById('celebCloseBtn').addEventListener('click',function(){
+      overlay.style.opacity='0';overlay.style.transition='opacity .3s';
+      setTimeout(function(){if(overlay.parentNode)overlay.parentNode.removeChild(overlay);goTab(prevPage);if(isAdmin)setTimeout(renderAdminPanel,100)},300);
+    });
+  })();
+  var newKey=normLI(li);
+  if(curMgrKey===newKey)vProf(curMgrKey);
+});
+
+init();
+
+// Force cleanup: remove 'trial' review and re-seed if needed
+(function(){
+  var revs=gS('revs',[]);
+  var cleaned=revs.filter(function(r){
+    var txt=JSON.stringify(r).toLowerCase();
+    return txt.indexOf('trial')===-1;
+  });
+  sS('revs',cleaned);
+})();
+
+
+// ==================== DYNAMIC ENHANCEMENTS ====================
+
+// Scroll reveal observer
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+function setupReveals(){
+  // Add reveal classes to sections
+  $$('.mission-card,.how-step,.val-card,.org-card,.impact-item,.sc,.cc').forEach(function(el){
+    if(!el.classList.contains('reveal')){el.classList.add('reveal');revealObs.observe(el)}
+  });
+  // Stagger grids
+  $$('.how-grid,.values-grid,.org-grid,.sg,.impact-grid,.mission').forEach(function(g){g.classList.add('stagger')});
+  // Reveal larger blocks
+  $$('.org-highlight,.org-quote,.cta-banner,.impact,.for-orgs>h2,.for-orgs>.sub2,.how-section>h2,.values>h2').forEach(function(el){
+    if(!el.classList.contains('reveal')){el.classList.add('reveal');revealObs.observe(el)}
+  });
+}
+
+// Animated counters
+function animateCounter(el,target,suffix){
+  suffix=suffix||'';
+  var start=0,dur=1500,startTime=null;
+  var isFloat=target%1!==0;
+  function step(ts){
+    if(!startTime)startTime=ts;
+    var p=Math.min((ts-startTime)/dur,1);
+    var ease=1-Math.pow(1-p,3); // easeOutCubic
+    var val=start+(target-start)*ease;
+    el.textContent=(isFloat?val.toFixed(1):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Observe stat values for counter animation
+var counterObs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+  if(e.isIntersecting&&!e.target.dataset.counted){
+    e.target.dataset.counted='1';
+    var txt=e.target.textContent.trim();
+    var num=parseFloat(txt);
+    var suffix=txt.replace(/[\d.]/g,'');
+    if(!isNaN(num))animateCounter(e.target,num,suffix);
+  }
+})},{threshold:0.5});
+
+function setupCounters(){
+  $$('.sc .vl').forEach(function(el){counterObs.observe(el)});
+}
+
+// Animate bar fills on view
+// bar animation removed for compatibility
+
+
+function setupBars(){}
+
+// Floating particles on hero
+function createParticles(){
+  var hero=document.querySelector('.hero');
+  if(!hero)return;
+  var existing=hero.querySelector('.particles');
+  if(existing)return;
+  var container=document.createElement('div');
+  container.className='particles';
+  for(var i=0;i<20;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    var size=2+Math.random()*4;
+    p.style.width=size+'px';
+    p.style.height=size+'px';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(6+Math.random()*10)+'s';
+    p.style.animationDelay=Math.random()*8+'s';
+    container.appendChild(p);
+  }
+  hero.appendChild(container);
+}
+
+// Scroll hint removed
+
+// Add ripple class to buttons
+function setupRipples(){
+  $$('.hero-btn,.wb,.wr-btn,.cta-btn,.ba,.bs').forEach(function(b){
+    b.classList.add('ripple');
+  });
+}
+
+// Enhanced page transitions
+var origGoTab=goTab;
+goTab=function(tb){
+  var current=document.querySelector('.pg.on');
+  if(current){
+    current.style.opacity='0';
+    current.style.transform='translateY(12px)';
+  }
+  setTimeout(function(){
+    origGoTab(tb);
+    var next=$('pg-'+tb);
+    if(next){
+      next.style.opacity='0';
+      next.style.transform='translateY(12px)';
+      setTimeout(function(){
+        next.style.opacity='1';
+        next.style.transform='translateY(0)';
+        setupReveals();setupCounters();setupBars();
+      },30);
+    }
+  },150);
+};
+
+// Parallax on hero (subtle)
+window.addEventListener('scroll',function(){
+  var hero=document.querySelector('.hero');
+  if(!hero)return;
+  var scroll=window.scrollY;
+  if(scroll<600){
+    hero.style.transform='translateY('+scroll*0.15+'px)';
+    hero.style.opacity=Math.max(0,1-scroll/500);
+  }
+});
+
+// Initialize all enhancements
+function initDynamic(){
+  createParticles();
+  
+  setupRipples();
+  setupReveals();
+  setupCounters();
+  setupBars();
+}
+
+// Run after a tick to let DOM settle
+setTimeout(initDynamic,100);
+
+// Re-run on profile view
+var origVProf=vProf;
+vProf=function(mk){origVProf(mk);setTimeout(function(){setupReveals();setupBars()},100)};
+
+
+// PRICING TOGGLE (Monthly/Annual)
+var isAnnual=false;
+$('pricingToggle').addEventListener('click',function(){
+  isAnnual=!isAnnual;
+  this.classList.toggle('on');
+  $('starterPrice').innerHTML=isAnnual?'$79<span>/month</span>':'$99<span>/month</span>';
+  $('starterPeriod').textContent=isAnnual?'Billed annually ($948/year)':'Billed monthly';
+  $('growthPrice').innerHTML=isAnnual?'$399<span>/month</span>':'$499<span>/month</span>';
+  $('growthPeriod').textContent=isAnnual?'Billed annually ($4,788/year)':'Billed monthly';
+});
+
+// FAQ ACCORDION
+$$('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.parentElement;
+    var wasOpen=item.classList.contains('open');
+    $$('.faq-item').forEach(function(x){x.classList.remove('open')});
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+// Pro page button handlers
+$('proPlanFreeBtn').addEventListener('click',function(){goTab('mgrs')});
+$('proCtaTrialBtn').addEventListener('click',function(){goTab('contact')});
+$('proCtaSalesBtn').addEventListener('click',function(){goTab('contact')});
+
+
+// CONTACT FORM SUBMIT
+$('cfSubmitBtn').addEventListener('click',function(){
+  var name=$('cfName').value.trim();
+  var company=$('cfCompany').value.trim();
+  var email=$('cfEmail').value.trim();
+  var topic=$('cfTopic').value||'General Inquiry';
+  var msg=$('cfMessage').value.trim();
+  if(!name){toast('Please enter your name');return}
+  if(!email||!email.match(/^[^@]+@[^@]+\.[^@]+$/)){toast('Please enter a valid email');return}
+  if(!msg){toast('Please enter a message');return}
+  var btn=$('cfSubmitBtn');btn.disabled=true;btn.textContent='Sending...';
+  // Create hidden form and submit to formsubmit.co via hidden iframe
+  var f=document.createElement('form');
+  f.method='POST';f.action='https://formsubmit.co/managerrrate@gmail.com';
+  f.target='cfHidden';f.style.display='none';
+  var fields={name:name,email:email,_subject:'[ManagerRate] '+topic+' from '+name,message:'Company: '+(company||'N/A')+'\nTopic: '+topic+'\n\n'+msg,_template:'table',_captcha:'false',_next:'about:blank'};
+  Object.keys(fields).forEach(function(k){var inp=document.createElement('input');inp.type='hidden';inp.name=k;inp.value=fields[k];f.appendChild(inp)});
+  document.body.appendChild(f);f.submit();document.body.removeChild(f);
+  $('cfName').value='';$('cfCompany').value='';$('cfEmail').value='';$('cfTopic').value='';$('cfMessage').value='';
+  setTimeout(function(){btn.disabled=false;btn.textContent='Send Message \u2192'},2000);
+  toast('Message sent! We will get back to you within 24 hours.');
+});
+
+
+
+// ============ EMAIL VERIFICATION ============
+var _verifyCode='';
+var _verified=false;
+
+// Known company email domains (expandable)
+var COMPANY_DOMAINS={
+  'amazon':'amazon.com','amazon web services':'amazon.com','aws':'amazon.com',
+  'google':'google.com','alphabet':'google.com',
+  'meta':'meta.com','facebook':'meta.com','meta financial services':'meta.com',
+  'microsoft':'microsoft.com','apple':'apple.com','netflix':'netflix.com',
+  'uber':'uber.com','stripe':'stripe.com','salesforce':'salesforce.com',
+  'hubspot':'hubspot.com','figma':'figma.com','twitter':'x.com',
+  'oracle':'oracle.com','ibm':'ibm.com','adobe':'adobe.com',
+  'spotify':'spotify.com','airbnb':'airbnb.com','tesla':'tesla.com'
+};
+
+function getExpectedDomain(company){
+  var c=company.toLowerCase().trim();
+  if(COMPANY_DOMAINS[c])return COMPANY_DOMAINS[c];
+  // Guess domain from company name
+  return c.replace(/[^a-z0-9]/g,'')+'.com';
+}
+
+function sendVerifyCode(){
+  var email=document.getElementById('rWorkEmail').value.trim();
+  var comp=document.getElementById('rComp').value.trim();
+  if(!email){toast('Please enter your work email');return}
+  if(!comp){toast('Please enter the company name first');return}
+  if(!email.match(/^[^@]+@[^@]+\.[^@]+$/)){toast('Please enter a valid email');return}
+
+  var domain=email.split('@')[1].toLowerCase();
+  var expected=getExpectedDomain(comp);
+
+  if(domain!==expected){
+    toast('Email domain @'+domain+' doesn\'t match '+comp+'. Expected @'+expected);
+    return;
+  }
+
+  // Generate 6-digit code
+  _verifyCode=String(100000+Math.floor(Math.random()*900000));
+  _verified=false;
+
+  // In prototype: show code in toast (in production: send via email API)
+  // Show big persistent toast with the code
+  (function(){
+    var t=document.createElement('div');
+    t.style.cssText='position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#0b3d91,#1565c0);color:#fff;padding:20px 28px;border-radius:14px;z-index:999;box-shadow:0 12px 40px rgba(0,0,0,.25);font-family:inherit;max-width:340px;animation:popIn .3s ease';
+    t.innerHTML='<div style="font-size:12px;opacity:.8;margin-bottom:6px">\ud83d\udce7 Verification Code Sent (Demo Mode)</div><div style="font-size:32px;font-weight:800;letter-spacing:6px;margin:8px 0">'+_verifyCode+'</div><div style="font-size:11px;opacity:.6">In production this would be emailed to you</div>';
+    document.body.appendChild(t);
+    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .5s';setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t)},500)},8000);
+  })();
+
+  // Update UI
+  document.getElementById('sendCodeBtn').innerHTML='<i class="fa-solid fa-check"></i> Code Sent to '+email;
+  document.getElementById('sendCodeBtn').classList.add('sent');
+  document.getElementById('codeEntry').style.display='block';
+  document.getElementById('rVerifyCode').focus();
+}
+
+function confirmVerifyCode(){
+  var entered=document.getElementById('rVerifyCode').value.trim();
+  if(!entered){toast('Please enter the code');return}
+  if(entered===_verifyCode){
+    _verified=true;
+    document.getElementById('verifyStatus').innerHTML='<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(22,163,106,.08);border-radius:10px;border:1.5px solid rgba(22,163,106,.2)"><i class="fa-solid fa-circle-check" style="color:#16a34a;font-size:18px"></i><div><strong style="color:#16a34a">Email Verified!</strong><div style="font-size:12px;color:var(--txm)">Your review will carry a \u2705 Verified badge</div></div></div>';
+    document.getElementById('skipVerify').style.display='none';
+    toast('Email verified! \u2705');
+  }else{
+    toast('Incorrect code. Please try again.');
+    document.getElementById('rVerifyCode').value='';
+    document.getElementById('rVerifyCode').focus();
+  }
+}
+
+function skipVerification(){
+  _verified=false;
+  _verifyCode='';
+  document.getElementById('verifySection').style.display='none';
+  toast('Proceeding without verification');
+}
+
+function resetVerification(){
+  _verified=false;
+  _verifyCode='';
+  document.getElementById('rWorkEmail').value='';
+  document.getElementById('rVerifyCode').value='';
+  document.getElementById('sendCodeBtn').innerHTML='<i class="fa-solid fa-paper-plane"></i> Send Code';
+  document.getElementById('sendCodeBtn').classList.remove('sent');
+  document.getElementById('codeEntry').style.display='none';
+  document.getElementById('verifyStatus').innerHTML='';
+  document.getElementById('skipVerify').style.display='block';
+  document.getElementById('verifySection').style.display='';
+}
+
+// ============ ADMIN SYSTEM ============
+var isAdmin=false;
+var adminFlags=gS('adminFlags',[]);
+
+// Admin trigger (gear icon bottom-left)
+
+
+// Login
+function doAdminLogin(){
+  var u=document.getElementById('admUser').value.trim();
+  var p=document.getElementById('admPass').value;
+  if(u==='admin'&&p==='admin123'){
+    isAdmin=true;
+    document.body.classList.add('admin-mode');
+    document.getElementById('adminModal').classList.remove('sh');
+    document.getElementById('admUser').value='';
+    document.getElementById('admPass').value='';
+    document.getElementById('admErr').classList.remove('sh');
+    toast('Admin mode activated');
+    
+    // Refresh current view to show delete buttons
+    var curPage=document.querySelector('.pg.on');
+    if(curPage){
+      if(curPage.id==='pg-dash')rDash();
+      if(curPage.id==='pg-mgrs')rList();
+      if(curPage.id==='pg-prof'&&curMgrKey)vProf(curMgrKey);
+    }
+  }else{
+    document.getElementById('admErr').classList.add('sh');
+    var box=document.querySelector('.admin-box');
+    box.style.animation='none';box.offsetHeight;box.style.animation='shake .4s ease';
+    setTimeout(function(){document.getElementById('admErr').classList.remove('sh')},3000);
+  }
+}
+document.getElementById('admPass').addEventListener('keydown',function(e){if(e.key==='Enter')doAdminLogin()});
+document.getElementById('admUser').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('admPass').focus()});
+
+// Logout
+function logoutAdmin(){
+  isAdmin=false;
+  document.body.classList.remove('admin-mode');
+  toast('Admin mode deactivated');
+  
+  // If on admin page, go to dashboard
+  var curPage=document.querySelector('.pg.on');
+  if(curPage&&curPage.id==='pg-admin')goTab('dash');
+  // Refresh view to hide delete buttons
+  var cur2=document.querySelector('.pg.on');
+  if(cur2){
+    if(cur2.id==='pg-dash')rDash();
+    if(cur2.id==='pg-mgrs')rList();
+    if(cur2.id==='pg-prof'&&curMgrKey)vProf(curMgrKey);
+  }
+}
+
+// Admin delete review (with confirmation)
+
+function directDeleteReview(rid){
+  var revs=gS('revs',[]);
+  var before=revs.length;
+  revs=revs.filter(function(r){return r.id!==rid});
+  if(revs.length===before)return;
+  sS('revs',revs);
+  toast('Review deleted');
+  // Refresh the profile page
+  var mgrs=getMgrs();
+  var still=mgrs.filter(function(x){return x.key===curMgrKey})[0];
+  if(still&&still.revs.length>0){vProf(curMgrKey)}else{goTab('mgrs')}
+}
+function adminDeleteReview(rid){
+  document.getElementById('admConfTitle').textContent='Delete Review?';
+  document.getElementById('admConfMsg').textContent='This will permanently remove this review. This action cannot be undone.';
+  document.getElementById('admConfirm').style.display='flex';
+  document.getElementById('admConfYes').onclick=function(){
+    var revs=gS('revs',[]);
+    var before=revs.length;
+    revs=revs.filter(function(r){return r.id!==rid});
+    sS('revs',revs);
+    document.getElementById('admConfirm').style.display='none';
+    toast('Review deleted ('+(before-revs.length)+' removed)');
+    // Refresh whatever page we're on
+    var curPage=document.querySelector('.pg.on');
+    if(curPage){
+      if(curPage.id==='pg-dash')rDash();
+      if(curPage.id==='pg-mgrs')rList();
+      if(curPage.id==='pg-prof'){
+        // Check if manager still has reviews, if not go back to list
+        var mgrs=getMgrs();
+        var still=mgrs.filter(function(x){return x.key===curMgrKey})[0];
+        if(still&&still.revs.length>0){vProf(curMgrKey)}else{goTab('mgrs')}
+      }
+      if(curPage.id==='pg-admin')renderAdminPanel();
+    }
+  };
+}
+
+// Admin delete manager (all reviews)
+function adminDeleteManager(mkey){
+  var mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mkey})[0];
+  if(!m)return;
+  document.getElementById('admConfTitle').textContent='Delete Manager?';
+  document.getElementById('admConfMsg').textContent='Delete '+m.name+' and all '+m.revs.length+' of their reviews? This cannot be undone.';
+  document.getElementById('admConfirm').style.display='flex';
+  document.getElementById('admConfYes').onclick=function(){
+    var revs=gS('revs',[]).filter(function(r){return normLI(r.li)!==mkey});
+    sS('revs',revs);
+    document.getElementById('admConfirm').style.display='none';
+    toast('Manager and all reviews deleted');
+    goTab('mgrs');
+  };
+}
+
+// Flag/unflag review
+function adminToggleFlag(rid){
+  var idx=adminFlags.indexOf(rid);
+  if(idx>=0)adminFlags.splice(idx,1);else adminFlags.push(rid);
+  sS('adminFlags',adminFlags);
+  var curPage=document.querySelector('.pg.on');
+  if(curPage&&curPage.id==='pg-admin')renderAdminPanel();
+}
+
+// Render admin panel page
+function renderAdminPanel(){
+  window._dataChanged=false;
+  var revs=gS('revs',[]),mgrs=getMgrs();
+  var comps={};revs.forEach(function(r){comps[r.comp]=1});
+  var avgAll=revs.length?revs.reduce(function(s,r){var v=Object.values(r.rats);return s+v.reduce(function(a,b){return a+b},0)/v.length},0)/revs.length:0;
+  var recPct=revs.length?Math.round(revs.filter(function(r){return r.rec}).length/revs.length*100):0;
+
+  $('admStats').innerHTML='<div class="admin-stat"><div class="as-val">'+revs.length+'</div><div class="as-lbl">Total Reviews</div></div>'
+    +'<div class="admin-stat"><div class="as-val">'+mgrs.length+'</div><div class="as-lbl">Managers</div></div>'
+    +'<div class="admin-stat"><div class="as-val">'+adminFlags.length+'</div><div class="as-lbl">Flagged</div></div>'
+    +'<div class="admin-stat"><div class="as-val">'+Object.keys(comps).length+'</div><div class="as-lbl">Companies</div></div>'
+    +'<div class="admin-stat"><div class="as-val">'+avgAll.toFixed(1)+'</div><div class="as-lbl">Avg Rating</div></div>'
+    +'<div class="admin-stat"><div class="as-val">'+recPct+'%</div><div class="as-lbl">Recommend</div></div>';
+  renderAdminTable();
+}
+
+function renderAdminTable(){
+  var revs=gS('revs',[]);
+  var q=(document.getElementById('admSearch').value||'').toLowerCase();
+  var filter=document.getElementById('admFilter').value;
+  var now=new Date();
+  var week=7*24*60*60*1000;
+
+  var filtered=revs.filter(function(r){
+    if(filter==='flagged'&&adminFlags.indexOf(r.id)<0)return false;
+    if(filter==='recent'&&(now-new Date(r.date))>week)return false;
+    if(q){
+      var txt=(r.name+r.comp+r.pros+r.cons).toLowerCase();
+      if(txt.indexOf(q)<0)return false;
+    }
+    return true;
+  }).sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+
+  var html='';
+  filtered.forEach(function(r){
+    var ra=Object.values(r.rats).reduce(function(x,y){return x+y},0)/Object.values(r.rats).length;
+    var isFlagged=adminFlags.indexOf(r.id)>=0;
+    html+='<tr class="'+(isFlagged?'flagged-row':'')+'">'
+      +'<td style="white-space:nowrap;font-size:12px">'+new Date(r.date).toLocaleDateString()+'</td>'
+      +'<td><strong>'+esc(r.name)+'</strong></td>'
+      +'<td>'+esc(r.comp)+'</td>'
+      +'<td><span style="font-weight:700;color:'+bCol(ra)+'">'+ra.toFixed(1)+'</span></td>'
+      +'<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.pros||'')+'</td>'
+      +'<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.cons||'')+'</td>'
+      +'<td><div class="adm-act">'
+      +'<button class="adm-btn'+(isFlagged?' del':'')+'" onclick="adminToggleFlag(\''+r.id+'\')"><i class="fa-solid fa-flag"></i> '+(isFlagged?'Unflag':'Flag')+'</button>'
+      +'<button class="adm-btn del" onclick="adminDeleteReview(\''+r.id+'\')"><i class="fa-solid fa-trash"></i></button>'
+      +'</div></td></tr>';
+  });
+  $('admTbody').innerHTML=html||'<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--txm)">No reviews found</td></tr>';
+  $('admFooter').textContent='Showing '+filtered.length+' of '+revs.length+' reviews';
+}
+
+function onAdminBtnClick(){
+  if(isAdmin){
+    goTab('admin');
+  }else{
+    document.getElementById('adminModal').classList.add('sh');
+    setTimeout(function(){document.getElementById('admUser').focus()},100);
+  }
+}
+
+</script>
+
+<!-- ADMIN -->
+
+<div class="admin-modal" id="adminModal">
+  <div class="admin-box">
+    <h3>&#128274; Admin Login</h3>
+    <p>Authorized personnel only</p>
+    <input type="text" id="admUser" placeholder="Username">
+    <input type="password" id="admPass" placeholder="Password">
+    <button class="admin-login-btn" id="admLoginBtn" onclick="doAdminLogin()">Login</button>
+    <div class="admin-err" id="admErr">Invalid credentials</div>
+    <div style="margin-top:12px;font-size:11px;color:var(--txm);cursor:pointer" onclick="document.getElementById('adminModal').classList.remove('sh')">Cancel</div>
+  </div>
+</div>
+<div class="adm-confirm" id="admConfirm" style="display:none">
+  <div class="adm-confirm-box">
+    <h3 id="admConfTitle">Delete Review?</h3>
+    <p id="admConfMsg">This action cannot be undone.</p>
+    <div class="adm-cb-btns">
+      <button class="adm-cb-cancel" onclick="document.getElementById('admConfirm').style.display='none'">Cancel</button>
+      <button class="adm-cb-delete" id="admConfYes">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div onclick="onAdminBtnClick()" style="text-align:center;padding:20px;cursor:default"><span style="color:rgba(0,0,0,.08);font-size:10px;cursor:pointer;letter-spacing:1px;user-select:none" onmouseover="this.style.color='rgba(0,0,0,.25)'" onmouseout="this.style.color='rgba(0,0,0,.08)'">&bull; &bull; &bull;</span></div>
+<iframe name="cfHidden" style="display:none"></iframe>
+</body>
+</html>

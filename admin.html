@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ManagerRate Admin Panel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#0b6fda;--blue2:#1565c0;--dark:#0f172a;--dark2:#1e293b;--dark3:#334155;--tx:#1e293b;--txm:#64748b;--txl:#94a3b8;--bg:#f8fafc;--card:#fff;--bdr:#e2e8f0;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--amber:#f59e0b;--sidebar-w:260px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+
+/* LOGIN */
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#0b3d91,#1565c0 40%,#7c3aed);padding:20px}
+.login-card{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:420px;box-shadow:0 24px 80px rgba(0,0,0,.2);text-align:center}
+.login-card .logo-area{margin-bottom:28px}
+.login-card .logo-area i{font-size:40px;color:var(--blue);margin-bottom:12px;display:block}
+.login-card .logo-area h1{font-size:24px;font-weight:800;color:var(--dark);letter-spacing:-.5px}
+.login-card .logo-area p{font-size:13px;color:var(--txm);margin-top:4px}
+.login-card .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,rgba(11,111,218,.08),rgba(124,58,237,.08));border-radius:20px;font-size:11px;font-weight:600;color:var(--blue);margin-bottom:24px;text-transform:uppercase;letter-spacing:.5px}
+.login-card .fg{text-align:left;margin-bottom:16px}
+.login-card label{display:block;font-size:12px;font-weight:600;color:var(--tx);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.login-card input{width:100%;padding:13px 16px;border:2px solid var(--bdr);border-radius:12px;font-size:14px;transition:all .2s;background:var(--bg);color:var(--tx)}
+.login-card input:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 4px rgba(11,111,218,.1)}
+.login-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#0b6fda,#7c3aed);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.login-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(11,111,218,.35)}
+.login-error{color:var(--red);font-size:13px;margin-top:12px;display:none;font-weight:500}
+.login-error.show{display:block;animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+/* LAYOUT */
+.app{display:none;min-height:100vh}
+.app.show{display:flex}
+.sidebar{width:var(--sidebar-w);background:linear-gradient(180deg,var(--dark),var(--dark2));color:#fff;position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column;overflow-y:auto}
+.sb-logo{padding:24px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo h2{font-size:18px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+.sb-logo h2 i{font-size:20px;color:var(--amber)}
+.sb-logo p{font-size:11px;color:var(--txl);margin-top:4px;padding-left:30px}
+.sb-nav{flex:1;padding:16px 12px}
+.sb-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;cursor:pointer;transition:all .2s;color:var(--txl);font-size:14px;font-weight:500;margin:2px 0;position:relative}
+.sb-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.sb-item.on{background:linear-gradient(135deg,rgba(11,111,218,.3),rgba(124,58,237,.2));color:#fff;font-weight:600}
+.sb-item.on::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--blue);border-radius:0 3px 3px 0}
+.sb-item i{width:20px;text-align:center;font-size:15px;flex-shrink:0}
+.sb-item .badge-count{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;min-width:20px;text-align:center}
+.sb-divider{height:1px;background:rgba(255,255,255,.06);margin:12px 16px}
+.sb-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-footer .sb-user{display:flex;align-items:center;gap:10px;font-size:13px}
+.sb-footer .sb-user .av{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.sb-footer .sb-user span{color:var(--txl);font-size:11px;display:block}
+.sb-logout{margin-top:12px;width:100%;padding:10px;border:1px solid rgba(255,255,255,.1);background:none;border-radius:8px;color:var(--txl);font-size:12px;cursor:pointer;transition:all .2s;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px}
+.sb-logout:hover{background:rgba(220,38,38,.15);color:var(--red);border-color:rgba(220,38,38,.3)}
+
+/* MAIN CONTENT */
+.main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+.topbar{padding:20px 32px;border-bottom:1px solid var(--bdr);background:var(--card);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar h1{font-size:22px;font-weight:700;color:var(--tx)}
+.topbar .tb-right{display:flex;align-items:center;gap:12px}
+.topbar .tb-time{font-size:12px;color:var(--txm)}
+.content{padding:28px 32px}
+
+/* PAGE */
+.page{display:none}
+.page.on{display:block}
+
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+.stat-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:all .2s}
+.stat-card:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(11,111,218,.08)}
+.stat-card::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;border-radius:0 0 0 60px;opacity:.06;pointer-events:none}
+.stat-card:nth-child(1)::before{background:var(--blue)}
+.stat-card:nth-child(2)::before{background:var(--green)}
+.stat-card:nth-child(3)::before{background:var(--red)}
+.stat-card:nth-child(4)::before{background:var(--amber)}
+.stat-card:nth-child(5)::before{background:#7c3aed}
+.stat-card:nth-child(6)::before{background:var(--green)}
+.stat-card .sc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;margin-bottom:12px}
+.stat-card:nth-child(1) .sc-icon{background:linear-gradient(135deg,var(--blue),#0ea5e9)}
+.stat-card:nth-child(2) .sc-icon{background:linear-gradient(135deg,var(--green),#22d3ee)}
+.stat-card:nth-child(3) .sc-icon{background:linear-gradient(135deg,var(--red),var(--orange))}
+.stat-card:nth-child(4) .sc-icon{background:linear-gradient(135deg,var(--amber),var(--orange))}
+.stat-card:nth-child(5) .sc-icon{background:linear-gradient(135deg,#7c3aed,#ec4899)}
+.stat-card:nth-child(6) .sc-icon{background:linear-gradient(135deg,var(--green),#16a34a)}
+.stat-card .sc-val{font-size:28px;font-weight:800;color:var(--tx);line-height:1}
+.stat-card .sc-lbl{font-size:12px;color:var(--txm);margin-top:4px;font-weight:500}
+
+/* SECTION */
+.section{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:24px}
+.section-hdr{padding:18px 24px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(11,111,218,.02),rgba(124,58,237,.01))}
+.section-hdr h3{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.section-hdr h3 i{color:var(--blue)}
+
+/* TOOLBAR */
+.toolbar{padding:14px 24px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg)}
+.toolbar input[type="text"]{padding:9px 14px;border:1.5px solid var(--bdr);border-radius:8px;font-size:13px;min-width:220px;transition:border-color .2s;background:#fff;color:var(--tx)}
+.toolbar input[type="text"]:focus{border-color:var(--blue);outline:none}
+.toolbar select{padding:9px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-size:13px;background:#fff;color:var(--tx);cursor:pointer}
+.toolbar .btn{padding:8px 16px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue2)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-outline{background:none;border:1.5px solid var(--bdr);color:var(--txm)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-sm{padding:6px 12px;font-size:11px}
+.btn-success{background:var(--green);color:#fff}
+.btn-success:hover{background:#15803d}
+.toolbar .bulk-actions{display:none;align-items:center;gap:8px;margin-left:auto}
+.toolbar .bulk-actions.show{display:flex}
+.toolbar .selected-count{font-size:12px;color:var(--txm);font-weight:500}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{padding:12px 16px;text-align:left;font-weight:600;color:var(--txm);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bdr);background:var(--bg);cursor:pointer;user-select:none;white-space:nowrap}
+thead th:hover{color:var(--blue)}
+thead th .sort-icon{margin-left:4px;font-size:10px;opacity:.4}
+thead th.sorted .sort-icon{opacity:1;color:var(--blue)}
+tbody tr{border-bottom:1px solid var(--bdr);transition:background .15s}
+tbody tr:nth-child(even){background:rgba(248,250,252,.6)}
+tbody tr:hover{background:rgba(11,111,218,.04)}
+tbody tr.flagged{background:rgba(220,38,38,.04)}
+tbody tr.flagged:hover{background:rgba(220,38,38,.08)}
+tbody tr.selected{background:rgba(11,111,218,.08)}
+tbody td{padding:11px 16px;color:var(--tx);vertical-align:middle}
+td .flag-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(220,38,38,.08);color:var(--red);border-radius:6px;font-size:10px;font-weight:600}
+td .rec-yes{color:var(--green);font-weight:600}
+td .rec-no{color:var(--red);font-weight:600}
+td .rating-badge{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:6px;font-weight:700;font-size:12px;color:#fff}
+td .text-trunc{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+td .actions{display:flex;gap:4px}
+td .actions .btn-icon{width:30px;height:30px;border:1.5px solid var(--bdr);border-radius:8px;display:flex;align-items:center;justify-content:center;background:none;cursor:pointer;color:var(--txm);font-size:12px;transition:all .15s}
+td .actions .btn-icon:hover{border-color:var(--blue);color:var(--blue);background:rgba(11,111,218,.04)}
+td .actions .btn-icon.del:hover{border-color:var(--red);color:var(--red);background:rgba(220,38,38,.04)}
+td .actions .btn-icon.flag:hover{border-color:var(--orange);color:var(--orange);background:rgba(234,88,12,.04)}
+td .actions .btn-icon.flag.on{border-color:var(--red);color:var(--red);background:rgba(220,38,38,.08)}
+td input[type="checkbox"]{width:16px;height:16px;cursor:pointer;accent-color:var(--blue)}
+.tbl-footer{padding:12px 24px;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--txm)}
+
+/* MODAL */
+.modal-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:600px;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.2);animation:modalIn .25s ease}
+@keyframes modalIn{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-hdr{padding:20px 24px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between}
+.modal-hdr h3{font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-hdr h3 i{color:var(--blue)}
+.modal-close{width:32px;height:32px;border:none;background:var(--bg);border-radius:8px;cursor:pointer;font-size:14px;color:var(--txm);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:rgba(220,38,38,.1);color:var(--red)}
+.modal-body{padding:24px}
+.modal-body .fg{margin-bottom:16px}
+.modal-body label{display:block;font-size:12px;font-weight:600;color:var(--tx);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.modal-body input,.modal-body textarea,.modal-body select{width:100%;padding:10px 14px;border:1.5px solid var(--bdr);border-radius:10px;font-size:13px;background:var(--bg);color:var(--tx);transition:border-color .2s;font-family:inherit}
+.modal-body input:focus,.modal-body textarea:focus{border-color:var(--blue);outline:none}
+.modal-body textarea{resize:vertical;min-height:80px}
+.modal-body .info-row{display:flex;gap:16px;margin-bottom:12px}
+.modal-body .info-row .info-label{font-size:11px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;min-width:100px;flex-shrink:0}
+.modal-body .info-row .info-val{font-size:13px;color:var(--tx)}
+.modal-body .rating-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.modal-body .rating-item{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bg);border-radius:6px;font-size:12px}
+.modal-body .rating-item .ri-cat{color:var(--txm);font-weight:500}
+.modal-body .rating-item .ri-val{font-weight:700}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--bdr);display:flex;justify-content:flex-end;gap:10px}
+
+/* MOD CARD */
+.mod-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:20px;margin-bottom:12px;transition:all .2s}
+.mod-card:hover{border-color:var(--blue);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.mod-card .mod-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.mod-card .mod-hdr .mod-mgr{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.mod-card .mod-hdr .mod-mgr .flag-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.mod-card .mod-meta{font-size:12px;color:var(--txm)}
+.mod-card .mod-text{margin:12px 0;padding:14px;background:var(--bg);border-radius:8px;font-size:13px;line-height:1.6;border-left:3px solid var(--red)}
+.mod-card .mod-text strong{color:var(--red)}
+.mod-card .mod-actions{display:flex;gap:8px;margin-top:12px}
+.mod-empty{text-align:center;padding:60px 20px;color:var(--txm)}
+.mod-empty i{font-size:48px;margin-bottom:16px;opacity:.3;display:block}
+
+/* SETTINGS */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.settings-grid{grid-template-columns:1fr}}
+.settings-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:24px}
+.settings-card h4{font-size:15px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.settings-card h4 i{color:var(--blue)}
+.settings-card .fg{margin-bottom:14px}
+.settings-card label{display:block;font-size:12px;font-weight:600;color:var(--tx);margin-bottom:6px}
+.settings-card input,.settings-card select{width:100%;padding:10px 14px;border:1.5px solid var(--bdr);border-radius:10px;font-size:13px;background:var(--bg);color:var(--tx)}
+.settings-card input:focus{border-color:var(--blue);outline:none}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--bdr)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-row label{font-size:13px;font-weight:500;color:var(--tx);margin:0}
+.toggle-sw{width:44px;height:24px;border-radius:12px;background:var(--bdr);cursor:pointer;position:relative;transition:background .2s}
+.toggle-sw.on{background:var(--green)}
+.toggle-sw::after{content:'';width:20px;height:20px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.toggle-sw.on::after{left:22px}
+.cat-list{list-style:none;padding:0}
+.cat-list li{padding:10px 14px;border-bottom:1px solid var(--bdr);font-size:13px;display:flex;align-items:center;gap:8px}
+.cat-list li:last-child{border-bottom:none}
+.cat-list li i{color:var(--blue);font-size:12px}
+.danger-zone{border-color:rgba(220,38,38,.2);background:rgba(220,38,38,.02)}
+.danger-zone h4 i{color:var(--red)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--dark);color:#fff;padding:14px 22px;border-radius:12px;font-size:13px;font-weight:500;z-index:300;transform:translateY(100px);opacity:0;transition:.3s;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,.2);max-width:360px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-left:4px solid var(--green)}
+.toast.error{border-left:4px solid var(--red)}
+.toast.info{border-left:4px solid var(--blue)}
+
+/* CONFIRM DIALOG */
+.confirm-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:250;align-items:center;justify-content:center}
+.confirm-bg.show{display:flex}
+.confirm-box{background:#fff;border-radius:16px;padding:32px;max-width:400px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.2);animation:modalIn .2s}
+.confirm-box i{font-size:40px;margin-bottom:16px}
+.confirm-box h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.confirm-box p{font-size:13px;color:var(--txm);margin-bottom:24px;line-height:1.5}
+.confirm-box .confirm-btns{display:flex;gap:10px;justify-content:center}
+.confirm-box .confirm-btns .btn{padding:10px 24px;border-radius:10px;font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{width:60px;overflow:visible}
+  .sb-item span,.sb-logo p,.sb-footer .sb-user div,.sb-item .badge-count{display:none}
+  .sb-logo h2 span{display:none}
+  .main{margin-left:60px}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .modal-body .rating-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="logo-area">
+      <i class="fa-solid fa-star"></i>
+      <h1>ManagerRate</h1>
+      <p>Manager Review Portal</p>
+    </div>
+    <div class="badge"><i class="fa-solid fa-shield-halved"></i> Admin Portal</div>
+    <div class="fg">
+      <label>Username</label>
+      <input type="text" id="loginUser" placeholder="Enter username" autocomplete="off">
+    </div>
+    <div class="fg">
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="Enter password">
+    </div>
+    <button class="login-btn" id="loginBtn" onclick="doLogin()"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+    <div class="login-error" id="loginError"><i class="fa-solid fa-circle-exclamation"></i> Invalid credentials</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <h2><i class="fa-solid fa-star"></i> <span>ManagerRate</span></h2>
+      <p>Admin Panel</p>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-item on" data-pg="dashboard"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></div>
+      <div class="sb-item" data-pg="reviews"><i class="fa-solid fa-comments"></i><span>Reviews</span></div>
+      <div class="sb-item" data-pg="managers"><i class="fa-solid fa-user-tie"></i><span>Managers</span></div>
+      <div class="sb-divider"></div>
+      <div class="sb-item" data-pg="moderation"><i class="fa-solid fa-shield-exclamation"></i><span>Moderation</span><span class="badge-count" id="modCount">0</span></div>
+      <div class="sb-divider"></div>
+      <div class="sb-item" data-pg="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></div>
+    </nav>
+    <div class="sb-footer">
+      <div class="sb-user">
+        <div class="av">A</div>
+        <div><strong>Admin</strong><span>Super Admin</span></div>
+      </div>
+      <button class="sb-logout" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="tb-right">
+        <div class="tb-time" id="tbTime"></div>
+      </div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD PAGE -->
+      <div class="page on" id="pg-dashboard">
+        <div class="stat-grid" id="statGrid"></div>
+        <div class="section">
+          <div class="section-hdr"><h3><i class="fa-solid fa-clock-rotate-left"></i> Recent Reviews</h3></div>
+          <div class="tbl-wrap">
+            <table><thead><tr>
+              <th>Date</th><th>Manager</th><th>Company</th><th>Rating</th><th>Recommend</th><th>Preview</th>
+            </tr></thead><tbody id="recentTbody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS PAGE -->
+      <div class="page" id="pg-reviews">
+        <div class="section">
+          <div class="section-hdr"><h3><i class="fa-solid fa-comments"></i> All Reviews</h3><span class="tb-time" id="revCount"></span></div>
+          <div class="toolbar">
+            <input type="text" id="revSearch" placeholder="Search manager or company...">
+            <select id="revFilter">
+              <option value="all">All Reviews</option>
+              <option value="flagged">Flagged Only</option>
+              <option value="recent">Last 7 Days</option>
+            </select>
+            <select id="revSort">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="rating-desc">Highest Rated</option>
+              <option value="rating-asc">Lowest Rated</option>
+              <option value="name-asc">Manager A-Z</option>
+            </select>
+            <div class="bulk-actions" id="bulkActions">
+              <span class="selected-count" id="selCount">0 selected</span>
+              <button class="btn btn-danger btn-sm" id="bulkDeleteBtn"><i class="fa-solid fa-trash"></i> Delete Selected</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table><thead><tr>
+              <th style="width:36px"><input type="checkbox" id="selectAll"></th>
+              <th class="sortable" data-col="date">Date <i class="fa-solid fa-sort sort-icon"></i></th>
+              <th class="sortable" data-col="name">Manager <i class="fa-solid fa-sort sort-icon"></i></th>
+              <th>Company</th>
+              <th class="sortable" data-col="rating">Rating <i class="fa-solid fa-sort sort-icon"></i></th>
+              <th>Recommend</th>
+              <th>Pros</th>
+              <th style="width:120px">Actions</th>
+            </tr></thead><tbody id="revTbody"></tbody></table>
+          </div>
+          <div class="tbl-footer" id="revFooter"></div>
+        </div>
+      </div>
+
+      <!-- MANAGERS PAGE -->
+      <div class="page" id="pg-managers">
+        <div class="section">
+          <div class="section-hdr"><h3><i class="fa-solid fa-user-tie"></i> All Managers</h3><span class="tb-time" id="mgrCount"></span></div>
+          <div class="toolbar">
+            <input type="text" id="mgrSearch" placeholder="Search manager name...">
+            <select id="mgrSort">
+              <option value="name-asc">Name A-Z</option>
+              <option value="name-desc">Name Z-A</option>
+              <option value="rating-desc">Highest Rated</option>
+              <option value="rating-asc">Lowest Rated</option>
+              <option value="reviews-desc">Most Reviews</option>
+            </select>
+            <button class="btn btn-outline btn-sm" id="mergeBtn"><i class="fa-solid fa-code-merge"></i> Merge Selected</button>
+          </div>
+          <div class="tbl-wrap">
+            <table><thead><tr>
+              <th style="width:36px"><input type="checkbox" id="mgrSelectAll"></th>
+              <th>Name</th>
+              <th>Companies</th>
+              <th>LinkedIn</th>
+              <th>Reviews</th>
+              <th>Avg Rating</th>
+              <th style="width:120px">Actions</th>
+            </tr></thead><tbody id="mgrTbody"></tbody></table>
+          </div>
+          <div class="tbl-footer" id="mgrFooter"></div>
+        </div>
+      </div>
+
+      <!-- MODERATION PAGE -->
+      <div class="page" id="pg-moderation">
+        <div class="section">
+          <div class="section-hdr"><h3><i class="fa-solid fa-shield-exclamation"></i> Moderation Queue</h3></div>
+          <div class="content" id="modList" style="padding:16px 24px"></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS PAGE -->
+      <div class="page" id="pg-settings">
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h4><i class="fa-solid fa-globe"></i> Site Information</h4>
+            <div class="fg"><label>Site Name</label><input type="text" id="setSiteName" value="ManagerRate"></div>
+            <div class="fg"><label>Contact Email</label><input type="email" id="setEmail" value="managerrrate@gmail.com"></div>
+            <div class="fg"><label>Phone</label><input type="text" id="setPhone" value="+91 7654045431"></div>
+            <button class="btn btn-primary" id="saveSettingsBtn"><i class="fa-solid fa-check"></i> Save Settings</button>
+          </div>
+          <div class="settings-card">
+            <h4><i class="fa-solid fa-sliders"></i> Site Controls</h4>
+            <div class="toggle-row">
+              <label>Maintenance Mode</label>
+              <div class="toggle-sw" id="togMaint"></div>
+            </div>
+            <div class="toggle-row">
+              <label>Allow New Reviews</label>
+              <div class="toggle-sw on" id="togReviews"></div>
+            </div>
+            <div class="toggle-row">
+              <label>Show Pro Section</label>
+              <div class="toggle-sw on" id="togPro"></div>
+            </div>
+          </div>
+          <div class="settings-card">
+            <h4><i class="fa-solid fa-database"></i> Data Management</h4>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button class="btn btn-primary" id="exportBtn"><i class="fa-solid fa-download"></i> Export All Data (JSON)</button>
+              <label class="btn btn-outline" style="cursor:pointer;justify-content:center;display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600">
+                <i class="fa-solid fa-upload"></i> Import Data (JSON)
+                <input type="file" id="importFile" accept=".json" style="display:none">
+              </label>
+            </div>
+          </div>
+          <div class="settings-card danger-zone">
+            <h4><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h4>
+            <p style="font-size:12px;color:var(--txm);margin-bottom:16px">These actions are irreversible. Proceed with extreme caution.</p>
+            <button class="btn btn-danger" id="clearAllBtn"><i class="fa-solid fa-trash"></i> Clear All Data</button>
+          </div>
+          <div class="settings-card" style="grid-column:1/-1">
+            <h4><i class="fa-solid fa-list-check"></i> Rating Categories (11)</h4>
+            <ul class="cat-list" id="catList"></ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modalBox">
+    <div class="modal-hdr">
+      <h3 id="modalTitle"><i class="fa-solid fa-eye"></i> Review Details</h3>
+      <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<!-- CONFIRM -->
+<div class="confirm-bg" id="confirmBg">
+  <div class="confirm-box" id="confirmBox"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+<script>
+window.onerror=function(){return true};
+function $(id){var el=document.getElementById(id);return el||{addEventListener:function(){},classList:{add:function(){},remove:function(){},toggle:function(){},contains:function(){return false}},style:{},value:'',textContent:'',innerHTML:'',querySelectorAll:function(){return[]},checked:false,setAttribute:function(){},getAttribute:function(){return''}}}
+function $$(sel){try{return document.querySelectorAll(sel)}catch(e){return[]}}
+
+
+var _mem={revs:[{"id": "r0_83563", "name": "Sarah Chen", "comp": "Amazon Web Services", "li": "https://linkedin.com/in/sarachen", "rats": {"Leadership & Vision": 3, "Communication Skills": 4, "Career Development Support": 4, "Work-Life Balance": 5, "Fairness & Transparency": 4, "Conflict Resolution": 5, "Empathy & Emotional Intelligence": 3, "Decision Making": 4, "Team Building": 3, "Accountability": 4, "Technical Competence": 4}, "pros": "Excellent at setting clear goals. Always available for 1:1s and genuinely listens.", "cons": "Sometimes too focused on deliverables, misses morale issues.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 3, "date": "2026-08-29T00:00:00"}, {"id": "r1_22156", "name": "Sarah Chen", "comp": "Amazon Web Services", "li": "https://linkedin.com/in/sarachen", "rats": {"Leadership & Vision": 5, "Communication Skills": 4, "Career Development Support": 4, "Work-Life Balance": 4, "Fairness & Transparency": 5, "Conflict Resolution": 5, "Empathy & Emotional Intelligence": 4, "Decision Making": 4, "Team Building": 4, "Accountability": 4, "Technical Competence": 5}, "pros": "Great at fostering team collaboration and psychological safety.", "cons": "Meeting heavy. Could use async communication more.", "adv": "", "rec": true, "hlp": 6, "date": "2026-07-21T00:00:00"}, {"id": "r2_35203", "name": "Sarah Chen", "comp": "Amazon Web Services", "li": "https://linkedin.com/in/sarachen", "rats": {"Leadership & Vision": 4, "Communication Skills": 3, "Career Development Support": 4, "Work-Life Balance": 3, "Fairness & Transparency": 3, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 3, "Decision Making": 3, "Team Building": 4, "Accountability": 3, "Technical Competence": 4}, "pros": "Very supportive of career growth. Helped me create a development plan.", "cons": "Could delegate more.", "adv": "", "rec": true, "hlp": 11, "date": "2025-11-20T00:00:00"}, {"id": "r3_89840", "name": "Sarah Chen", "comp": "Meta Financial Services", "li": "https://linkedin.com/in/sarachen", "rats": {"Leadership & Vision": 3, "Communication Skills": 3, "Career Development Support": 4, "Work-Life Balance": 4, "Fairness & Transparency": 4, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 3, "Decision Making": 4, "Team Building": 2, "Accountability": 3, "Technical Competence": 3}, "pros": "Brought strong engineering culture from AWS. Transparent about decisions.", "cons": "Still adjusting to new company culture.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 10, "date": "2026-08-06T00:00:00"}, {"id": "r4_62581", "name": "Sarah Chen", "comp": "Meta Financial Services", "li": "https://linkedin.com/in/sarachen", "rats": {"Leadership & Vision": 4, "Communication Skills": 2, "Career Development Support": 3, "Work-Life Balance": 4, "Fairness & Transparency": 3, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 4, "Decision Making": 4, "Team Building": 4, "Accountability": 3, "Technical Competence": 2}, "pros": "Champions work-life balance and leads by example.", "cons": "Not always transparent about promotion criteria.", "adv": "", "rec": false, "hlp": 4, "date": "2026-04-03T00:00:00"}, {"id": "r5_66155", "name": "Michael Rodriguez", "comp": "Google", "li": "https://linkedin.com/in/michaelrodriguez", "rats": {"Leadership & Vision": 4, "Communication Skills": 3, "Career Development Support": 3, "Work-Life Balance": 2, "Fairness & Transparency": 3, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 3, "Decision Making": 2, "Team Building": 2, "Accountability": 3, "Technical Competence": 3}, "pros": "Strong technical background. Removes blockers quickly.", "cons": "Can be indecisive on cross-team issues.", "adv": "", "rec": true, "hlp": 9, "date": "2025-11-16T00:00:00"}, {"id": "r6_79352", "name": "Michael Rodriguez", "comp": "Google", "li": "https://linkedin.com/in/michaelrodriguez", "rats": {"Leadership & Vision": 3, "Communication Skills": 5, "Career Development Support": 4, "Work-Life Balance": 3, "Fairness & Transparency": 3, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 4, "Decision Making": 4, "Team Building": 3, "Accountability": 3, "Technical Competence": 3}, "pros": "Transparent about decisions and always explains reasoning.", "cons": "Technical skills could be stronger.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 4, "date": "2026-01-15T00:00:00"}, {"id": "r7_75612", "name": "Michael Rodriguez", "comp": "Stripe", "li": "https://linkedin.com/in/michaelrodriguez", "rats": {"Leadership & Vision": 5, "Communication Skills": 4, "Career Development Support": 5, "Work-Life Balance": 5, "Fairness & Transparency": 5, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 5, "Decision Making": 4, "Team Building": 5, "Accountability": 5, "Technical Competence": 5}, "pros": "Excellent at conflict resolution. Finds win-win solutions.", "cons": "Needs to improve on giving negative feedback.", "adv": "", "rec": true, "hlp": 12, "date": "2026-04-30T00:00:00"}, {"id": "r8_74042", "name": "Priya Patel", "comp": "Microsoft", "li": "https://linkedin.com/in/priyapatel", "rats": {"Leadership & Vision": 4, "Communication Skills": 4, "Career Development Support": 3, "Work-Life Balance": 3, "Fairness & Transparency": 3, "Conflict Resolution": 2, "Empathy & Emotional Intelligence": 4, "Decision Making": 3, "Team Building": 4, "Accountability": 3, "Technical Competence": 2}, "pros": "Very empathetic and understanding of personal situations.", "cons": "Could improve on recognizing contributions publicly.", "adv": "", "rec": true, "hlp": 0, "date": "2026-03-30T00:00:00"}, {"id": "r9_26828", "name": "Priya Patel", "comp": "Microsoft", "li": "https://linkedin.com/in/priyapatel", "rats": {"Leadership & Vision": 3, "Communication Skills": 4, "Career Development Support": 4, "Work-Life Balance": 3, "Fairness & Transparency": 3, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 2, "Decision Making": 3, "Team Building": 4, "Accountability": 4, "Technical Competence": 3}, "pros": "Great at fostering psychological safety in design reviews.", "cons": "Sometimes avoids difficult conversations.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 10, "date": "2026-07-09T00:00:00"}, {"id": "r10_77839", "name": "Priya Patel", "comp": "Figma", "li": "https://linkedin.com/in/priyapatel", "rats": {"Leadership & Vision": 4, "Communication Skills": 3, "Career Development Support": 4, "Work-Life Balance": 4, "Fairness & Transparency": 3, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 4, "Decision Making": 3, "Team Building": 3, "Accountability": 5, "Technical Competence": 4}, "pros": "Brought incredible design leadership from Microsoft. Visionary.", "cons": "Pace of change can overwhelm the team.", "adv": "", "rec": true, "hlp": 7, "date": "2026-01-30T00:00:00"}, {"id": "r11_46500", "name": "James OBrien", "comp": "Amazon Web Services", "li": "https://linkedin.com/in/jamesobrien", "rats": {"Leadership & Vision": 2, "Communication Skills": 3, "Career Development Support": 3, "Work-Life Balance": 3, "Fairness & Transparency": 2, "Conflict Resolution": 2, "Empathy & Emotional Intelligence": 3, "Decision Making": 2, "Team Building": 4, "Accountability": 4, "Technical Competence": 2}, "pros": "Strong technical depth. Mentors engineers with patience.", "cons": "Takes on too much and becomes a bottleneck.", "adv": "", "rec": true, "hlp": 10, "date": "2026-05-13T00:00:00"}, {"id": "r12_98259", "name": "James OBrien", "comp": "Amazon Web Services", "li": "https://linkedin.com/in/jamesobrien", "rats": {"Leadership & Vision": 4, "Communication Skills": 4, "Career Development Support": 5, "Work-Life Balance": 4, "Fairness & Transparency": 3, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 4, "Decision Making": 3, "Team Building": 4, "Accountability": 3, "Technical Competence": 4}, "pros": "Champions engineering excellence and code quality.", "cons": "Meeting heavy. Could reduce sync-ups.", "adv": "Invest more in leadership training and mentorship.", "rec": false, "hlp": 10, "date": "2026-08-15T00:00:00"}, {"id": "r13_82132", "name": "Aiko Tanaka", "comp": "Netflix", "li": "https://linkedin.com/in/aikotanaka", "rats": {"Leadership & Vision": 4, "Communication Skills": 5, "Career Development Support": 4, "Work-Life Balance": 5, "Fairness & Transparency": 4, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 5, "Decision Making": 5, "Team Building": 4, "Accountability": 4, "Technical Competence": 5}, "pros": "Data-driven decision maker. Very fair in performance reviews.", "cons": "Could communicate vision more clearly.", "adv": "", "rec": true, "hlp": 1, "date": "2026-01-28T00:00:00"}, {"id": "r14_44760", "name": "Aiko Tanaka", "comp": "Netflix", "li": "https://linkedin.com/in/aikotanaka", "rats": {"Leadership & Vision": 4, "Communication Skills": 4, "Career Development Support": 4, "Work-Life Balance": 4, "Fairness & Transparency": 4, "Conflict Resolution": 2, "Empathy & Emotional Intelligence": 3, "Decision Making": 2, "Team Building": 3, "Accountability": 2, "Technical Competence": 3}, "pros": "Excellent at career development support. Built clear growth frameworks.", "cons": "Sometimes too focused on metrics over people.", "adv": "", "rec": true, "hlp": 12, "date": "2026-02-24T00:00:00"}, {"id": "r15_17492", "name": "David Kim", "comp": "Uber", "li": "https://linkedin.com/in/davidkim", "rats": {"Leadership & Vision": 4, "Communication Skills": 5, "Career Development Support": 5, "Work-Life Balance": 5, "Fairness & Transparency": 5, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 4, "Decision Making": 4, "Team Building": 3, "Accountability": 5, "Technical Competence": 3}, "pros": "Great at building team culture. Organizes team bonding.", "cons": "Decision making could be faster.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 0, "date": "2026-04-04T00:00:00"}, {"id": "r16_85880", "name": "Emily Watson", "comp": "Salesforce", "li": "https://linkedin.com/in/emilywatson", "rats": {"Leadership & Vision": 4, "Communication Skills": 5, "Career Development Support": 3, "Work-Life Balance": 5, "Fairness & Transparency": 3, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 4, "Decision Making": 4, "Team Building": 3, "Accountability": 3, "Technical Competence": 5}, "pros": "Incredibly supportive of work-life balance. Leads by example.", "cons": "Could be more assertive in cross-functional meetings.", "adv": "", "rec": true, "hlp": 9, "date": "2026-05-08T00:00:00"}, {"id": "r17_11220", "name": "Emily Watson", "comp": "Salesforce", "li": "https://linkedin.com/in/emilywatson", "rats": {"Leadership & Vision": 2, "Communication Skills": 3, "Career Development Support": 3, "Work-Life Balance": 3, "Fairness & Transparency": 2, "Conflict Resolution": 3, "Empathy & Emotional Intelligence": 3, "Decision Making": 2, "Team Building": 2, "Accountability": 3, "Technical Competence": 3}, "pros": "Transparent about team goals and individual expectations.", "cons": "Needs to improve technical understanding.", "adv": "", "rec": true, "hlp": 7, "date": "2026-08-05T00:00:00"}, {"id": "r18_90173", "name": "Emily Watson", "comp": "HubSpot", "li": "https://linkedin.com/in/emilywatson", "rats": {"Leadership & Vision": 4, "Communication Skills": 3, "Career Development Support": 4, "Work-Life Balance": 4, "Fairness & Transparency": 3, "Conflict Resolution": 4, "Empathy & Emotional Intelligence": 3, "Decision Making": 4, "Team Building": 4, "Accountability": 4, "Technical Competence": 4}, "pros": "Brought great marketing leadership. Very strategic thinker.", "cons": "Still building relationships in the new org.", "adv": "Invest more in leadership training and mentorship.", "rec": true, "hlp": 12, "date": "2026-04-10T00:00:00"}],votes:[],flagged:[]};
+function gS(k,d){try{var v=localStorage.getItem(k);if(v)return JSON.parse(v)}catch(e){}if(_mem[k]!==undefined)return JSON.parse(JSON.stringify(_mem[k]));return d}
+function sS(k,v){_mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var CATS=['Leadership & Vision','Communication Skills','Career Development Support','Work-Life Balance','Fairness & Transparency','Conflict Resolution','Empathy & Emotional Intelligence','Decision Making','Team Building','Accountability','Technical Competence'];
+
+
+
+// STORAGE
+
+
+
+// TOAST
+function toast(msg,type){
+  var t=$('toast');t.className='toast '+(type||'info');t.innerHTML='<i class="fa-solid '+(type==='success'?'fa-check-circle':type==='error'?'fa-circle-exclamation':'fa-info-circle')+'"></i> '+msg;
+  t.classList.add('show');clearTimeout(t._tid);t._tid=setTimeout(function(){t.classList.remove('show')},3000);
+}
+
+// CONFIRM
+function showConfirm(icon,title,msg,btnText,btnClass,cb){
+  $('confirmBox').innerHTML='<i class="fa-solid '+icon+'" style="color:'+(btnClass==='btn-danger'?'var(--red)':'var(--blue)')+'"></i><h3>'+title+'</h3><p>'+msg+'</p><div class="confirm-btns"><button class="btn btn-outline" id="confirmNo">Cancel</button><button class="btn '+btnClass+'" id="confirmYes">'+btnText+'</button></div>';
+  $('confirmBg').classList.add('show');
+  $('confirmNo').addEventListener('click',function(){$('confirmBg').classList.remove('show')});
+  $('confirmYes').addEventListener('click',function(){$('confirmBg').classList.remove('show');cb()});
+}
+
+// MODAL
+function showModal(title,bodyHtml,footerHtml){
+  $('modalTitle').innerHTML=title;
+  $('modalBody').innerHTML=bodyHtml;
+  $('modalFooter').innerHTML=footerHtml||'';
+  $('modalBg').classList.add('show');
+}
+function closeModal(){$('modalBg').classList.remove('show')}
+$('modalClose').addEventListener('click',closeModal);
+$('modalBg').addEventListener('click',function(e){if(e.target===$('modalBg'))closeModal()});
+
+// HELPERS
+function bCol(v){return v>=4?'#16a34a':v>=3?'#0b6fda':v>=2?'#ea580c':'#dc2626'}
+function fDate(iso){if(!iso)return'N/A';var d=new Date(iso);return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+function normLI(u){return(u||'').toLowerCase().replace(/\/$/,'').replace('www.','').trim()}
+function avgR(revs){if(!revs.length)return 0;return revs.reduce(function(s,r){var v=Object.values(r.rats);return s+v.reduce(function(a,b){return a+b},0)/v.length},0)/revs.length}
+function getMgrs(){
+  var revs=gS('revs',[]),map={};
+  revs.forEach(function(r){
+    var k=normLI(r.li);if(!k)return;
+    if(!map[k])map[k]={name:r.name,key:k,li:r.li,revs:[],companies:{}};
+    map[k].revs.push(r);map[k].companies[r.comp]=1;
+  });
+  return Object.values(map);
+}
+function esc(s){return(s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function trunc(s,n){return(s||'').length>n?(s||'').substr(0,n)+'...':s||''}
+
+// LOGIN
+$('loginBtn').addEventListener('click',doLogin);
+document.getElementById('loginPass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin()});
+document.getElementById('loginUser').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('loginPass').focus()});
+function doLogin(){
+  var uEl=document.getElementById('loginUser');
+  var pEl=document.getElementById('loginPass');
+  if(!uEl||!pEl)return;
+  var u=uEl.value.trim(),p=pEl.value;
+  if(u==='admin'&&p==='admin123'){
+    try{sessionStorage.setItem('adminAuth','1')}catch(e){}
+    document.getElementById('loginWrap').style.display='none';
+    document.getElementById('app').classList.add('show');
+    loadDashboard();
+    updateModCount();
+  } else {
+    $('loginError').classList.add('show');
+    setTimeout(function(){$('loginError').classList.remove('show')},3000);
+  }
+}
+// Auto-login check
+try{if(sessionStorage.getItem('adminAuth')==='1'){
+  document.getElementById('loginWrap').style.display='none';
+  document.getElementById('app').classList.add('show');
+  setTimeout(function(){loadDashboard();updateModCount()},50);
+}
+}catch(e){}
+// Logout
+$('logoutBtn').addEventListener('click',function(){
+  sessionStorage.removeItem('adminAuth');
+  $('app').classList.remove('show');
+  $('loginWrap').style.display='';
+  $('loginUser').value='';$('loginPass').value='';
+});
+
+// NAV
+$$('.sb-item').forEach(function(item){
+  item.addEventListener('click',function(){
+    var pg=item.getAttribute('data-pg');if(!pg)return;
+    $$('.sb-item').forEach(function(x){x.classList.remove('on')});
+    item.classList.add('on');
+    $$('.page').forEach(function(x){x.classList.remove('on')});
+    $('pg-'+pg).classList.add('on');
+    var titles={dashboard:'Dashboard',reviews:'Reviews',managers:'Managers',moderation:'Moderation',settings:'Settings'};
+    $('pageTitle').textContent=titles[pg]||pg;
+    if(pg==='dashboard')loadDashboard();
+    if(pg==='reviews')loadReviews();
+    if(pg==='managers')loadManagers();
+    if(pg==='moderation')loadModeration();
+    if(pg==='settings')loadSettings();
+  });
+});
+
+// TIME
+function updateTime(){$('tbTime').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}
+updateTime();setInterval(updateTime,60000);
+
+// ============ DASHBOARD ============
+function loadDashboard(){
+  var revs=gS('revs',[]),mgrs=getMgrs();
+  var flagged=gS('flagged',[]);
+  var comps={};revs.forEach(function(r){comps[r.comp]=1});
+  var avgAll=revs.length?revs.reduce(function(s,r){var v=Object.values(r.rats);return s+v.reduce(function(a,b){return a+b},0)/v.length},0)/revs.length:0;
+  var recPct=revs.length?Math.round(revs.filter(function(r){return r.rec}).length/revs.length*100):0;
+
+  $('statGrid').innerHTML=
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-comments"></i></div><div class="sc-val">'+revs.length+'</div><div class="sc-lbl">Total Reviews</div></div>'+
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-user-tie"></i></div><div class="sc-val">'+mgrs.length+'</div><div class="sc-lbl">Total Managers</div></div>'+
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-flag"></i></div><div class="sc-val">'+flagged.length+'</div><div class="sc-lbl">Flagged Reviews</div></div>'+
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-building"></i></div><div class="sc-val">'+Object.keys(comps).length+'</div><div class="sc-lbl">Companies</div></div>'+
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-star"></i></div><div class="sc-val">'+avgAll.toFixed(1)+'</div><div class="sc-lbl">Avg Rating</div></div>'+
+    '<div class="stat-card"><div class="sc-icon"><i class="fa-solid fa-thumbs-up"></i></div><div class="sc-val">'+recPct+'%</div><div class="sc-lbl">Recommend Rate</div></div>';
+
+  var recent=revs.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date)}).slice(0,10);
+  var html='';
+  recent.forEach(function(r){
+    var ra=Object.values(r.rats).reduce(function(a,b){return a+b},0)/Object.values(r.rats).length;
+    html+='<tr><td>'+fDate(r.date)+'</td><td><strong>'+esc(r.name)+'</strong></td><td>'+esc(r.comp)+'</td><td><span class="rating-badge" style="background:'+bCol(ra)+'"><i class="fa-solid fa-star"></i> '+ra.toFixed(1)+'</span></td><td>'+(r.rec?'<span class="rec-yes"><i class="fa-solid fa-check"></i> Yes</span>':'<span class="rec-no"><i class="fa-solid fa-xmark"></i> No</span>')+'</td><td><span class="text-trunc">'+esc(trunc(r.pros,60))+'</span></td></tr>';
+  });
+  $('recentTbody').innerHTML=html||'<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--txm)">No reviews yet</td></tr>';
+}
+
+// ============ REVIEWS ============
+var selectedRevs={};
+function loadReviews(){
+  var revs=gS('revs',[]),flagged=gS('flagged',[]);
+  var q=($('revSearch').value||'').toLowerCase();
+  var filter=$('revFilter').value;
+  var sort=$('revSort').value;
+  var now=Date.now(),week=7*86400000;
+
+  var filtered=revs.filter(function(r){
+    if(q&&r.name.toLowerCase().indexOf(q)<0&&r.comp.toLowerCase().indexOf(q)<0)return false;
+    if(filter==='flagged'&&flagged.indexOf(r.id)<0)return false;
+    if(filter==='recent'&&(now-new Date(r.date).getTime())>week)return false;
+    return true;
+  });
+
+  filtered.sort(function(a,b){
+    if(sort==='date-desc')return new Date(b.date)-new Date(a.date);
+    if(sort==='date-asc')return new Date(a.date)-new Date(b.date);
+    var ra=Object.values(a.rats).reduce(function(x,y){return x+y},0)/Object.values(a.rats).length;
+    var rb=Object.values(b.rats).reduce(function(x,y){return x+y},0)/Object.values(b.rats).length;
+    if(sort==='rating-desc')return rb-ra;
+    if(sort==='rating-asc')return ra-rb;
+    if(sort==='name-asc')return a.name.localeCompare(b.name);
+    return 0;
+  });
+
+  var html='';
+  filtered.forEach(function(r){
+    var ra=Object.values(r.rats).reduce(function(a,b){return a+b},0)/Object.values(r.rats).length;
+    var isFlagged=flagged.indexOf(r.id)>=0;
+    var isSel=selectedRevs[r.id];
+    html+='<tr class="'+(isFlagged?'flagged ':'')+(isSel?'selected ':'')+'" data-rid="'+r.id+'"><td><input type="checkbox" class="rev-chk" data-rid="'+r.id+'"'+(isSel?' checked':'')+'></td><td>'+fDate(r.date)+'</td><td><strong>'+esc(r.name)+'</strong></td><td>'+esc(r.comp)+'</td><td><span class="rating-badge" style="background:'+bCol(ra)+'"><i class="fa-solid fa-star"></i> '+ra.toFixed(1)+'</span></td><td>'+(r.rec?'<span class="rec-yes"><i class="fa-solid fa-check"></i> Yes</span>':'<span class="rec-no"><i class="fa-solid fa-xmark"></i> No</span>')+'</td><td><span class="text-trunc">'+esc(trunc(r.pros,40))+'</span></td><td><div class="actions"><button class="btn-icon view-rev" data-rid="'+r.id+'" title="View"><i class="fa-solid fa-eye"></i></button><button class="btn-icon flag'+(isFlagged?' on':'')+'" data-rid="'+r.id+'" title="'+(isFlagged?'Unflag':'Flag')+'"><i class="fa-solid fa-flag"></i></button><button class="btn-icon del" data-rid="'+r.id+'" title="Delete"><i class="fa-solid fa-trash"></i></button></div></td></tr>';
+  });
+  $('revTbody').innerHTML=html||'<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--txm)">No reviews found</td></tr>';
+  $('revCount').textContent=filtered.length+' of '+revs.length+' reviews';
+  $('revFooter').innerHTML='Showing '+filtered.length+' of '+revs.length+' total reviews';
+
+  // Attach handlers
+  $$('.view-rev').forEach(function(b){b.addEventListener('click',function(){viewReview(b.getAttribute('data-rid'))})});
+  $$('.rev-chk').forEach(function(b){b.addEventListener('change',function(){
+    var rid=b.getAttribute('data-rid');
+    if(b.checked)selectedRevs[rid]=true;else delete selectedRevs[rid];
+    var cnt=Object.keys(selectedRevs).length;
+    $('selCount').textContent=cnt+' selected';
+    $('bulkActions').classList[cnt>0?'add':'remove']('show');
+    b.closest('tr').classList[b.checked?'add':'remove']('selected');
+  })});
+  $$('td .flag').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid'),fl=gS('flagged',[]),idx=fl.indexOf(rid);
+    if(idx>=0)fl.splice(idx,1);else fl.push(rid);
+    sS('flagged',fl);loadReviews();updateModCount();
+    toast(idx>=0?'Review unflagged':'Review flagged',idx>=0?'info':'error');
+  })});
+  $$('td .del').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid');
+    showConfirm('fa-trash','Delete Review?','This will permanently remove this review. This action cannot be undone.','Delete','btn-danger',function(){
+      var revs=gS('revs',[]).filter(function(r){return r.id!==rid});
+      sS('revs',revs);
+      var fl=gS('flagged',[]).filter(function(f){return f!==rid});
+      sS('flagged',fl);
+      delete selectedRevs[rid];
+      loadReviews();updateModCount();toast('Review deleted','success');
+    });
+  })});
+}
+$('revSearch').addEventListener('input',loadReviews);
+$('revFilter').addEventListener('change',loadReviews);
+$('revSort').addEventListener('change',loadReviews);
+$('selectAll').addEventListener('change',function(){
+  var chk=$('selectAll').checked;
+  selectedRevs={};
+  $$('.rev-chk').forEach(function(c){c.checked=chk;if(chk)selectedRevs[c.getAttribute('data-rid')]=true});
+  var cnt=Object.keys(selectedRevs).length;
+  $('selCount').textContent=cnt+' selected';
+  $('bulkActions').classList[cnt>0?'add':'remove']('show');
+  loadReviews();
+});
+$('bulkDeleteBtn').addEventListener('click',function(){
+  var cnt=Object.keys(selectedRevs).length;if(!cnt)return;
+  showConfirm('fa-trash','Delete '+cnt+' Reviews?','This will permanently remove '+cnt+' selected review'+(cnt>1?'s':'')+'.','Delete All','btn-danger',function(){
+    var ids=Object.keys(selectedRevs);
+    var revs=gS('revs',[]).filter(function(r){return ids.indexOf(r.id)<0});
+    sS('revs',revs);
+    var fl=gS('flagged',[]).filter(function(f){return ids.indexOf(f)<0});
+    sS('flagged',fl);
+    selectedRevs={};$('selectAll').checked=false;
+    $('bulkActions').classList.remove('show');
+    loadReviews();updateModCount();toast(cnt+' reviews deleted','success');
+  });
+});
+
+function viewReview(rid){
+  var revs=gS('revs',[]),r=revs.filter(function(x){return x.id===rid})[0];
+  if(!r)return;
+  var ra=Object.values(r.rats).reduce(function(a,b){return a+b},0)/Object.values(r.rats).length;
+  var body='<div class="info-row"><div class="info-label">Manager</div><div class="info-val"><strong>'+esc(r.name)+'</strong></div></div>'
+    +'<div class="info-row"><div class="info-label">Company</div><div class="info-val">'+esc(r.comp)+'</div></div>'
+    +'<div class="info-row"><div class="info-label">LinkedIn</div><div class="info-val"><a href="'+esc(r.li)+'" target="_blank" style="color:var(--blue)">'+esc(r.li)+'</a></div></div>'
+    +'<div class="info-row"><div class="info-label">Date</div><div class="info-val">'+fDate(r.date)+'</div></div>'
+    +'<div class="info-row"><div class="info-label">Overall</div><div class="info-val"><span class="rating-badge" style="background:'+bCol(ra)+'"><i class="fa-solid fa-star"></i> '+ra.toFixed(1)+'</span></div></div>'
+    +'<div class="info-row"><div class="info-label">Recommends</div><div class="info-val">'+(r.rec?'<span class="rec-yes"><i class="fa-solid fa-check"></i> Yes</span>':'<span class="rec-no"><i class="fa-solid fa-xmark"></i> No</span>')+'</div></div>'
+    +'<h4 style="font-size:12px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 8px">Ratings by Category</h4>'
+    +'<div class="rating-grid">'+CATS.map(function(c){var v=r.rats[c]||0;return'<div class="rating-item"><span class="ri-cat">'+c+'</span><span class="ri-val" style="color:'+bCol(v)+'">'+v.toFixed(1)+'</span></div>'}).join('')+'</div>'
+    +'<h4 style="font-size:12px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 8px">Written Feedback</h4>'
+    +(r.pros?'<div style="margin-bottom:12px"><strong style="color:var(--green);font-size:12px"><i class="fa-solid fa-circle-check"></i> Pros</strong><p style="margin-top:4px;font-size:13px;line-height:1.6">'+esc(r.pros)+'</p></div>':'')
+    +(r.cons?'<div style="margin-bottom:12px"><strong style="color:var(--red);font-size:12px"><i class="fa-solid fa-circle-xmark"></i> Cons</strong><p style="margin-top:4px;font-size:13px;line-height:1.6">'+esc(r.cons)+'</p></div>':'')
+    +(r.adv?'<div><strong style="color:var(--amber);font-size:12px"><i class="fa-solid fa-lightbulb"></i> Advice</strong><p style="margin-top:4px;font-size:13px;line-height:1.6">'+esc(r.adv)+'</p></div>':'');
+  showModal('<i class="fa-solid fa-eye"></i> Review Details',body,'<button class="btn btn-outline" onclick="closeModal()">Close</button>');
+}
+
+// ============ MANAGERS ============
+var selectedMgrs={};
+function loadManagers(){
+  var mgrs=getMgrs();
+  var q=($('mgrSearch').value||'').toLowerCase();
+  var sort=$('mgrSort').value;
+
+  var filtered=mgrs.filter(function(m){return!q||m.name.toLowerCase().indexOf(q)>=0});
+  filtered.sort(function(a,b){
+    if(sort==='name-asc')return a.name.localeCompare(b.name);
+    if(sort==='name-desc')return b.name.localeCompare(a.name);
+    if(sort==='rating-desc')return avgR(b.revs)-avgR(a.revs);
+    if(sort==='rating-asc')return avgR(a.revs)-avgR(b.revs);
+    if(sort==='reviews-desc')return b.revs.length-a.revs.length;
+    return 0;
+  });
+
+  var html='';
+  filtered.forEach(function(m){
+    var ar=avgR(m.revs),isSel=selectedMgrs[m.key];
+    html+='<tr class="'+(isSel?'selected':'')+'" data-mk="'+m.key+'"><td><input type="checkbox" class="mgr-chk" data-mk="'+m.key+'"'+(isSel?' checked':'')+'></td><td><strong>'+esc(m.name)+'</strong></td><td>'+esc(Object.keys(m.companies).join(', '))+'</td><td><a href="'+esc(m.li)+'" target="_blank" style="color:var(--blue);font-size:12px">'+esc(trunc(m.li,35))+'</a></td><td>'+m.revs.length+'</td><td><span class="rating-badge" style="background:'+bCol(ar)+'"><i class="fa-solid fa-star"></i> '+ar.toFixed(1)+'</span></td><td><div class="actions"><button class="btn-icon view-mgr" data-mk="'+m.key+'" title="View"><i class="fa-solid fa-eye"></i></button><button class="btn-icon edit-mgr" data-mk="'+m.key+'" title="Edit"><i class="fa-solid fa-pen"></i></button><button class="btn-icon del del-mgr" data-mk="'+m.key+'" title="Delete"><i class="fa-solid fa-trash"></i></button></div></td></tr>';
+  });
+  $('mgrTbody').innerHTML=html||'<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--txm)">No managers found</td></tr>';
+  $('mgrCount').textContent=filtered.length+' managers';
+  $('mgrFooter').innerHTML='Showing '+filtered.length+' managers';
+
+  $$('.mgr-chk').forEach(function(c){c.addEventListener('change',function(){
+    var mk=c.getAttribute('data-mk');
+    if(c.checked)selectedMgrs[mk]=true;else delete selectedMgrs[mk];
+    c.closest('tr').classList[c.checked?'add':'remove']('selected');
+  })});
+  $$('.view-mgr').forEach(function(b){b.addEventListener('click',function(){
+    var mk=b.getAttribute('data-mk'),mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mk})[0];if(!m)return;
+    var ar=avgR(m.revs);
+    var body='<div class="info-row"><div class="info-label">Name</div><div class="info-val"><strong>'+esc(m.name)+'</strong></div></div>'
+      +'<div class="info-row"><div class="info-label">Companies</div><div class="info-val">'+esc(Object.keys(m.companies).join(', '))+'</div></div>'
+      +'<div class="info-row"><div class="info-label">LinkedIn</div><div class="info-val"><a href="'+esc(m.li)+'" target="_blank" style="color:var(--blue)">'+esc(m.li)+'</a></div></div>'
+      +'<div class="info-row"><div class="info-label">Reviews</div><div class="info-val">'+m.revs.length+'</div></div>'
+      +'<div class="info-row"><div class="info-label">Avg Rating</div><div class="info-val"><span class="rating-badge" style="background:'+bCol(ar)+'"><i class="fa-solid fa-star"></i> '+ar.toFixed(1)+'</span></div></div>'
+      +'<h4 style="font-size:12px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 8px">Category Averages</h4>'
+      +'<div class="rating-grid">'+CATS.map(function(c){var total=0,cnt=0;m.revs.forEach(function(r){if(r.rats[c]){total+=r.rats[c];cnt++}});var v=cnt?total/cnt:0;return'<div class="rating-item"><span class="ri-cat">'+c+'</span><span class="ri-val" style="color:'+bCol(v)+'">'+v.toFixed(1)+'</span></div>'}).join('')+'</div>';
+    showModal('<i class="fa-solid fa-user-tie"></i> Manager Profile',body,'<button class="btn btn-outline" onclick="closeModal()">Close</button>');
+  })});
+  $$('.edit-mgr').forEach(function(b){b.addEventListener('click',function(){
+    var mk=b.getAttribute('data-mk'),mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mk})[0];if(!m)return;
+    var body='<div class="fg"><label>Manager Name</label><input type="text" id="editName" value="'+esc(m.name)+'"></div>'
+      +'<div class="fg"><label>LinkedIn URL</label><input type="text" id="editLi" value="'+esc(m.li)+'"></div>'
+      +'<p style="font-size:11px;color:var(--txm);margin-top:8px"><i class="fa-solid fa-info-circle"></i> Changes will update all reviews for this manager.</p>';
+    var footer='<button class="btn btn-outline" onclick="closeModal()">Cancel</button><button class="btn btn-primary" id="saveEditBtn">Save Changes</button>';
+    showModal('<i class="fa-solid fa-pen"></i> Edit Manager',body,footer);
+    setTimeout(function(){
+      var saveBtn=document.getElementById('saveEditBtn');
+      if(saveBtn)saveBtn.addEventListener('click',function(){
+        var newName=document.getElementById('editName').value.trim();
+        var newLi=document.getElementById('editLi').value.trim();
+        if(!newName){toast('Name is required','error');return}
+        var revs=gS('revs',[]);
+        revs.forEach(function(r){if(normLI(r.li)===mk){r.name=newName;if(newLi)r.li=newLi}});
+        sS('revs',revs);closeModal();loadManagers();toast('Manager updated','success');
+      });
+    },100);
+  })});
+  $$('.del-mgr').forEach(function(b){b.addEventListener('click',function(){
+    var mk=b.getAttribute('data-mk'),mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mk})[0];if(!m)return;
+    showConfirm('fa-trash','Delete Manager?','This will permanently remove <strong>'+esc(m.name)+'</strong> and all '+m.revs.length+' of their reviews.','Delete All','btn-danger',function(){
+      var revs=gS('revs',[]).filter(function(r){return normLI(r.li)!==mk});
+      sS('revs',revs);loadManagers();toast('Manager and reviews deleted','success');
+    });
+  })});
+}
+$('mgrSearch').addEventListener('input',loadManagers);
+$('mgrSort').addEventListener('change',loadManagers);
+$('mgrSelectAll').addEventListener('change',function(){
+  var chk=$('mgrSelectAll').checked;
+  selectedMgrs={};
+  $$('.mgr-chk').forEach(function(c){c.checked=chk;if(chk)selectedMgrs[c.getAttribute('data-mk')]=true;c.closest('tr').classList[chk?'add':'remove']('selected')});
+});
+$('mergeBtn').addEventListener('click',function(){
+  var keys=Object.keys(selectedMgrs);
+  if(keys.length!==2){toast('Select exactly 2 managers to merge','error');return}
+  var mgrs=getMgrs();
+  var m1=mgrs.filter(function(x){return x.key===keys[0]})[0];
+  var m2=mgrs.filter(function(x){return x.key===keys[1]})[0];
+  if(!m1||!m2)return;
+  showConfirm('fa-code-merge','Merge Managers?','Merge <strong>'+esc(m2.name)+'</strong> into <strong>'+esc(m1.name)+'</strong>? All reviews from '+esc(m2.name)+' will be reassigned.','Merge','btn-primary',function(){
+    var revs=gS('revs',[]);
+    revs.forEach(function(r){if(normLI(r.li)===keys[1]){r.name=m1.name;r.li=m1.li}});
+    sS('revs',revs);selectedMgrs={};$('mgrSelectAll').checked=false;
+    loadManagers();toast('Managers merged successfully','success');
+  });
+});
+
+// ============ MODERATION ============
+function updateModCount(){
+  var fl=gS('flagged',[]);
+  $('modCount').textContent=fl.length;
+  $('modCount').style.display=fl.length?'inline':'none';
+}
+function loadModeration(){
+  var revs=gS('revs',[]),flagged=gS('flagged',[]);
+  var flaggedRevs=revs.filter(function(r){return flagged.indexOf(r.id)>=0});
+  if(!flaggedRevs.length){
+    $('modList').innerHTML='<div class="mod-empty"><i class="fa-solid fa-shield-check"></i><h3>All Clear!</h3><p>No flagged reviews in the moderation queue.</p></div>';
+    return;
+  }
+  var html='';
+  flaggedRevs.forEach(function(r){
+    var ra=Object.values(r.rats).reduce(function(a,b){return a+b},0)/Object.values(r.rats).length;
+    html+='<div class="mod-card"><div class="mod-hdr"><div class="mod-mgr"><span class="flag-dot"></span>'+esc(r.name)+' <span style="font-weight:400;color:var(--txm)">at '+esc(r.comp)+'</span></div><div class="mod-meta"><span class="rating-badge" style="background:'+bCol(ra)+'"><i class="fa-solid fa-star"></i> '+ra.toFixed(1)+'</span> &middot; '+fDate(r.date)+'</div></div>'
+      +(r.pros?'<div class="mod-text"><strong>Pros:</strong> '+esc(r.pros)+'</div>':'')
+      +(r.cons?'<div class="mod-text"><strong>Cons:</strong> '+esc(r.cons)+'</div>':'')
+      +(r.adv?'<div class="mod-text"><strong>Advice:</strong> '+esc(r.adv)+'</div>':'')
+      +'<div class="mod-actions"><button class="btn btn-success btn-sm mod-approve" data-rid="'+r.id+'"><i class="fa-solid fa-check"></i> Approve</button><button class="btn btn-danger btn-sm mod-del" data-rid="'+r.id+'"><i class="fa-solid fa-trash"></i> Delete</button><button class="btn btn-outline btn-sm mod-view" data-rid="'+r.id+'"><i class="fa-solid fa-eye"></i> View Full</button></div></div>';
+  });
+  $('modList').innerHTML=html;
+  $$('.mod-approve').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid'),fl=gS('flagged',[]).filter(function(f){return f!==rid});
+    sS('flagged',fl);loadModeration();updateModCount();toast('Review approved','success');
+  })});
+  $$('.mod-del').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid');
+    showConfirm('fa-trash','Delete Flagged Review?','Remove this review permanently?','Delete','btn-danger',function(){
+      var revs=gS('revs',[]).filter(function(r){return r.id!==rid});
+      sS('revs',revs);
+      var fl=gS('flagged',[]).filter(function(f){return f!==rid});
+      sS('flagged',fl);
+      loadModeration();updateModCount();toast('Review deleted','success');
+    });
+  })});
+  $$('.mod-view').forEach(function(b){b.addEventListener('click',function(){viewReview(b.getAttribute('data-rid'))})});
+}
+
+// ============ SETTINGS ============
+function loadSettings(){
+  var settings=gS('adminSettings',{});
+  if(settings.siteName)$('setSiteName').value=settings.siteName;
+  if(settings.email)$('setEmail').value=settings.email;
+  if(settings.phone)$('setPhone').value=settings.phone;
+  $('catList').innerHTML=CATS.map(function(c){return'<li><i class="fa-solid fa-check-circle"></i> '+c+'</li>'}).join('');
+}
+$('saveSettingsBtn').addEventListener('click',function(){
+  var settings={siteName:$('setSiteName').value.trim(),email:$('setEmail').value.trim(),phone:$('setPhone').value.trim()};
+  sS('adminSettings',settings);toast('Settings saved','success');
+});
+$$('.toggle-sw').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on')})});
+$('exportBtn').addEventListener('click',function(){
+  var data={revs:gS('revs',[]),flagged:gS('flagged',[]),votes:gS('votes',[]),settings:gS('adminSettings',{})};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='managerrate_backup_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();URL.revokeObjectURL(a.href);toast('Data exported','success');
+});
+$('importFile').addEventListener('change',function(e){
+  var file=e.target.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      var data=JSON.parse(ev.target.result);
+      if(data.revs)sS('revs',data.revs);
+      if(data.flagged)sS('flagged',data.flagged);
+      if(data.votes)sS('votes',data.votes);
+      if(data.settings)sS('adminSettings',data.settings);
+      toast('Data imported ('+((data.revs||[]).length)+' reviews)','success');
+      loadDashboard();updateModCount();
+    }catch(err){toast('Invalid JSON file','error')}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+});
+$('clearAllBtn').addEventListener('click',function(){
+  showConfirm('fa-triangle-exclamation','Clear ALL Data?','This will permanently delete ALL reviews, managers, flags, and settings. This cannot be undone!','Yes, Delete Everything','btn-danger',function(){
+    showConfirm('fa-skull-crossbones','Are you absolutely sure?','Type DELETE in your mind. Last chance to cancel.','I\'m Sure','btn-danger',function(){
+      localStorage.removeItem('revs');localStorage.removeItem('votes');localStorage.removeItem('flagged');localStorage.removeItem('adminSettings');
+      loadDashboard();updateModCount();toast('All data cleared','success');
+    });
+  });
+});
+</script>
+</body>
+</html>

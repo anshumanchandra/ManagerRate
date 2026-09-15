@@ -1,0 +1,401 @@
+var CATS=['Leadership & Vision','Communication Skills','Career Development Support','Work-Life Balance','Fairness & Transparency','Conflict Resolution','Empathy & Emotional Intelligence','Decision Making','Team Building','Accountability','Technical Competence'];
+var ACOL=['#0b6fda','#7c3aed','#dc2626','#ea580c','#16a34a','#0891b2','#c026d3','#4f46e5','#d97706','#059669'];
+var _m={};
+
+function gS(k,d){try{var v=localStorage.getItem('mrp2_'+k);if(v!==null){var p=JSON.parse(v);return p||d}}catch(e){}try{if(_m['mrp2_'+k]!==undefined){return JSON.parse(_m['mrp2_'+k])||d}}catch(e){}return d}
+function sS(k,v){var j=JSON.stringify(v);try{localStorage.setItem('mrp2_'+k,j)}catch(e){}_m['mrp2_'+k]=j}
+
+// Normalize LinkedIn URL to use as unique key
+function normLI(url){
+  if(!url)return '';
+  url=url.trim().toLowerCase().replace(/\/+$/,'');
+  var m=url.match(/linkedin\.com\/in\/([a-z0-9\-]+)/);
+  return m?m[1]:url;
+}
+
+function init(){
+  if(gS('revs',[]).length>0)return;
+  var sample=[
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Excellent at setting clear goals. Always available for 1:1s and genuinely listens.',cons:'Sometimes too focused on deliverables, misses morale issues.',rec:true},
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Great at fostering team collaboration and psychological safety.',cons:'Meeting heavy. Could use async communication more.',rec:true},
+    {name:'Sarah Chen',comp:'Amazon Web Services',li:'https://linkedin.com/in/sarachen',pros:'Very supportive of career growth. Helped me create a development plan.',cons:'Could delegate more.',rec:true},
+    {name:'Sarah Chen',comp:'Meta Financial Services',li:'https://linkedin.com/in/sarachen',pros:'Brought strong engineering culture from AWS. Transparent about decisions.',cons:'Still adjusting to new company culture. Needs to slow down on pace.',rec:true},
+    {name:'Sarah Chen',comp:'Meta Financial Services',li:'https://linkedin.com/in/sarachen',pros:'Champions work-life balance and leads by example.',cons:'Not always transparent about promotion criteria in new org.',rec:false},
+    {name:'Michael Rodriguez',comp:'Google',li:'https://linkedin.com/in/michaelrodriguez',pros:'Strong technical background. Removes blockers quickly.',cons:'Can be indecisive on cross-team issues.',rec:true},
+    {name:'Michael Rodriguez',comp:'Google',li:'https://linkedin.com/in/michaelrodriguez',pros:'Transparent about decisions and always explains reasoning.',cons:'Technical skills could be stronger for evaluating proposals.',rec:true},
+    {name:'Michael Rodriguez',comp:'Stripe',li:'https://linkedin.com/in/michaelrodriguez',pros:'Excellent at conflict resolution. Finds win-win solutions.',cons:'Needs to improve on giving constructive negative feedback.',rec:true},
+    {name:'Priya Patel',comp:'Microsoft',li:'https://linkedin.com/in/priyapatel',pros:'Very empathetic and understanding of personal situations.',cons:'Could improve on recognizing contributions publicly.',rec:true},
+    {name:'Priya Patel',comp:'Microsoft',li:'https://linkedin.com/in/priyapatel',pros:'Great at fostering psychological safety in design reviews.',cons:'Sometimes avoids difficult conversations.',rec:true},
+    {name:'Priya Patel',comp:'Figma',li:'https://linkedin.com/in/priyapatel',pros:'Brought incredible design leadership from Microsoft. Visionary.',cons:'Pace of change can overwhelm the team.',rec:true},
+    {name:'James OBrien',comp:'Amazon Web Services',li:'https://linkedin.com/in/jamesobrien',pros:'Strong technical depth. Mentors engineers with patience.',cons:'Takes on too much and becomes a bottleneck.',rec:true},
+    {name:'James OBrien',comp:'Amazon Web Services',li:'https://linkedin.com/in/jamesobrien',pros:'Champions engineering excellence and code quality.',cons:'Meeting heavy. Could reduce sync-ups.',rec:false},
+    {name:'Aiko Tanaka',comp:'Netflix',li:'https://linkedin.com/in/aikotanaka',pros:'Data-driven decision maker. Very fair in performance reviews.',cons:'Could communicate vision more clearly to the team.',rec:true},
+    {name:'Aiko Tanaka',comp:'Netflix',li:'https://linkedin.com/in/aikotanaka',pros:'Excellent at career development support. Built clear growth frameworks.',cons:'Sometimes too focused on metrics over people.',rec:true},
+    {name:'David Kim',comp:'Uber',li:'https://linkedin.com/in/davidkim',pros:'Great at building team culture. Organizes team bonding.',cons:'Decision making could be faster.',rec:true},
+    {name:'Emily Watson',comp:'Salesforce',li:'https://linkedin.com/in/emilywatson',pros:'Incredibly supportive of work-life balance. Leads by example.',cons:'Could be more assertive in cross-functional meetings.',rec:true},
+    {name:'Emily Watson',comp:'Salesforce',li:'https://linkedin.com/in/emilywatson',pros:'Transparent about team goals and individual expectations.',cons:'Needs to improve technical understanding of the product.',rec:true},
+    {name:'Emily Watson',comp:'HubSpot',li:'https://linkedin.com/in/emilywatson',pros:'Brought great marketing leadership. Very strategic thinker.',cons:'Still building relationships in the new org.',rec:true}
+  ];
+  var revs=[];
+  sample.forEach(function(s,idx){
+    var rats={},base=2.8+Math.random()*2;
+    CATS.forEach(function(c){rats[c]=Math.max(1,Math.min(5,Math.round(base+(Math.random()-.5)*2)))});
+    var d=new Date();d.setDate(d.getDate()-Math.floor(Math.random()*300));
+    revs.push({id:'r'+Date.now()+idx+Math.random().toString(36).substr(2,5),name:s.name,comp:s.comp,li:s.li,rats:rats,pros:s.pros,cons:s.cons,adv:idx%3===0?'Invest more in leadership training and mentorship.':'',rec:s.rec,hlp:Math.floor(Math.random()*12),date:d.toISOString()});
+  });
+  sS('revs',revs);sS('votes',[]);
+}
+
+// Build manager index from reviews (grouped by LinkedIn key)
+function getMgrs(){
+  var revs=gS('revs',[]),map={};
+  revs.forEach(function(r){
+    var key=normLI(r.li)||r.name.toLowerCase().replace(/\s+/g,'');
+    if(!map[key])map[key]={key:key,name:r.name,li:r.li,companies:{},revs:[]};
+    map[key].companies[r.comp]=1;
+    map[key].revs.push(r);
+  });
+  return Object.keys(map).map(function(k){return map[k]});
+}
+
+function ini(n){return n.split(' ').map(function(w){return w[0]}).join('').toUpperCase().slice(0,2)}
+function acol(idx){return ACOL[idx%ACOL.length]}
+
+function avgR(revs){if(!revs.length)return 0;var t=revs.map(function(r){var v=Object.values(r.rats);return v.reduce(function(a,b){return a+b},0)/v.length});return t.reduce(function(a,b){return a+b},0)/t.length}
+function catA(revs,cat){if(!revs.length)return 0;var v=revs.map(function(r){return r.rats[cat]||0});return v.reduce(function(a,b){return a+b},0)/v.length}
+function gCatA(cat){var revs=gS('revs',[]);if(!revs.length)return 0;var v=revs.map(function(r){return r.rats[cat]||0}).filter(function(x){return x>0});return v.length?v.reduce(function(a,b){return a+b},0)/v.length:0}
+function recP(revs){if(!revs.length)return 0;return Math.round(revs.filter(function(r){return r.rec}).length/revs.length*100)}
+
+function stars(r,sz){sz=sz||13;var h='';for(var i=1;i<=5;i++){if(i<=Math.floor(r))h+='<i class="fa-solid fa-star" style="font-size:'+sz+'px;color:var(--star)"></i>';else if(i-.5<=r)h+='<i class="fa-solid fa-star-half-stroke" style="font-size:'+sz+'px;color:var(--star)"></i>';else h+='<i class="fa-regular fa-star emp" style="font-size:'+sz+'px"></i>'}return h}
+function bCol(v){return v>=4?'#16a34a':v>=3?'#0b6fda':v>=2?'#ea580c':'#dc2626'}
+function fDate(iso){var d=new Date(iso);var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return mo[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()}
+function toast(msg){var t=document.getElementById('toast');t.innerHTML='<i class="fa-solid fa-check-circle"></i> '+msg;t.classList.add('sh');setTimeout(function(){t.classList.remove('sh')},3000)}
+
+var curSort='desc',curMgrKey=null;
+
+// TABS
+function goTab(tb){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+  document.querySelectorAll('.pg').forEach(function(x){x.classList.remove('on')});
+  var t=document.querySelector('.tab[data-t="'+tb+'"]');
+  if(t)t.classList.add('on');
+  var pg=document.getElementById('pg-'+tb);
+  if(pg)pg.classList.add('on');
+  if(tb==='dash')rDash();
+  if(tb==='mgrs')rList();
+}
+
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){goTab(t.getAttribute('data-t'))});
+});
+document.getElementById('gs').addEventListener('input',function(){goTab('mgrs')});
+document.getElementById('logoBtn').addEventListener('click',function(){goTab('home')});
+
+// DASHBOARD
+function rDash(){
+  var revs=gS('revs',[]),mgrs=getMgrs(),tr=revs.length;
+  var avgAll=0;if(tr){avgAll=revs.reduce(function(s,r){var v=Object.values(r.rats);return s+v.reduce(function(a,b){return a+b},0)/v.length},0)/tr}
+  var recAll=tr?Math.round(revs.filter(function(r){return r.rec}).length/tr*100):0;
+  var comps={};revs.forEach(function(r){comps[r.comp]=1});
+
+  document.getElementById('stats').innerHTML='<div class="sc"><div class="lb">Managers Reviewed</div><div class="vl">'+mgrs.length+'</div><div class="dl pos"><i class="fa-solid fa-users"></i> Unique managers</div></div><div class="sc"><div class="lb">Total Reviews</div><div class="vl">'+tr+'</div><div class="dl pos"><i class="fa-solid fa-shield-halved"></i> Anonymous</div></div><div class="sc"><div class="lb">Companies</div><div class="vl">'+Object.keys(comps).length+'</div><div class="dl pos"><i class="fa-solid fa-building"></i> Organizations</div></div><div class="sc"><div class="lb">Would Recommend</div><div class="vl">'+recAll+'%</div><div class="dl pos"><i class="fa-solid fa-thumbs-up"></i> Recommend</div></div>';
+
+  var catH='';CATS.forEach(function(c){var v=gCatA(c);catH+='<div class="bar-row"><span class="bl">'+c+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((v/5)*100)+'%;background:'+bCol(v)+'"></div></div><span class="bv">'+v.toFixed(1)+'</span></div>'});
+  document.getElementById('catChart').innerHTML=catH;
+
+  var dist=[0,0,0,0,0];revs.forEach(function(r){var v=Object.values(r.rats),a=v.reduce(function(x,y){return x+y},0)/v.length;dist[Math.min(4,Math.max(0,Math.floor(a)-1))]++});
+  var mx=Math.max.apply(null,dist)||1;var cols=['#dc2626','#ea580c','#d97706','#0b6fda','#16a34a'];var lbs=['1 Star','2 Stars','3 Stars','4 Stars','5 Stars'];
+  var dH='';for(var i=0;i<5;i++){dH+='<div class="dist-bar"><div class="dn">'+dist[i]+'</div><div class="db" style="height:'+((dist[i]/mx)*160)+'px;background:'+cols[i]+'"></div><div class="dlb">'+lbs[i]+'</div></div>'}
+  document.getElementById('distChart').innerHTML=dH;
+
+  var top=mgrs.map(function(m,i){return{name:m.name,r:avgR(m.revs),n:m.revs.length}}).sort(function(a,b){return b.r-a.r}).slice(0,8);
+  var tH='';top.forEach(function(m){tH+='<div class="bar-row"><span class="bl">'+m.name+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((m.r/5)*100)+'%;background:'+bCol(m.r)+'"></div></div><span class="bv">'+m.r.toFixed(1)+'</span></div>'});
+  document.getElementById('topChart').innerHTML=tH;
+}
+
+// MANAGER LIST
+function rList(){
+  var mgrs=getMgrs(),cf=document.getElementById('fComp').value,rf=parseFloat(document.getElementById('fRate').value)||0,q=(document.getElementById('gs').value||'').toLowerCase();
+
+  var comps={};mgrs.forEach(function(m){Object.keys(m.companies).forEach(function(c){comps[c]=1})});
+  var cs=Object.keys(comps).sort();
+  var cSel=document.getElementById('fComp');var cv=cSel.value;
+  cSel.innerHTML='<option value="">All Companies</option>'+cs.map(function(c){return'<option value="'+c+'"'+(c===cv?' selected':'')+'>'+c+'</option>'}).join('');
+
+  var f=mgrs.filter(function(m){
+    if(cf&&!m.companies[cf])return false;
+    if(rf&&avgR(m.revs)<rf)return false;
+    if(q)return m.name.toLowerCase().indexOf(q)>=0||Object.keys(m.companies).join(' ').toLowerCase().indexOf(q)>=0;
+    return true;
+  });
+  f.sort(function(a,b){var d=avgR(b.revs)-avgR(a.revs);return curSort==='desc'?d:-d});
+
+  var g=document.getElementById('mGrid');
+  if(!f.length){g.innerHTML='<div class="es" style="grid-column:1/-1"><i class="fa-solid fa-users-slash"></i><h3>No managers found</h3><p>Try adjusting your filters or write a review to add a manager.</p></div>';return}
+
+  g.innerHTML=f.map(function(m,idx){
+    var a=avgR(m.revs),rc=recP(m.revs);
+    var compList=Object.keys(m.companies).join(', ');
+    var tc=CATS.map(function(c){return{n:c,a:catA(m.revs,c)}}).sort(function(a,b){return b.a-a.a}).slice(0,3);
+    return'<div class="mc" data-mk="'+m.key+'"><div class="mh"><div class="av" style="background:'+acol(idx)+'">'+ini(m.name)+'</div><div class="mi"><h3>'+m.name+'</h3><p class="companies"><i class="fa-solid fa-building"></i> '+compList+'</p>'+(m.li?'<a class="li-link" href="'+m.li+'" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>':'')+'</div></div><div class="mr"><span class="rn">'+a.toFixed(1)+'</span><div><div class="stars">'+stars(a)+'</div><span class="rc">'+m.revs.length+' review'+(m.revs.length!==1?'s':'')+' &middot; '+rc+'% recommend</span></div></div><div class="bar-chart">'+tc.map(function(c){return'<div class="bar-row"><span class="bl">'+c.n+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((c.a/5)*100)+'%;background:'+bCol(c.a)+'"></div></div><span class="bv">'+c.a.toFixed(1)+'</span></div>'}).join('')+'</div></div>'
+  }).join('');
+
+  document.querySelectorAll('.mc').forEach(function(c){c.addEventListener('click',function(){vProf(c.getAttribute('data-mk'))})});
+}
+
+document.getElementById('fComp').addEventListener('change',rList);
+document.getElementById('fRate').addEventListener('change',rList);
+document.getElementById('sortBtn').addEventListener('click',function(){
+  curSort=curSort==='desc'?'asc':'desc';
+  document.getElementById('sLbl').textContent=curSort==='desc'?'Highest Rated':'Lowest Rated';
+  document.getElementById('sIco').className=curSort==='desc'?'fa-solid fa-arrow-down-wide-short':'fa-solid fa-arrow-up-wide-short';
+  rList();
+});
+
+// PROFILE
+function vProf(mkey){
+  curMgrKey=mkey;
+  var mgrs=getMgrs(),m=mgrs.filter(function(x){return x.key===mkey})[0];
+  if(!m)return;
+  var a=avgR(m.revs),rc=recP(m.revs);
+  var compList=Object.keys(m.companies).join(', ');
+
+  document.getElementById('profHdr').innerHTML='<div class="pt"><div class="pi"><div class="av" style="background:'+acol(0)+'">'+ini(m.name)+'</div><div><h2>'+m.name+'</h2><p><i class="fa-solid fa-building"></i> '+compList+'</p>'+(m.li?'<p style="margin-top:4px"><a class="li-link" href="'+m.li+'" target="_blank"><i class="fa-brands fa-linkedin"></i> View LinkedIn Profile</a></p>':'')+'<p style="margin-top:4px">'+m.revs.length+' review'+(m.revs.length!==1?'s':'')+' &middot; <span style="color:'+(rc>=70?'var(--green)':rc>=50?'var(--orange)':'var(--red)')+'">'+rc+'% recommend</span></p></div></div><div class="po"><span class="rn">'+a.toFixed(1)+'</span><div style="margin-top:3px">'+stars(a,16)+'</div><div style="font-size:11px;color:var(--txm);margin-top:3px">Overall</div></div></div><div class="pc">'+CATS.map(function(c){var v=catA(m.revs,c);return'<div class="bar-row"><span class="bl">'+c+'</span><div class="bar-track"><div class="bar-fill" style="width:'+((v/5)*100)+'%;background:'+bCol(v)+'"></div></div><span class="bv">'+v.toFixed(1)+'</span></div>'}).join('')+'</div>';
+
+  document.getElementById('revHdr').innerHTML='<h3>'+m.revs.length+' Review'+(m.revs.length!==1?'s':'')+'</h3><button class="wb" id="profWrBtn"><i class="fa-solid fa-pen"></i> Write a Review</button>';
+  document.getElementById('profWrBtn').addEventListener('click',function(){openM(m.name,m.li)});
+
+  // Group reviews by company
+  var byComp={};
+  m.revs.forEach(function(r){if(!byComp[r.comp])byComp[r.comp]=[];byComp[r.comp].push(r)});
+  var votes=gS('votes',[]);
+  var html='';
+
+  Object.keys(byComp).forEach(function(comp){
+    var cRevs=byComp[comp].sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+    html+='<div class="cg"><div class="cg-hdr"><i class="fa-solid fa-building"></i><h4>'+comp+'</h4><span>'+cRevs.length+' review'+(cRevs.length!==1?'s':'')+'</span></div>';
+    cRevs.forEach(function(r){
+      var ra=Object.values(r.rats).reduce(function(x,y){return x+y},0)/Object.values(r.rats).length;
+      var vt=votes.indexOf(r.id)>=0;
+      html+='<div class="rvw"><div class="rm"><div class="rt">'+stars(ra)+'<span style="font-weight:600;margin-left:4px">'+ra.toFixed(1)+'</span>'+(r.rec?'<span style="margin-left:8px;color:var(--green);font-size:11px;font-weight:600"><i class="fa-solid fa-thumbs-up"></i> Recommends</span>':'')+'</div><span class="dt">'+fDate(r.date)+'</span></div>'+(r.pros?'<div class="rs"><h4 class="pro"><i class="fa-solid fa-circle-check"></i> Pros</h4><p>'+r.pros+'</p></div>':'')+(r.cons?'<div class="rs"><h4 class="con"><i class="fa-solid fa-circle-xmark"></i> Cons</h4><p>'+r.cons+'</p></div>':'')+(r.adv?'<div class="rs"><h4 class="adv"><i class="fa-solid fa-lightbulb"></i> Advice to Management</h4><p>'+r.adv+'</p></div>':'')+'<button class="hb'+(vt?' vt':'')+'" data-rid="'+r.id+'"><i class="fa-regular fa-thumbs-up"></i> Helpful ('+(r.hlp+(vt?1:0))+')</button></div>';
+    });
+    html+='</div>';
+  });
+
+  document.getElementById('revList').innerHTML=html||'<div class="es"><i class="fa-solid fa-message"></i><h3>No reviews yet</h3></div>';
+
+  document.querySelectorAll('.hb').forEach(function(b){b.addEventListener('click',function(){
+    var rid=b.getAttribute('data-rid'),v=gS('votes',[]),idx=v.indexOf(rid);
+    if(idx>=0)v.splice(idx,1);else v.push(rid);sS('votes',v);vProf(curMgrKey);
+  })});
+
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+  document.querySelectorAll('.pg').forEach(function(x){x.classList.remove('on')});
+  document.getElementById('pg-prof').classList.add('on');
+}
+
+document.getElementById('backBtn').addEventListener('click',function(){goTab('mgrs')});
+
+// MODAL
+function openM(preName,preLi){
+  document.getElementById('rName').value=preName||'';
+  document.getElementById('rComp').value='';
+  document.getElementById('rLinkedin').value=preLi||'';
+  document.getElementById('starArea').innerHTML=CATS.map(function(c){return'<div class="sr"><span class="sl">'+c+'</span><div class="si" data-cat="'+c+'">'+[1,2,3,4,5].map(function(i){return'<i class="fa-regular fa-star" data-v="'+i+'"></i>'}).join('')+'</div></div>'}).join('');
+  document.querySelectorAll('.si').forEach(function(row){row.querySelectorAll('i').forEach(function(s){s.addEventListener('click',function(){var v=parseInt(s.getAttribute('data-v'));row.setAttribute('data-val',v);row.querySelectorAll('i').forEach(function(x,idx){x.className=idx<v?'fa-solid fa-star ac':'fa-regular fa-star'})})})});
+  document.getElementById('rPros').value='';document.getElementById('rCons').value='';document.getElementById('rAdv').value='';
+  document.getElementById('recTog').classList.remove('on');document.getElementById('recTxt').textContent='No';
+  document.getElementById('modal').classList.add('sh');
+}
+
+document.getElementById('topWriteBtn').addEventListener('click',function(){openM('','')});
+document.getElementById('heroWriteBtn').addEventListener('click',function(){openM('','')});
+document.getElementById('heroBrowseBtn').addEventListener('click',function(){goTab('mgrs')});
+document.getElementById('ctaBtn').addEventListener('click',function(){openM('','')});
+document.getElementById('cancelBtn').addEventListener('click',function(){document.getElementById('modal').classList.remove('sh')});
+document.getElementById('recTog').addEventListener('click',function(){var t=document.getElementById('recTog');t.classList.toggle('on');document.getElementById('recTxt').textContent=t.classList.contains('on')?'Yes':'No'});
+
+document.getElementById('submitBtn').addEventListener('click',function(){
+  var name=document.getElementById('rName').value.trim();
+  var comp=document.getElementById('rComp').value.trim();
+  var li=document.getElementById('rLinkedin').value.trim();
+  if(!name){toast('Please enter the manager name');return}
+  if(!comp){toast('Please enter the company name');return}
+  if(!li||!li.match(/linkedin\.com\/in\//)){toast('Please enter a valid LinkedIn profile URL');return}
+  var rats={},ok=true;
+  CATS.forEach(function(c){var row=document.querySelector('.si[data-cat="'+c+'"]');var v=parseInt(row?row.getAttribute('data-val'):0)||0;if(!v)ok=false;rats[c]=v});
+  if(!ok){toast('Please rate all categories');return}
+  var p=document.getElementById('rPros').value.trim(),cn=document.getElementById('rCons').value.trim();
+  if(!p||!cn){toast('Please fill in Pros and Cons');return}
+  var revs=gS('revs',[]);
+  revs.push({id:'r'+Date.now()+Math.random().toString(36).substr(2,5),name:name,comp:comp,li:li,rats:rats,pros:p,cons:cn,adv:document.getElementById('rAdv').value.trim(),rec:document.getElementById('recTog').classList.contains('on'),hlp:0,date:new Date().toISOString()});
+  sS('revs',revs);
+  document.getElementById('modal').classList.remove('sh');
+  toast('Review submitted anonymously!');
+  var newKey=normLI(li);
+  if(curMgrKey===newKey)vProf(curMgrKey);
+});
+
+init();
+
+// ==================== DYNAMIC ENHANCEMENTS ====================
+
+// Scroll reveal observer
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+function setupReveals(){
+  // Add reveal classes to sections
+  document.querySelectorAll('.mission-card,.how-step,.val-card,.org-card,.impact-item,.sc,.cc').forEach(function(el){
+    if(!el.classList.contains('reveal')){el.classList.add('reveal');revealObs.observe(el)}
+  });
+  // Stagger grids
+  document.querySelectorAll('.how-grid,.values-grid,.org-grid,.sg,.impact-grid,.mission').forEach(function(g){g.classList.add('stagger')});
+  // Reveal larger blocks
+  document.querySelectorAll('.org-highlight,.org-quote,.cta-banner,.impact,.for-orgs>h2,.for-orgs>.sub2,.how-section>h2,.values>h2').forEach(function(el){
+    if(!el.classList.contains('reveal')){el.classList.add('reveal');revealObs.observe(el)}
+  });
+}
+
+// Animated counters
+function animateCounter(el,target,suffix){
+  suffix=suffix||'';
+  var start=0,dur=1500,startTime=null;
+  var isFloat=target%1!==0;
+  function step(ts){
+    if(!startTime)startTime=ts;
+    var p=Math.min((ts-startTime)/dur,1);
+    var ease=1-Math.pow(1-p,3); // easeOutCubic
+    var val=start+(target-start)*ease;
+    el.textContent=(isFloat?val.toFixed(1):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Observe stat values for counter animation
+var counterObs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+  if(e.isIntersecting&&!e.target.dataset.counted){
+    e.target.dataset.counted='1';
+    var txt=e.target.textContent.trim();
+    var num=parseFloat(txt);
+    var suffix=txt.replace(/[\d.]/g,'');
+    if(!isNaN(num))animateCounter(e.target,num,suffix);
+  }
+})},{threshold:0.5});
+
+function setupCounters(){
+  document.querySelectorAll('.sc .vl').forEach(function(el){counterObs.observe(el)});
+}
+
+// Animate bar fills on view
+var barObs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+  if(e.isIntersecting){
+    var bars=e.target.querySelectorAll('.bar-fill');
+    bars.forEach(function(b){
+      var w=b.style.width;
+      b.style.setProperty('--target-width',w);
+      b.style.width='0';
+      setTimeout(function(){b.classList.add('animated')},50);
+    });
+    barObs.unobserve(e.target);
+  }
+})},{threshold:0.2});
+
+function setupBars(){
+  document.querySelectorAll('.bar-chart,.pc').forEach(function(el){barObs.observe(el)});
+}
+
+// Floating particles on hero
+function createParticles(){
+  var hero=document.querySelector('.hero');
+  if(!hero)return;
+  var existing=hero.querySelector('.particles');
+  if(existing)return;
+  var container=document.createElement('div');
+  container.className='particles';
+  for(var i=0;i<20;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    var size=2+Math.random()*4;
+    p.style.width=size+'px';
+    p.style.height=size+'px';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(6+Math.random()*10)+'s';
+    p.style.animationDelay=Math.random()*8+'s';
+    container.appendChild(p);
+  }
+  hero.appendChild(container);
+}
+
+// Scroll hint on hero
+function addScrollHint(){
+  var hero=document.querySelector('.hero');
+  if(!hero||hero.querySelector('.scroll-hint'))return;
+  var hint=document.createElement('div');
+  hint.className='scroll-hint';
+  hint.innerHTML='<i class="fa-solid fa-chevron-down"></i><span>Scroll to explore</span>';
+  hero.appendChild(hint);
+  // Fade out on scroll
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80)hint.style.opacity='0';
+    else hint.style.opacity='1';
+  });
+}
+
+// Add ripple class to buttons
+function setupRipples(){
+  document.querySelectorAll('.hero-btn,.wb,.wr-btn,.cta-btn,.ba,.bs').forEach(function(b){
+    b.classList.add('ripple');
+  });
+}
+
+// Enhanced page transitions
+var origGoTab=goTab;
+goTab=function(tb){
+  var current=document.querySelector('.pg.on');
+  if(current){
+    current.style.opacity='0';
+    current.style.transform='translateY(12px)';
+  }
+  setTimeout(function(){
+    origGoTab(tb);
+    var next=document.getElementById('pg-'+tb);
+    if(next){
+      next.style.opacity='0';
+      next.style.transform='translateY(12px)';
+      setTimeout(function(){
+        next.style.opacity='1';
+        next.style.transform='translateY(0)';
+        setupReveals();setupCounters();setupBars();
+      },30);
+    }
+  },150);
+};
+
+// Parallax on hero (subtle)
+window.addEventListener('scroll',function(){
+  var hero=document.querySelector('.hero');
+  if(!hero)return;
+  var scroll=window.scrollY;
+  if(scroll<600){
+    hero.style.transform='translateY('+scroll*0.15+'px)';
+    hero.style.opacity=Math.max(0,1-scroll/500);
+  }
+});
+
+// Initialize all enhancements
+function initDynamic(){
+  createParticles();
+  addScrollHint();
+  setupRipples();
+  setupReveals();
+  setupCounters();
+  setupBars();
+}
+
+// Run after a tick to let DOM settle
+setTimeout(initDynamic,100);
+
+// Re-run on profile view
+var origVProf=vProf;
+vProf=function(mk){origVProf(mk);setTimeout(function(){setupReveals();setupBars()},100)};
