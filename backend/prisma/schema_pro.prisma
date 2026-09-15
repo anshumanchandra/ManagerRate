@@ -1,0 +1,57 @@
+// ==========================================
+// ManagerRate PRO — Additional Prisma Models
+// ==========================================
+// MERGE these models into your main schema.prisma
+// then run: npx prisma migrate dev --name add_pro_models
+
+model Organization {
+  id             String   @id @default(uuid())
+  name           String
+  email          String   @unique
+  billingEmail   String?  @map("billing_email")
+  plan           String   @default("free") // free, starter, growth, enterprise
+  subscriptionId String?  @map("subscription_id")
+  companyName    String?  @map("company_name") // The company name to filter dashboard data
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  apiKeys        ApiKey[]
+
+  @@map("organizations")
+}
+
+model ApiKey {
+  id             String    @id @default(uuid())
+  keyHash        String    @unique @map("key_hash") // SHA-256 hashed — NEVER store plaintext
+  organizationId String    @map("organization_id")
+  name           String    @default("Default Key")
+  permissions    Json      @default("[]") // JSON array: ["managers:read","reports:read","stats:read","dashboard:read"]
+  rateLimit      Int       @default(1000) @map("rate_limit") // requests per hour
+  requestCount   Int       @default(0) @map("request_count") // rolling count
+  lastUsedAt     DateTime? @map("last_used_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  expiresAt      DateTime? @map("expires_at")
+  status         String    @default("active") // active, revoked
+
+  organization   Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  usageLogs      ApiUsageLog[]
+
+  @@index([keyHash])
+  @@index([organizationId])
+  @@map("api_keys")
+}
+
+model ApiUsageLog {
+  id             String   @id @default(uuid())
+  apiKeyId       String   @map("api_key_id")
+  endpoint       String
+  method         String
+  statusCode     Int      @map("status_code")
+  responseTimeMs Int      @map("response_time_ms")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  apiKey         ApiKey   @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  @@index([apiKeyId])
+  @@index([createdAt])
+  @@map("api_usage_logs")
+}

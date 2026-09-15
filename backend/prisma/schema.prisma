@@ -1,0 +1,197 @@
+// ==========================================
+// ManagerRate V2 — Database Schema
+// ==========================================
+// Features: Entity system, trust/verification, review evolution,
+// manager responses, strengths/weaknesses, Bayesian scoring
+//
+// Run: npx prisma migrate dev --name v2_entity_system
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== MANAGER (Enhanced Entity) ====================
+model Manager {
+  id            String   @id @default(uuid())
+  name          String
+  linkedinUrl   String   @unique @map("linkedin_url")
+  linkedinSlug  String   @unique @map("linkedin_slug")
+  city          String?
+  department    String?
+  businessUnit  String?  @map("business_unit")
+  title         String?
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  reviews       Review[]
+  responses     ManagerResponse[]
+
+  @@index([linkedinSlug])
+  @@index([name])
+  @@index([city])
+  @@index([department])
+  @@map("managers")
+}
+
+// ==================== REVIEW (Enhanced with Trust Fields) ====================
+model Review {
+  id                 String   @id @default(uuid())
+  managerId          String   @map("manager_id")
+  company            String
+  recommends         Boolean  @default(false)
+  pros               String
+  cons               String
+  advice             String?
+  status             String   @default("published") // published, flagged, removed, held
+  flagged            Boolean  @default(false)
+  ipHash             String?  @map("ip_hash")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  // V2 — Experience context
+  tenure             String?  // less_than_3_months, 3_6_months, 6_12_months, 1_2_years, 2_5_years, 5_plus_years
+  relationship       String?  // direct_report, skip_level, project_manager, cross_functional, peer, former_direct_report
+  currentEmployee    Boolean  @default(true) @map("current_employee")
+  workAgain          String?  @map("work_again") // definitely, probably, maybe, probably_not, definitely_not
+
+  // V2 — Strengths & Weaknesses tags
+  strengths          String[] @default([])
+  weaknesses         String[] @default([])
+
+  // V2 — Verification
+  verificationStatus String   @default("unverified") @map("verification_status") // verified, likely, unverified
+
+  manager            Manager          @relation(fields: [managerId], references: [id], onDelete: Cascade)
+  ratings            Rating[]
+  helpfulVotes       HelpfulVote[]
+  reports            Report[]
+  managerResponses   ManagerResponse[]
+  // Evolution tracking
+  evolutions         ReviewEvolution[] @relation("OriginalReview")
+  evolvedFrom        ReviewEvolution[] @relation("UpdatedReview")
+
+  @@index([managerId])
+  @@index([company])
+  @@index([status])
+  @@index([createdAt])
+  @@index([ipHash, managerId])
+  @@map("reviews")
+}
+
+// ==================== RATING (Per-Category Scores) ====================
+model Rating {
+  id        String @id @default(uuid())
+  reviewId  String @map("review_id")
+  category  String
+  score     Int    // 1-5
+
+  review    Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+  @@index([category])
+  @@map("ratings")
+}
+
+// ==================== HELPFUL VOTES ====================
+model HelpfulVote {
+  id        String   @id @default(uuid())
+  reviewId  String   @map("review_id")
+  voterHash String   @map("voter_hash")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@unique([reviewId, voterHash])
+  @@map("helpful_votes")
+}
+
+// ==================== REPORTS (Flagged Reviews) ====================
+model Report {
+  id           String   @id @default(uuid())
+  reviewId     String   @map("review_id")
+  reason       String   // spam, defamatory, fake, inappropriate, personal_attack, threat
+  details      String?
+  reporterHash String?  @map("reporter_hash")
+  status       String   @default("pending") // pending, reviewed, dismissed
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  review       Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@map("reports")
+}
+
+// ==================== V2: MANAGER RESPONSE ====================
+// Managers can respond to reviews but CANNOT delete them
+model ManagerResponse {
+  id              String   @id @default(uuid())
+  managerId       String   @map("manager_id")
+  reviewId        String?  @map("review_id") // null = general response to profile
+  content         String   // max 2000 chars enforced in validator
+  verifiedManager Boolean  @default(false) @map("verified_manager")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  manager         Manager  @relation(fields: [managerId], references: [id], onDelete: Cascade)
+  review          Review?  @relation(fields: [reviewId], references: [id], onDelete: SetNull)
+
+  @@index([managerId])
+  @@index([reviewId])
+  @@map("manager_responses")
+}
+
+// ==================== V2: REVIEW EVOLUTION ====================
+// Tracks when an employee updates their review after 6+ months
+// One review per manager per employment period — can update, not duplicate
+model ReviewEvolution {
+  id               String   @id @default(uuid())
+  originalReviewId String   @map("original_review_id")
+  updatedReviewId  String   @map("updated_review_id")
+  version          Int      @default(1)
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  originalReview   Review   @relation("OriginalReview", fields: [originalReviewId], references: [id], onDelete: Cascade)
+  updatedReview    Review   @relation("UpdatedReview", fields: [updatedReviewId], references: [id], onDelete: Cascade)
+
+  @@index([originalReviewId])
+  @@map("review_evolutions")
+}
+
+// ==================== ADMIN USER ====================
+// Admin panel authentication — username + bcrypt password hash.
+// Created via CLI: node src/utils/adminSetup.js <username> <password>
+model AdminUser {
+  id           String     @id @default(uuid())
+  username     String     @unique
+  passwordHash String     @map("password_hash")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  lastLoginAt  DateTime?  @map("last_login_at")
+
+  auditLogs    AuditLog[]
+
+  @@index([username])
+  @@map("admin_users")
+}
+
+// ==================== AUDIT LOG ====================
+// Tracks all destructive admin actions (delete, flag, edit).
+// Every admin mutation writes here for accountability.
+model AuditLog {
+  id         String   @id @default(uuid())
+  adminId    String   @map("admin_id")
+  action     String   // LOGIN, DELETE_REVIEW, FLAG_REVIEW, UNFLAG_REVIEW, DELETE_MANAGER, EDIT_MANAGER
+  targetType String   @map("target_type") // Review, Manager, AdminUser
+  targetId   String   @map("target_id")
+  details    String?  // JSON string with before/after or contextual info
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  admin      AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([adminId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

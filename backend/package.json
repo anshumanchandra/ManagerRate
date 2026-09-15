@@ -1,0 +1,35 @@
+{
+  "name": "managerrate-backend",
+  "version": "1.0.0",
+  "description": "ManagerRate — Secure Anonymous Manager Review Portal Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "node prisma/seed.js",
+    "db:reset": "npx prisma migrate reset",
+    "db:studio": "npx prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.10.0",
+    "@sendgrid/mail": "^8.1.0",
+    "bad-words": "^3.0.4",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "isomorphic-dompurify": "^2.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "prisma": "^5.10.0"
+  }
+}
